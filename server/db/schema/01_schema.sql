@@ -12,7 +12,8 @@ CREATE TABLE users (
   username VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  bio TEXT
+  bio TEXT,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE posts (
@@ -20,7 +21,7 @@ CREATE TABLE posts (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   post_text TEXT,
   post_image TEXT,
-  created_at TIMESTAMP,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   likes INTEGER
 );
 
@@ -32,11 +33,12 @@ CREATE TABLE categories (
 
 CREATE TABLE comments (
   id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   post_id INTEGER REFERENCES posts(id) ON DELETE CASCADE,
   comment TEXT,
   likes INTEGER,
   comment_image TEXT,
-  created_at TIMESTAMP
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 
