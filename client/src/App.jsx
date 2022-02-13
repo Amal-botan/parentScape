@@ -5,8 +5,8 @@ import {
   HMSRoomProvider,
   useHMSStore,
   selectIsConnectedToRoom,
-} 
- from '@100mslive/hms-video-react';
+} from '@100mslive/hms-video-react';
+
 
 const SpacesApp = () => {
   const isConnected = useHMSStore(selectIsConnectedToRoom);
