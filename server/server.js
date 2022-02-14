@@ -21,7 +21,7 @@ app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.json());
 app.use(
   "/styles",
   sassMiddleware({
@@ -38,12 +38,14 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const postsRoutes = require("./routes/posts");
+const newPostsRoutes = require("./routes/new_posts");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/posts", postsRoutes(db));
+app.use("/api/newposts", newPostsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page

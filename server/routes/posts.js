@@ -26,19 +26,9 @@ module.exports = (db) => {
           console.log("value: ", value.rows)
             const dataObj = {...data[i], "comments":value.rows};
             newData.push(dataObj);
-
-          // console.log(value.rows);
-
-          // (err,data) => {
-          //    const dataObj = {...post, "comments":data.rows};
-          //   //  console.log(dataObj)
-          //   return dataObj
-          //   // console.log(data.rows);
-          // })
         }
-        //  console.log(newData);
          res.status(200).json({
-           result: newData
+           posts: newData
          })
       })
       .catch(err => {
