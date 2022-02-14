@@ -38,6 +38,7 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const postsRoutes = require("./routes/posts");
+const postRoutes = require("./routes/post");
 const newPostsRoutes = require("./routes/new_posts");
 const editPostsRoutes = require("./routes/edit_posts");
 
@@ -48,6 +49,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/posts", postsRoutes(db));
 app.use("/api/newposts", newPostsRoutes(db));
 app.use("/api/editposts", editPostsRoutes(db));
+app.use("/api/post", postRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
 
