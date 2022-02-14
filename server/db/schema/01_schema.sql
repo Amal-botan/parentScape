@@ -11,6 +11,7 @@ CREATE TABLE users (
   last_name VARCHAR(255) NOT NULL,
   username VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
+  user_image TEXT,
   password VARCHAR(255) NOT NULL,
   bio TEXT,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
