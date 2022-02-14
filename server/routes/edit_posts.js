@@ -9,10 +9,11 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.delete("/:id", (req, res) => {
+  router.put("/:id", (req, res) => {
   //add cookie session for the user_id to attach to logged in user
     const id = req.params.id;
     console.log(req.body)
+    console.log("user_id cookie: ", user_id)
     db.query(`UPDATE posts SET post_text = $1, post_image = $2
     WHERE posts.id = $3;`,[req.body.post_text, req.body.post_image, id])
       .then(data => {
