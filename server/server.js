@@ -54,6 +54,9 @@ const deletePostsRoutes = require("./routes/delete_posts");
 const newCommentRoutes = require("./routes/new_comment");
 const editCommentRoutes = require("./routes/edit_comment");
 const deleteCommentRoutes = require("./routes/delete_comment");
+const authRoutes = require("./routes/auth");
+const verifyToken = require("./routes/helpers");
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -67,6 +70,9 @@ app.use("/api/deletepost", deletePostsRoutes(db));
 app.use("/api/newcomment", newCommentRoutes(db));
 app.use("/api/editcomment", editCommentRoutes(db));
 app.use("/api/deletecomment", deleteCommentRoutes(db));
+app.use("/api/auth", authRoutes(db));
+app.use("/api/verifytoken", verifyToken);
+
 
 // Note: mount other resources here, using the same pattern above
 
