@@ -41,6 +41,8 @@ const postsRoutes = require("./routes/posts");
 const postRoutes = require("./routes/post");
 const newPostsRoutes = require("./routes/new_posts");
 const editPostsRoutes = require("./routes/edit_posts");
+const deletePostsRoutes = require("./routes/delete_posts");
+const newCommentRoutes = require("./routes/new_comment");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -48,9 +50,10 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/posts", postsRoutes(db));
 app.use("/api/newposts", newPostsRoutes(db));
-app.use("/api/editposts", editPostsRoutes(db));
+app.use("/api/editpost", editPostsRoutes(db));
 app.use("/api/post", postRoutes(db));
-
+app.use("/api/deletepost", deletePostsRoutes(db));
+app.use("/api/newcomment", newCommentRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
