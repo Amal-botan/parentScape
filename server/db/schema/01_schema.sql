@@ -29,7 +29,7 @@ CREATE TABLE posts (
 CREATE TABLE categories (
   id SERIAL PRIMARY KEY NOT NULL,
   post_id INTEGER REFERENCES posts(id) ON DELETE CASCADE,
-  category VARCHAR(255) NOT NULL
+  category VARCHAR(255)
 );
 
 CREATE TABLE comments (

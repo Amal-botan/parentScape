@@ -13,11 +13,10 @@ module.exports = (db) => {
   //add cookie session for the user_id to attach to logged in user
     const id = req.params.id;
     console.log(req.body)
-    console.log("user_id cookie: ", user_id)
-    db.query(`UPDATE posts SET post_text = $1, post_image = $2
-    WHERE posts.id = $3;`,[req.body.post_text, req.body.post_image, id])
+    db.query(`UPDATE comments SET comment = $1, comment_image = $2
+    WHERE comments.id = $3;`,[req.body.comment, req.body.comment_image, id])
       .then(data => {
-        res.status(201).json({"message": "post is edited"})
+        res.status(201).json({"message": "comment is edited"})
       })
       .catch(err => {
         res
