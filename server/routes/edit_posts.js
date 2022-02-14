@@ -9,8 +9,9 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
+  router.put("/", (req, res) => {
   //add cookie session for the user_id to attach to logged in user
-  router.post("/", (req, res) => {
+
     console.log(req.body)
     db.query(`INSERT INTO posts (user_id, post_text, likes)
     VALUES ($1, $2, $3)
