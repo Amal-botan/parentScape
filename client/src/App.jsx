@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import Join from "./components/Join";
 import Room from "./components/Room";
 import "./App.css";
@@ -7,32 +8,31 @@ import {
   useHMSStore,
   selectIsConnectedToRoom,
 } from "@100mslive/hms-video-react";
-import Navbar from "./components/Navbar.jsx";
-import Post from "./components/Post";
-import PostForm from "./components/PostForm";
-
-const SpacesApp = () => {
-  const isConnected = useHMSStore(selectIsConnectedToRoom);
-  return <>{isConnected ? <Room /> : <Join />}</>;
-};
+import Navbars from "./components/Navbar.jsx";
+import HomeScreen from "./screens/HomeScreen";
+import ParentHouseScreen from "./screens/ParentHouseScreen";
+// const SpacesApp = () => {
+//   const isConnected = useHMSStore(selectIsConnectedToRoom);
+//   return <>{isConnected ? <Room /> : <Join />}</>;
+// };
 
 function App() {
   return (
-    
-        <>
-     <Navbar/>
-     <PostForm />
-     <Post />
-    <HMSRoomProvider>
+    <>
+      <Navbars />
+      <Routes>
+        <Route path="/" element={<HomeScreen styles={{ color: "red" }} />} />
+        <Route path="/parenthouse" element={<ParentHouseScreen />} />
+      </Routes>
 
-      <div className="page">
-
-        <SpacesApp />
-      </div>
-    </HMSRoomProvider>
     </>
-  
   );
 }
 
 export default App;
+
+// <HMSRoomProvider>
+//   <div className="page">
+//     <SpacesApp />
+//   </div>
+// </HMSRoomProvider>
