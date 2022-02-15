@@ -10,24 +10,11 @@ const router  = express.Router();
 const verifyToken = require("./helpers");
 
 module.exports = (db) => {
-  // router.get("/", (req, res) => {
-  //   db.query(`SELECT * FROM users;`)
-  //     .then(data => {
-  //       const users = data.rows;
-  //       res.json({ users });
-  //     })
-  //     .catch(err => {
-  //       res
-  //         .status(500)
-  //         .json({ error: err.message });
-  //     });
-  // });
-
-  router.get("/verify", verifyToken, (req, res) => {
+  router.get("/", verifyToken, (req, res) => {
     const user = req.user
+    console.log(user);
     db.query(`SELECT * FROM users;`)
       .then(data => {
-        const users = data.rows;
         res.json({ user });
       })
       .catch(err => {

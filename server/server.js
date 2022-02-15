@@ -44,7 +44,7 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
+const usersRoutes = require("./routes/user");
 const widgetsRoutes = require("./routes/widgets");
 const postsRoutes = require("./routes/posts");
 const postRoutes = require("./routes/post");
@@ -55,12 +55,14 @@ const newCommentRoutes = require("./routes/new_comment");
 const editCommentRoutes = require("./routes/edit_comment");
 const deleteCommentRoutes = require("./routes/delete_comment");
 const authRoutes = require("./routes/auth");
+const loginRoutes = require("./routes/login");
 const verifyToken = require("./routes/helpers");
+const categoryRoutes = require("./routes/category_posts");
 
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
+app.use("/api/user", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/posts", postsRoutes(db));
 app.use("/api/newposts", newPostsRoutes(db));
@@ -71,7 +73,9 @@ app.use("/api/newcomment", newCommentRoutes(db));
 app.use("/api/editcomment", editCommentRoutes(db));
 app.use("/api/deletecomment", deleteCommentRoutes(db));
 app.use("/api/auth", authRoutes(db));
+app.use("/api/login", loginRoutes(db));
 app.use("/api/verifytoken", verifyToken);
+app.use("/api/category", categoryRoutes(db));
 
 
 // Note: mount other resources here, using the same pattern above
