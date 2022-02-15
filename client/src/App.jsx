@@ -11,6 +11,7 @@ import {
 import Navbars from "./components/Navbar.jsx";
 import HomeScreen from "./screens/HomeScreen";
 import ParentHouseScreen from "./screens/ParentHouseScreen";
+import ParentFeedScreen from "./screens/ParentFeedScreen";
 // const SpacesApp = () => {
 //   const isConnected = useHMSStore(selectIsConnectedToRoom);
 //   return <>{isConnected ? <Room /> : <Join />}</>;
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeScreen styles={{ color: "red" }} />} />
         <Route path="/parenthouse" element={<ParentHouseScreen />} />
+        <Route path="/parentfeed" element={<ParentFeedScreen/>} />
       </Routes>
 
     </>
