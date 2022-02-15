@@ -6,6 +6,8 @@ export default function PostForm() {
     <main className="container">
         <textarea className="form__textarea" name="text" placeholder={posts}></textarea>
         <input type="submit" value="Post" className="form__input" />
+        <input type="submit" value="Add Category" className="form__input" />
+        <input type="submit" value="Add Image" className="form__input" />
     </main>
   );
 }
