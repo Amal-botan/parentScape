@@ -21,7 +21,7 @@ VALUES (1, 1, 'Hey!!', 2),
 (2, 3, 'Its okay, babies get like that sometimes! Offer the breastmilk, and you can top up with formula if you would like! Also talk to your doctor to see if nothing else is wrong', 12);
 
 INSERT INTO children (user_id, name, age)
-VALUES (1, 1, 'Hey!!', 2),
-(2, 2, 'Get a baby shower top, make sure the water is warm, get a washcloth and some soap and scrub away (gently of course)!!', 10),
-(3, 2, 'Shower before bed', 10),
-(2, 3, 'Its okay, babies get like that sometimes! Offer the breastmilk, and you can top up with formula if you would like! Also talk to your doctor to see if nothing else is wrong', 12);
+VALUES (1, 'Kate', '2 months'),
+(1, 'Jack', '18 months'),
+(2, 'Louis', '1 month'),
+(2, 'Sam', '3 months');
