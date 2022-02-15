@@ -22,14 +22,14 @@ const Navbars = () => {
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <a
-                    // href="/"
+                    href="/"
                     className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Home
                   </a>
 
                   <a
-                    // href="/parentfeed"
+                    href="/parentfeed"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Parent Feed
@@ -37,7 +37,7 @@ const Navbars = () => {
                   </a>
 
                   <a
-                    // href="/parenthouse"
+                    href="/parenthouse"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Parent House
@@ -45,14 +45,14 @@ const Navbars = () => {
                   </a>
 
                   <a
-                    // href="#"
+                    href="#"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Profile
                   </a>
 
                   <a
-                    // href="#"
+                    href="#"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Tracker
