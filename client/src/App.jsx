@@ -1,12 +1,13 @@
-import Join from './components/Join';
-import Room from './components/Room';
-import './App.css';
+import Join from "./components/Join";
+import Room from "./components/Room";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import {
   HMSRoomProvider,
   useHMSStore,
   selectIsConnectedToRoom,
-} from '@100mslive/hms-video-react';
-
+} from "@100mslive/hms-video-react";
+import Navbar from "./components/Navbar.jsx";
 
 const SpacesApp = () => {
   const isConnected = useHMSStore(selectIsConnectedToRoom);
@@ -15,11 +16,18 @@ const SpacesApp = () => {
 
 function App() {
   return (
+    
+        <>
+     <Navbar/>
     <HMSRoomProvider>
-      <div className='page'>
+
+      <div className="page">
+
         <SpacesApp />
       </div>
     </HMSRoomProvider>
+    </>
+  
   );
 }
 
