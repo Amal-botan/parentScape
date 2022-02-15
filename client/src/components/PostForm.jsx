@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./PostForm.css"
 export default function PostForm() {
   const posts = "What is on your mind?"
   return (
