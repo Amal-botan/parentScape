@@ -58,7 +58,7 @@ const authRoutes = require("./routes/auth");
 const loginRoutes = require("./routes/login");
 const verifyToken = require("./routes/helpers");
 const categoryRoutes = require("./routes/category_posts");
-
+const userPostsRoutes = require("./routes/profile_page/user_posts");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -76,7 +76,7 @@ app.use("/api/auth", authRoutes(db));
 app.use("/api/login", loginRoutes(db));
 app.use("/api/verifytoken", verifyToken);
 app.use("/api/category", categoryRoutes(db));
-
+app.use("/api/user_posts", userPostsRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
 
