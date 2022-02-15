@@ -24,6 +24,7 @@ function App() {
         <Route path="/" element={<HomeScreen styles={{ color: "red" }} />} />
         <Route path="/parenthouse" element={<ParentHouseScreen />} />
       </Routes>
+
     </>
   );
 }
