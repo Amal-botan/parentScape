@@ -8,6 +8,8 @@ import {
   selectIsConnectedToRoom,
 } from "@100mslive/hms-video-react";
 import Navbar from "./components/Navbar.jsx";
+import Post from "./components/Post";
+import PostForm from "./components/PostForm";
 
 const SpacesApp = () => {
   const isConnected = useHMSStore(selectIsConnectedToRoom);
@@ -19,6 +21,8 @@ function App() {
     
         <>
      <Navbar/>
+     <PostForm />
+     <Post />
     <HMSRoomProvider>
 
       <div className="page">
