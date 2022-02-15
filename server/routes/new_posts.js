@@ -7,18 +7,19 @@
 
 const express = require('express');
 const router  = express.Router();
+const verifyToken = require("./helpers");
+
 
 module.exports = (db) => {
   //add cookie session for the user_id to attach to logged in user
-  router.post("/", (req, res) => {
-    console.log(req.body)
-    db.query(`INSERT INTO posts (user_id, post_text, post_image, likes)
-    VALUES ($1, $2, $3, $4)
-    RETURNING id;`, [req.body.user_id, req.body.post_text, req.body.post_image, req.body.likes])
+  router.post("/", verifyToken, (req, res) => {
+    const user = req.user
+
+    db.query(`INSERT INTO posts (user_id, post_text, post_image)
+    VALUES ($1, $2, $3)
+    RETURNING id;`, [user.id, req.body.post_text, req.body.post_image])
       .then(data => {
-        console.log(data)
         const post = data.rows;
-        console.log("post.id: ", post[0].id)
         db.query(`INSERT INTO categories (post_id,category)
         VALUES ($1, $2);`,[post[0].id, req.body.category])
         res.status(201).json({})
