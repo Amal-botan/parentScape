@@ -22,7 +22,7 @@ const Navbars = () => {
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <a
-                    href="#"
+                    href="/"
                     className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Home
@@ -37,7 +37,7 @@ const Navbars = () => {
                   </a>
 
                   <a
-                    href="#"
+                    href="/parenthouse"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Parent House
@@ -161,7 +161,7 @@ const Navbars = () => {
 
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Welcome to ParentScape</h1>
         </div>
       </header>
     </div>
