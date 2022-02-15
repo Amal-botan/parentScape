@@ -19,7 +19,7 @@ module.exports = (db) => {
     VALUES ($1, $2, $3, $4)
     RETURNING id;`, [user.id, id, req.body.comment, req.body.comment_image])
       .then(data => {
-        res.status(201).json({})
+        res.status(201).json({message: "Your comment was created"})
         return;
       })
       .catch(err => {
