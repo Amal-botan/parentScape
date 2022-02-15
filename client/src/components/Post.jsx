@@ -1,4 +1,5 @@
 import React from "react";
+import './Post.css'
 const posts = {
 user_image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfSN0LzT35OFBzyTtlHIl876rIsAcWWen9nA&usqp=CAU",
 username: "steph.bob",
