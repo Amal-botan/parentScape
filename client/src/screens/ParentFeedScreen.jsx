@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 const ParentFeedScreen = () => {
   const [posts, setPosts] = useState([])
   const [postText, setPostText] = useState("")
+  const [categories, setCategories] = useState([])
 
   useEffect(() => {
     const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
@@ -24,7 +25,15 @@ const ParentFeedScreen = () => {
       })
   }, [])
 
-  console.log("Post state: ", posts);
+  useEffect(() => {
+    axios.get("http://localhost:8080/api/category")
+    .then((response) => {
+      console.log(response);
+      setCategories(response.data.categories);
+    })
+  }, [])
+
+  console.log("Categories: ", categories);
 
   const addPost = (post) => {
 
@@ -64,18 +73,26 @@ const ParentFeedScreen = () => {
   }
 
 
+  // const categoryPosts = (category) => {
+  //   axios.post(`http://localhost:8080/api/category`, category)
+  //     .then((res) => {
+       
+  //     })
+  // } 
+
+
   return (
 
     <div className ="parent">
       
       <div className ="left-side">
       <PostUser />
-      <PostCategory />
+      <PostCategory categories={categories} />
       </div>
 
       <div className = "right-side">
-      <PostForm addPost = { addPost }/>
-      <Post posts={posts} />
+      <PostForm addPost={addPost} />
+      <Post posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} />
       </div>
 
 
