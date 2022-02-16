@@ -1,7 +1,7 @@
 INSERT INTO users (first_name, last_name, username, email, user_image, password, bio)
-VALUES ('Steph', 'Bob', 'steph.bob', 'stephb@gmail.com', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfSN0LzT35OFBzyTtlHIl876rIsAcWWen9nA&usqp=CAU', 'password', 'bio description'),
-('Steve', 'Sam', 'steve.sam', 'steves@gmail.com', 'https://mpng.subpng.com/20180308/jdw/kisspng-avatar-scalable-vector-graphics-user-profile-icon-wearing-a-striped-shirt-boys-5aa11b77789686.8517616415205077674939.jpg', 'password', 'bio description'),
-('Emily', 'Jack', 'emily.jack', 'emilyj@gmail.com', 'https://cdn.imgbin.com/10/20/11/imgbin-avatar-user-profile-icon-women-wear-frock-GNLBV4N6qanFpjEYMEqxEgcCd.jpg', 'password', 'bio description');
+VALUES ('Steph', 'Bob', 'steph.bob', 'stephb@gmail.com', 'https://cdn-icons.flaticon.com/png/512/2645/premium/2645633.png?token=exp=1644982519~hmac=a842388ac59dd284f82fe28d9b2b335f', 'password', 'bio description'),
+('Steve', 'Sam', 'steve.sam', 'steves@gmail.com', 'https://cdn-icons-png.flaticon.com/512/265/265674.png', 'password', 'bio description'),
+('Emily', 'Jack', 'emily.jack', 'emilyj@gmail.com', 'https://cdn-icons-png.flaticon.com/512/2922/2922561.png', 'password', 'bio description');
 
 
 INSERT INTO posts (user_id, post_text, likes)
