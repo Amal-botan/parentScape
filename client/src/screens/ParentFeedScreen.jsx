@@ -1,8 +1,13 @@
 import React from "react";
 import Post from "../components/Post";
-import PostForm from "../components/PostForm"
+import PostForm from "../components/PostForm";
+import PostUser from "../components/PostUser";
+import PostCategory from "../components/PostCategory";
+import "../components/styleParentFeed.css";
 import "../components/Post.css";
 import "../components/PostForm.css";
+import "../components/PostUser.css"
+
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -32,13 +37,19 @@ const ParentFeedScreen = () => {
 
 
   return (
-    <>
+    <div className ="parent">
+      
+      <div className ="left-side">
+      <PostUser />
+      <PostCategory />
+      </div>
+
+      <div className = "right-side">
       <PostForm addPost = { addPost }/>
       <Post posts={posts} />
+      </div>
 
-      <p>Hello</p>
-
-    </>
+    </div>
 
 
   )
