@@ -6,30 +6,39 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const verifyToken = require("./helpers");
 
 
 module.exports = (db) => {
   //add cookie session for the user_id to attach to logged in user
-  router.post("/", (req, res) => { //verfi
+  router.post("/", async (req, res) => { //put verfi back
     const user = req.user
 
-    db.query(`INSERT INTO posts (user_id, post_text, post_image)
+    const data = await db.query(`INSERT INTO posts (user_id, post_text, post_image)
     VALUES ($1, $2, $3)
-    RETURNING *;`, [1, req.body.post_text, req.body.post_image])
-      .then(data => {
-        const posts = data.rows;
-        db.query(`INSERT INTO categories (post_id,category)
-        VALUES ($1, $2);`,[posts[0].id, req.body.category])
-        res.status(201).json( posts[0] )
-        return;
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
-  return router;
+    RETURNING *;`, [1, req.body.post_text, req.body.post_image]) //put user back
+    const id = data.rows[0].id;
+    await db.query(`INSERT INTO categories (post_id,category)
+        VALUES ($1, $2);`, [id, req.body.category])
+
+    console.log(id)
+    const response = await db.query(`SELECT users.id as users_id, users.user_image as user_image, users.username as username, posts.id as post_id, posts.post_text as post_text, posts.post_image as post_image, posts.likes as likes, posts.created_at as post_created_at, categories.category as category
+          FROM posts
+          LEFT JOIN users ON posts.user_id = users.id
+          LEFT JOIN categories ON categories.post_id = posts.id
+          WHERE posts.id = $1;`, [id])
+    const post = response.rows[0]
+    res.status(201).json(post)
+    return;
+
+  })
+    // .catch(err => {
+    //   res
+    //     .status(500)
+    //     .json({ error: err.message });
+    // });
+
+
+return router;
 };
