@@ -1,5 +1,5 @@
 INSERT INTO users (first_name, last_name, username, email, user_image, password, bio)
-VALUES ('Steph', 'Bob', 'steph.bob', 'stephb@gmail.com', 'https://cdn-icons.flaticon.com/png/512/2645/premium/2645633.png?token=exp=1644982519~hmac=a842388ac59dd284f82fe28d9b2b335f', 'password', 'bio description'),
+VALUES ('Steph', 'Bob', 'steph.bob', 'stephb@gmail.com', 'https://cdn-icons-png.flaticon.com/512/265/265674.png', 'password', 'bio description'),
 ('Steve', 'Sam', 'steve.sam', 'steves@gmail.com', 'https://cdn-icons-png.flaticon.com/512/265/265674.png', 'password', 'bio description'),
 ('Emily', 'Jack', 'emily.jack', 'emilyj@gmail.com', 'https://cdn-icons-png.flaticon.com/512/2922/2922561.png', 'password', 'bio description');
 
@@ -25,3 +25,33 @@ VALUES (1, 'Kate', '2 months'),
 (1, 'Jack', '18 months'),
 (2, 'Louis', '1 month'),
 (2, 'Sam', '3 months');
+
+
+
+INSERT INTO babysitters (first_name,
+  last_name,
+  age,
+  username,
+  email,
+  babysitter_image,
+  password,
+  bio,
+  city,
+  province,
+  postal_code,
+  phone_number,
+  years_of_experience)
+VALUES ('Natasha',
+'White',
+24,
+'natasha.white',
+'nwhite@gmail.com',
+'https://about.crunchbase.com/wp-content/uploads/2019/03/Afton-Thankful-Blog.png',
+'password',
+'Highly dependable and adaptable Babysitter with an exemplary record of parent and child satisfaction. Able to respond quickly and creatively to unusual or difficult child care situations. Flexible scheduling availability to include all days, evenings, and some weekends.',
+'Toronto',
+'Ontario',
+'M3C0L8',
+6472890923,
+10
+);
