@@ -75,7 +75,7 @@ const ParentFeedScreen = () => {
 
       <div className = "right-side">
       <PostForm addPost = { addPost }/>
-      <Post posts={posts} />
+      <Post posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} />
       </div>
 
 

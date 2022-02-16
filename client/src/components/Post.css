@@ -45,3 +45,24 @@
 	padding: 8px 20px;
 	border-top: 4px solid #545149;
 }
+
+.btn {
+	color: #000;
+	font-family: "Bungee", cursive;
+	font-size: 20px;
+	line-height: 20px;
+	color: #fff;
+	border: none;
+	background-color: #B54659;
+	text-decoration: none;
+	padding: 6px 12px;
+	cursor: pointer;
+	margin-top: 0.8em;
+
+}
+
+#buttons {
+	justify-content: space-between;
+	display: flex;
+
+}

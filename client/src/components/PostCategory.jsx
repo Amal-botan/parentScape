@@ -3,7 +3,7 @@ function PostCategory() {
 
   return (
 <div class="dropdown">
-  <span>Category</span>
+  <span class="title">Category</span>
   <div class="dropdown-content">
   <p>Category Option</p>
   <p>Category Option</p>
