@@ -1,0 +1,11 @@
+.parent {
+  display: flex;
+  justify-content: space-around;
+}
+
+.right-side {
+  width: 60%;
+  margin-right: 70px;
+  top: 50px;
+  margin-top: 70px;
+}
