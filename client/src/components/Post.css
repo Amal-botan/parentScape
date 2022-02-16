@@ -5,6 +5,7 @@
 	border: 4px solid #545149;
 	font-family: "Bungee", cursive;
 	border-radius: 10px;
+	font-size: 24px;
 }
 
 .post:hover {
@@ -25,16 +26,9 @@
 }
 
 .post--user_image {
-	width: 200px;
-	height: 100px;
-	padding: 2px;
-}
-
-.post--user_image {
 	float: right;
 	color: #c5cbe3;
 	margin-top: 8px;
-	font-size: 24px;
 	padding: 2px 10px;
 	border-radius: 50%;
 	height: 150px;
@@ -49,6 +43,5 @@
 
 .post--footer {
 	padding: 8px 20px;
-	font-size: 0.8em;
 	border-top: 4px solid #545149;
 }

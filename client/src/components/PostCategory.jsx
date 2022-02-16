@@ -1,8 +1,16 @@
+import "./PostCategory.css"
 function PostCategory() {
 
   return (
-<div class ="category">
-<input type="submit" value="Search Category" className="form__input" />
+<div class="dropdown">
+  <span>Category</span>
+  <div class="dropdown-content">
+  <p>Category Option</p>
+  <p>Category Option</p>
+  <p>Category Option</p>
+  <p>Category Option</p>
+  <p>Category Option</p>
+  </div>
 </div>
   )
 }
