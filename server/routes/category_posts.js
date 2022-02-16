@@ -42,5 +42,22 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/", (req, res) => { //verifyToken
+    // const user = req.user
+    // console.log(user);
+    db.query(`SELECT * FROM categories;`)
+      .then(data => {
+        const categories = data.rows
+        res.json({ categories });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+
   return router;
+
 };
