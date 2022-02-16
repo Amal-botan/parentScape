@@ -3,6 +3,7 @@ import Post from "../components/Post";
 import PostForm from "../components/PostForm";
 import PostUser from "../components/PostUser";
 import PostCategory from "../components/PostCategory";
+import DailyQuote from "../components/DailyQuote";
 import "../components/styleParentFeed.css";
 import "../components/Post.css";
 import "../components/PostForm.css";
@@ -71,6 +72,7 @@ const ParentFeedScreen = () => {
       <div className ="left-side">
       <PostUser />
       <PostCategory />
+      <DailyQuote />
       </div>
 
       <div className = "right-side">

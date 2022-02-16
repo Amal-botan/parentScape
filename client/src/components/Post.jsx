@@ -75,6 +75,9 @@ export default function Post(props) {
         Like
     </button>
     <button class="btn">
+        Comment
+    </button>
+    <button class="btn">
         Delete
     </button>
     {editDisplay[post.post_id] ? <button class="btn" onClick={() => displayPost(post.post_id)}> X </button> : <button class="btn" onClick={() => handleButton(post.post_id)}> Edit </button>}
