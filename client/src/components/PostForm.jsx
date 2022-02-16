@@ -35,11 +35,11 @@ export default function PostForm(props) {
     <main className="container">
       <textarea className="form__textarea" name="text" placeholder="What is on your mind?" value={postText} onChange={(event) => setPostText(event.target.value)} ></textarea>
       <div id="buttons">
-        {!addcategory && <button type="submit" value="Add Category" onClick={handleCategoryButton}>Add Category</button>}
+        {!addcategory && <button class="buttons" type="submit" value="Add Category" onClick={handleCategoryButton}>Add Category</button>}
         
         {addcategory && <button type="submit" value="Add Category" onClick={handleCategoryButton}>X</button>}
 
-        {!addImage && <button type="submit" value="Add Category" onClick={handleImageButton}>Add Image</button>}
+        {!addImage && <button class="buttons" type="submit" value="Add Category" onClick={handleImageButton}>Add Image</button>}
 
         {addImage && <button type="submit" value="Add Category" onClick={handleImageButton}>X</button>}
 

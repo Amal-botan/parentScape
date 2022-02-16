@@ -2,8 +2,8 @@ import React from "react";
 import Post from "../components/Post";
 import PostForm from "../components/PostForm";
 import PostUser from "../components/PostUser";
-import PostCategory from "../components/PostCategory";
-import DailyQuote from "../components/DailyQuote";
+import ProfileChildren from "../components/ProfileChildren"; 
+import "../components/ProfileChildren.css"
 import "../components/styleParentFeed.css";
 import "../components/Post.css";
 import "../components/PostForm.css";
@@ -12,10 +12,9 @@ import "../components/PostUser.css"
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const ParentFeedScreen = () => {
+const ProfileScreen = () => {
   const [posts, setPosts] = useState([])
   const [postText, setPostText] = useState("")
-  const [categories, setCategories] = useState([])
 
   useEffect(() => {
     const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
@@ -26,25 +25,17 @@ const ParentFeedScreen = () => {
       })
   }, [])
 
-  useEffect(() => {
-    axios.get("http://localhost:8080/api/category")
-    .then((response) => {
-      console.log(response);
-      setCategories(response.data.categories);
-    })
-  }, [])
+  console.log("Post state: ", posts);
 
-  console.log("Categories: ", categories);
+  // const addPost = (post) => {
 
-  const addPost = (post) => {
+  //   axios.post("http://localhost:8080/api/newposts", post)
+  //     .then((res) => {
 
-    axios.post("http://localhost:8080/api/newposts", post)
-      .then((res) => {
+  //       setPosts((prev) => ([res.data, ...prev]))
 
-        setPosts((prev) => ([res.data, ...prev]))
-
-      })
-  }
+  //     })
+  // }
 
   // useEffect(() => {
   //   const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
@@ -74,28 +65,20 @@ const ParentFeedScreen = () => {
   }
 
 
-  // const categoryPosts = (category) => {
-  //   axios.post(`http://localhost:8080/api/category`, category)
-  //     .then((res) => {
-       
-  //     })
-  // } 
-
-
   return (
 
     <div className ="parent">
       
       <div className ="left-side">
       <PostUser />
-
-      <PostCategory categories={categories} />
+      <ProfileChildren />
       </div>
-
+      
       <div className = "right-side">
-      <PostForm addPost={addPost} />
-      <Post posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} />
+    
+      <Post posts={posts}  />
       </div>
+    
 
 
     </div>
@@ -104,4 +87,4 @@ const ParentFeedScreen = () => {
   )
 }
 
-export default ParentFeedScreen;
+export default ProfileScreen;

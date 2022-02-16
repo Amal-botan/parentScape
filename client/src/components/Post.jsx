@@ -53,9 +53,9 @@ export default function Post(props) {
               <h2 className="tweet--username">{post.username}</h2>
             </header>
 
-            {editDisplay[post.post_id] ? <button onClick={() => displayPost(post.post_id)}> X </button> : <button onClick={() => handleButton(post.post_id)}> Edit </button>}
+            {/* {editDisplay[post.post_id] ? <button onClick={() => displayPost(post.post_id)}> X </button> : <button onClick={() => handleButton(post.post_id)}> Edit </button>}
+*/}
 
-            <button> Delete </button>
 
             {console.log(editDisplay)}
             {editDisplay[post.post_id] ?
@@ -68,15 +68,22 @@ export default function Post(props) {
                 <p>{post.post_text}</p>
               </div>
             }
-            <footer className="tweet--footer">
-              <small className="footer--created_at">{post.post_created_at}<small>
-                <span className="footer--actions">
-                  <a href="#"><i className="fa fa-flag"></i></a>
-                  <a href="#"><i className="fa fa-retweet"></i></a>
-                  <a href="#"><i className="fa fa-heart"></i></a>'
-                </span>
-              </small></small></footer>
+    <footer className="post--footer">
+    <small className="footer--created_at">{post.post_created_at}<small>
+      <div id="buttons">
+    <button class="btn">
+        Like
+    </button>
+    <button class="btn">
+        Comment
+    </button>
+    <button class="btn">
+        Delete
+    </button>
+    {editDisplay[post.post_id] ? <button class="btn" onClick={() => displayPost(post.post_id)}> X </button> : <button class="btn" onClick={() => handleButton(post.post_id)}> Edit </button>}
+              </div></small></small></footer>
           </article>
+      
 
         ))
       }

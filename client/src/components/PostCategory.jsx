@@ -18,6 +18,7 @@ function PostCategory(props) {
 
 
   return (
+
     <div>
 
       <label for="cars">Choose a category:</label>
@@ -34,6 +35,8 @@ function PostCategory(props) {
       </select>
 
     </div>
+
+
   )
 }
 export default PostCategory;
