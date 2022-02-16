@@ -1,6 +1,6 @@
 function PostUser() {
   const user = {
-    user_image: "https://cdn-icons.flaticon.com/png/512/2645/premium/2645633.png?token=exp=1644982519~hmac=a842388ac59dd284f82fe28d9b2b335f",
+    user_image: "https://cdn-icons-png.flaticon.com/512/265/265674.png",
     username: "steph.bob"
   }
   
