@@ -1,7 +1,9 @@
 import React from "react";
-
-const HomeScreen = (props) => {
-  console.log("hhhhhhh========");
-  return <div></div>;
-};
-export default HomeScreen;
+import companyMotto from "/home/nadia/lighthouse/parentScape/client/src/home.png"
+export default function HomeScreen() {
+  return (
+    <div>
+      <img src={companyMotto} alt="motto pic"/>
+    </div>
+  );
+}
