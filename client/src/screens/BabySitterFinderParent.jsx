@@ -7,6 +7,7 @@ import Map from '../components/Map';
 
 const BabySitterFinderParent = () => {
 const [babySitters, setBabySitters] = useState([])
+const [locations, setLocations] = useState ([])
 
 console.log("TEST")
  useEffect(() => {
@@ -20,10 +21,21 @@ console.log("TEST")
 
 console.log("BabySitters here: ", babySitters)
 
+useEffect(() => {
+  const locationUrl = "http://localhost:8080/api/location" //use path and set proxy
+  //runs when page loads
+  axios.get(locationUrl)
+    .then((response) => {
+      setLocations(response.data.locations)
+    })
+ }, [])
+ console.log("BabySitters locations here: ", locations)
+
+ 
  return (
 <div>
     <BabySitterFinderScreen babySitters={babySitters} />
-   <Map />
+   <Map babySitters={babySitters} locations={locations}/>
     </div>
    )
   }

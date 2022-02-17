@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS categories CASCADE;
 DROP TABLE IF EXISTS comments CASCADE;
 DROP TABLE IF EXISTS children CASCADE;
 DROP TABLE IF EXISTS babysitters CASCADE;
+DROP TABLE IF EXISTS locations CASCADE;
 
 
 CREATE TABLE users (
@@ -72,4 +73,11 @@ CREATE TABLE babysitters (
   upload_id_card TEXT,
   upload_police_record_check TEXT,
   upload_first_aid_certificate TEXT
+);
+
+CREATE TABLE locations (
+  id SERIAL PRIMARY KEY NOT NULL,
+  babysitter_id INTEGER REFERENCES babysitters(id) ON DELETE CASCADE,
+  lat FLOAT,
+  lng FLOAT
 );
