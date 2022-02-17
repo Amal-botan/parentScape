@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
+import { useState } from 'react'; 
 
 const Accordion = styled((props) => (
  
@@ -48,6 +49,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function BabySitterFinderScreen(props) {
   const { babySitters } = props;
+  const [searchTerm, setSearchTerm] = useState("");
 
   const [expanded, setExpanded] = React.useState('panel1');
 
@@ -55,7 +57,19 @@ export default function BabySitterFinderScreen(props) {
     setExpanded(newExpanded ? panel : false);
   };
 
+  
 
+//Stretch: instead of hard coding cities we can try and write them in.
+  // const cities = babySitters.map((babySitter) => {
+  //   const citiesBaby = [];
+  //   if (!citiesBaby.includes(babySitter.city)) {
+  //     console.log(!citiesBaby.includes(babySitter.city))
+  //     citiesBaby.push(babySitter.city)
+  //   }
+  //   return citiesBaby;
+  // })
+
+  // console.log("Cities inloop: ", cities)
 
   return (
     <div> Please choose a city:
@@ -64,13 +78,23 @@ export default function BabySitterFinderScreen(props) {
   id="combo-box-demo"
   options={cities}
   sx={{ width: 300 }}
-  renderInput={(params) => <TextField {...params} label="Cities" />}
+  renderInput={(params) => <TextField {...params} label="Cities" onChange={(event) => {
+    setSearchTerm(event.target.value)
+  }}/>}
 />
-<p>TEST</p>
 {
-      babySitters.map((babySitter, index) => {
+      babySitters.filter((babySitter) => {
+        if(searchTerm == "") {
+          return babySitter;
+        } else if (babySitter.city.toLowerCase().includes(searchTerm.toLowerCase())) {
+          return babySitter;
+        } else if (babySitter.postal_code.toLowerCase().includes(searchTerm.toLowerCase())) {
+          return babySitter;
+        }
+      }).map((babySitter, index) => {
 
 return (
+    
       <Accordion expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
         <AccordionSummary aria-controls= {`panel${index}d-content`} id={`panel1d-header`}>
           <Typography> {babySitter.first_name} {babySitter.last_name}</Typography>
@@ -89,6 +113,9 @@ return (
         </Button>
         </AccordionDetails>
       </Accordion>
+
+
+
 )
       })
       
@@ -126,11 +153,12 @@ return (
     
   );
 }
+
 const cities = [
   { label: 'Ottawa'},
   { label: 'Toronto'},
   { label: 'Hamilton'},
   { label: 'Kanata'},
   { label: 'Orleans'},
-  { label: 'Etobico'},
+  { label: 'Etobicoke'},
 ];

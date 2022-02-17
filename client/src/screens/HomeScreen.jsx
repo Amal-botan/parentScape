@@ -1,5 +1,5 @@
 import React from "react";
-import companyMotto from "/home/nadia/lighthouse/parentScape/client/src/home.png"
+import companyMotto from "../home.png"
 export default function HomeScreen() {
   return (
     <div>
