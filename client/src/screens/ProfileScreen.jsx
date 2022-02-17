@@ -15,7 +15,7 @@ import { useState, useEffect } from "react";
 const ProfileScreen = () => {
   const [posts, setPosts] = useState([]);
   const [postText, setPostText] = useState("");
-
+  const [user, setUser] = useState({})
   useEffect(() => {
     const postsUrl = "http://localhost:8080/api/posts"; //use path and set proxy
     //runs when page loads
@@ -25,6 +25,12 @@ const ProfileScreen = () => {
   }, []);
 
   console.log("Post state: ", posts);
+
+  useEffect(() => {
+    const loggedinuser = JSON.parse(localStorage.getItem('user'))
+   {loggedinuser ? setUser(loggedinuser) : setUser(null)}
+
+  }, []);
 
   // const addPost = (post) => {
 
@@ -60,15 +66,16 @@ const ProfileScreen = () => {
         });
       });
   };
+  // for log out make a button to log out user localStorage.removeItem("user")
 
   return (
     <div className="parent">
       <div className="left-side">
-        <PostUser />
+      {user ?  <PostUser /> : <p>U need to be logged in or signed up</p>}
       </div>
 
       <div className="right-side">
-        <Post posts={posts} />
+      {user ?  <Post posts={posts} /> : <div></div> }
       </div>
     </div>
   );

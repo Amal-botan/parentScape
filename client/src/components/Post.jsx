@@ -52,7 +52,7 @@ export default function Post(props) {
         <div className="tweet-header">
           <img src={post.user_image} alt="" className="avator" />
           <div className="tweet-header-info">
-            Steve Schoger <span>{post.username}</span>
+            {post.username} <span>{post.username}</span>
             <span>. {post.post_created_at}</span>
             {editDisplay[post.post_id] ? (
               <div>

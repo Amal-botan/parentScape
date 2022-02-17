@@ -38,7 +38,7 @@ module.exports = (db) => {
 
             const token = jwt.sign(user, process.env.JWT_SECRET);
             user.token = token
-            return res.status(201).send({ status: "okay", message: "User Logged in", user });
+            return res.status(201).send({ status: "okay", message: "User Logged in", user, "token": token});
           })
           .catch(err => {
             res
