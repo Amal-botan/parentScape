@@ -58,7 +58,7 @@ export default function BabySitterSignUpScreen() {
           }}
         >
           <Avatar sx={{ width: 80, height: 80, m: 2, bgcolor: 'secondary.main' }}>
-            <BabyChangingStationIcon sx={{ width: 0, height: 50, m: 2, bgcolor: 'secondary.main' }}/>
+            <BabyChangingStationIcon sx={{ width: 50, height: 50, m: 2, bgcolor: 'secondary.main' }}/>
           </Avatar>
           <Typography component="h1" variant="h5">
             Baby Sitter Sign up Page
