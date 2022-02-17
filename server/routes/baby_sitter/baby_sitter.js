@@ -15,8 +15,8 @@ module.exports = (db) => {
     // console.log(user);
     db.query(`SELECT * FROM babysitters;`)
       .then(data => {
-        console.log(data);
-        // res.json({ user });
+        babysitters = data.rows;
+       res.json({ babysitters });
       })
       .catch(err => {
         res
