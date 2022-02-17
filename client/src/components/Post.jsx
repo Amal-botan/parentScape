@@ -1,7 +1,8 @@
-import React from "react";
-import './Post.css'
-import "./PostForm.css"
-
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
+import Stack from '@mui/material/Stack';
 import { useState, useEffect } from "react";
 
 export default function Post(props) {
@@ -71,16 +72,16 @@ export default function Post(props) {
     <footer className="post--footer">
     <small className="footer--created_at">{post.post_created_at}<small>
       <div id="buttons">
-    <button class="btn">
-        Like
-    </button>
-    <button class="btn">
+      <Button variant="contained" color="success">
+  Like
+</Button>
+    <Button variant="outlined" color="error">
         Comment
-    </button>
-    <button class="btn">
-        Delete
-    </button>
-    {editDisplay[post.post_id] ? <button class="btn" onClick={() => displayPost(post.post_id)}> X </button> : <button class="btn" onClick={() => handleButton(post.post_id)}> Edit </button>}
+      </Button>
+      <Button variant="outlined" startIcon={<DeleteIcon />}>
+  Delete
+</Button>
+    {editDisplay[post.post_id] ? <button class="btn" onClick={() => displayPost(post.post_id)}> X </button> : <button color="secondary" onClick={() => handleButton(post.post_id)}> Edit </button>}
               </div></small></small></footer>
           </article>
       
