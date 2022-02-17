@@ -66,6 +66,8 @@ const userPostsRoutes = require("./routes/profile_page/user_posts");
 const childrenRoutes = require("./routes/profile_page/children_list");
 const babySitterRoutes = require("./routes/baby_sitter/baby_sitter");
 const commentRoutes = require("./routes/comments");
+const locationRoutes = require("./routes/baby_sitter/filter_location");
+
 
 
 // Mount all resource routes
@@ -88,6 +90,8 @@ app.use("/api/user_posts", userPostsRoutes(db));
 app.use("/api/children", childrenRoutes(db));
 app.use("/api/babysitter", babySitterRoutes(db));
 app.use("/api/comments", commentRoutes(db));
+app.use("/api/location", locationRoutes(db));
+
 
 // Note: mount other resources here, using the same pattern above
 
