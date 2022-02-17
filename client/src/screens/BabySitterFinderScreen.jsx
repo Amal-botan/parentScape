@@ -9,8 +9,8 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 
-
 const Accordion = styled((props) => (
+ 
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
@@ -46,12 +46,16 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
 
-export default function BabySitterFinderScreen() {
+export default function BabySitterFinderScreen(props) {
+  const { babySitters } = props;
+
   const [expanded, setExpanded] = React.useState('panel1');
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
+
+
 
   return (
     <div> Please choose a city:
@@ -62,20 +66,36 @@ export default function BabySitterFinderScreen() {
   sx={{ width: 300 }}
   renderInput={(params) => <TextField {...params} label="Cities" />}
 />
-      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>Baby Sitter Name</Typography>
+<p>TEST</p>
+{
+      babySitters.map((babySitter, index) => {
+
+return (
+      <Accordion expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
+        <AccordionSummary aria-controls= {`panel${index}d-content`} id={`panel1d-header`}>
+          <Typography> {babySitter.first_name} {babySitter.last_name}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Baby sitter bio, photo, years of experience
+           <p>Description:</p>
+            {babySitter.bio}
+            <p>Image:</p>
+            {babySitter.babysitter_image} 
+            <p>Years of Experience: </p>
+            {babySitter.years_of_experience}
           </Typography>
           <Button variant="contained" size="large">
           Request
         </Button>
         </AccordionDetails>
       </Accordion>
-      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+)
+      })
+      
+  }
+
+
+      {/* <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
           <Typography>Baby Sitter Name</Typography>
         </AccordionSummary>
@@ -101,12 +121,11 @@ export default function BabySitterFinderScreen() {
           Request
         </Button>
       </Accordion>
-     
+      */}
     </div>
     
   );
 }
-
 const cities = [
   { label: 'Ottawa'},
   { label: 'Toronto'},
@@ -115,3 +134,4 @@ const cities = [
   { label: 'Orleans'},
   { label: 'Etobico'},
 ];
+
