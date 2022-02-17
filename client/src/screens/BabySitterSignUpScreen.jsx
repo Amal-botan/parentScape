@@ -8,24 +8,30 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import BabyChangingStationIcon from '@mui/icons-material/BabyChangingStation';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import Stack from '@mui/material/Stack';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        ParentScape
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
   );
 }
-
+const Input = styled('input')({
+  display: 'none',
+});
 const theme = createTheme();
 
 export default function BabySitterSignUpScreen() {
@@ -51,8 +57,8 @@ export default function BabySitterSignUpScreen() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+          <Avatar sx={{ width: 80, height: 80, m: 2, bgcolor: 'secondary.main' }}>
+            <BabyChangingStationIcon sx={{ width: 50, height: 50, m: 2, bgcolor: 'secondary.main' }}/>
           </Avatar>
           <Typography component="h1" variant="h5">
             Baby Sitter Sign up Page
@@ -168,25 +174,40 @@ export default function BabySitterSignUpScreen() {
                 <TextField
                   required
                   fullWidth
-                  name="Years of Experience"
+                  name="outlined-number"
                   label="Years of Experience"
-                  type="Years of Experience"
+                  type="number"
                   id="Years of Experience"
                   autoComplete="Years of Experience"
                 />
               </Grid>
               <Grid item xs={12}>
+              Please explain your experience working with children
                 <TextField
                   required
                   fullWidth
                   name="Bio"
-                  label="Bio"
+                  label="Short Description"
                   type="Bio"
                   id="Bio"
                   autoComplete="Bio"
                 />
               </Grid>
-             
+            <Grid item xs={12}>  <Stack direction="row" alignItems="center" spacing={2}>
+      <label htmlFor="contained-button-file">
+        Please Upload a recent photo 
+        <Input accept="image/*" id="contained-button-file" multiple type="file" />
+        <Button variant="contained" component="span">
+          Upload
+        </Button>
+      </label>
+      <label htmlFor="icon-button-file">
+        <Input accept="image/*" id="icon-button-file" type="file" />
+        <IconButton color="primary" aria-label="upload picture" component="span">
+          <PhotoCamera />
+        </IconButton>
+      </label>
+      </Stack></Grid>
             </Grid>
             <Button
               type="submit"
@@ -208,6 +229,7 @@ export default function BabySitterSignUpScreen() {
         <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
+    
   );
   
 }
