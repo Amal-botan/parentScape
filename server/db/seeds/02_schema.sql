@@ -15,10 +15,10 @@ INSERT INTO categories (post_id, category)
 VALUES (2, 'showering'), (3, 'feeding'), (4, 'temp');
 
 INSERT INTO comments (user_id, post_id, comment, likes)
-VALUES (1, 1, 'Hey!!', 2),
-(2, 2, 'Get a baby shower top, make sure the water is warm, get a washcloth and some soap and scrub away (gently of course)!!', 10),
-(3, 2, 'Shower before bed', 10),
-(2, 3, 'Its okay, babies get like that sometimes! Offer the breastmilk, and you can top up with formula if you would like! Also talk to your doctor to see if nothing else is wrong', 12);
+VALUES (1, 2, 'Hey!!', 2),
+(2, 3, 'Get a baby shower top, make sure the water is warm, get a washcloth and some soap and scrub away (gently of course)!!', 10),
+(3, 3, 'Shower before bed', 10),
+(2, 4, 'Its okay, babies get like that sometimes! Offer the breastmilk, and you can top up with formula if you would like! Also talk to your doctor to see if nothing else is wrong', 12);
 
 INSERT INTO children (user_id, name, age)
 VALUES (1, 'Kate', '2 months'),
