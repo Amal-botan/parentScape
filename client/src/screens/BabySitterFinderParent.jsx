@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import BabySitterFinderScreen from "./BabySitterFinderScreen"
 
+import Map from '../components/Map';
+
 const BabySitterFinderParent = () => {
 const [babySitters, setBabySitters] = useState([])
 
@@ -19,9 +21,10 @@ console.log("TEST")
 console.log("BabySitters here: ", babySitters)
 
  return (
-
+<div>
     <BabySitterFinderScreen babySitters={babySitters} />
-
+   <Map />
+    </div>
    )
   }
   
