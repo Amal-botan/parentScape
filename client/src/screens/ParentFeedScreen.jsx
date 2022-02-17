@@ -16,6 +16,7 @@ const ParentFeedScreen = () => {
   const [posts, setPosts] = useState([])
   const [postText, setPostText] = useState("")
   const [categories, setCategories] = useState([])
+  const [category, setCategory] = useState("")
 
   useEffect(() => {
     const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
@@ -28,10 +29,10 @@ const ParentFeedScreen = () => {
 
   useEffect(() => {
     axios.get("http://localhost:8080/api/category")
-    .then((response) => {
-      console.log(response);
-      setCategories(response.data.categories);
-    })
+      .then((response) => {
+        console.log(response);
+        setCategories(response.data.categories);
+      })
   }, [])
 
   console.log("Categories: ", categories);
@@ -40,9 +41,9 @@ const ParentFeedScreen = () => {
 
     axios.post("http://localhost:8080/api/newposts", post)
       .then((res) => {
-
+        console.log("Add post data: ", res.data)
         setPosts((prev) => ([res.data, ...prev]))
-
+        setCategories((prev) => ([...prev, res.data]))
       })
   }
 
@@ -73,35 +74,37 @@ const ParentFeedScreen = () => {
       })
   }
 
+  const categoryPicked = (category) => {
 
-  // const categoryPosts = (category) => {
-  //   axios.post(`http://localhost:8080/api/category`, category)
-  //     .then((res) => {
-       
-  //     })
-  // } 
+    console.log("Categories from function: ", category)
+    axios.post(`http://localhost:8080/api/category/post`, category)
+      .then((res) => {
+        console.log("checking res: ", res)
+        // setPosts(response.data.posts)
+      })
+  }
 
 
-  return (
+return (
 
-    <div className ="parent">
-      
-      <div className ="left-side">
+  <div className="parent">
+
+    <div className="left-side">
       <PostUser />
 
-      <PostCategory categories={categories} />
-      </div>
+      <PostCategory categoryPicked={categoryPicked} category={category} setCategory={setCategory} categories={categories} />
+    </div>
 
-      <div className = "right-side">
+    <div className="right-side">
       <PostForm addPost={addPost} />
       <Post posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} />
-      </div>
-
-
     </div>
 
 
-  )
+  </div>
+
+
+)
 }
 
 export default ParentFeedScreen;
