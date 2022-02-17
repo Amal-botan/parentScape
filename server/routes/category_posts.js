@@ -8,8 +8,8 @@ const verifyToken = require("./helpers");
 let newData2 = [];
 
 module.exports = (db) => {
-  router.post("/", (req, res) => {
-    console.log(req.body);
+  router.post("/post", (req, res) => {
+    console.log("Checking Body: ", req.body);
     console.log("postpage");
     db.query(`SELECT users.id as users_id, users.user_image as user_image, users.username as username, posts.id as post_id, posts.post_text as post_text, posts.post_image as post_image, posts.likes as likes, posts.created_at as post_created_at, categories.category as category
     FROM posts
@@ -32,7 +32,8 @@ module.exports = (db) => {
             newData.push(dataObj);
         }
          res.status(200).json({
-           posts: newData
+           posts: newData,
+           body: req.body.category
          })
       })
       .catch(err => {
