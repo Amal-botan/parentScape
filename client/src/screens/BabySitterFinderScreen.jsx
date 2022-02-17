@@ -7,6 +7,7 @@ import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import Button from '@mui/material/Button';
 
 
 const Accordion = styled((props) => (
@@ -69,6 +70,9 @@ export default function BabySitterFinderScreen() {
           <Typography>
             Baby sitter bio, photo, years of experience
           </Typography>
+          <Button variant="contained" size="large">
+          Request
+        </Button>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -79,6 +83,9 @@ export default function BabySitterFinderScreen() {
           <Typography>
           Baby sitter bio, photo, years of experience
           </Typography>
+          <Button variant="contained" size="large">
+          Request
+        </Button>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -90,6 +97,9 @@ export default function BabySitterFinderScreen() {
           Baby sitter bio, photo, years of experience
           </Typography>
         </AccordionDetails>
+        <Button variant="contained" size="large">
+          Request
+        </Button>
       </Accordion>
      
     </div>
