@@ -1,5 +1,6 @@
 import React from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import { useState} from "react";
 
 const mapStyles = {        
   height: "50vh",
@@ -10,6 +11,10 @@ const mapStyles = {
   }
 
 const Map = () => {
+  const [ selected, setSelected ] = useState({});
+  const onSelect = item => {
+    setSelected(item);
+  }
 
   const locations = [
     {
@@ -59,9 +64,24 @@ const Map = () => {
          {
             locations.map(item => {
               return (
-              <Marker key={item.name} position={item.location}/>
+              <Marker key={item.name} 
+                position={item.location}
+                onClick={() => onSelect(item)}
+              />
               )
             })
+         }
+          {
+            selected.location && 
+            (
+              <InfoWindow
+              position={selected.location}
+              clickable={true}
+              onCloseClick={() => setSelected({})}
+            >
+              <p>{selected.name}</p>
+            </InfoWindow>
+            )
          }
      </GoogleMap>
      </LoadScript>
