@@ -229,6 +229,7 @@ export default function BabySitterSignUpScreen() {
         <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
+    
   );
   
 }
