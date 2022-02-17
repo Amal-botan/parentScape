@@ -2,28 +2,27 @@ import React from "react";
 import Post from "../components/Post";
 import PostForm from "../components/PostForm";
 import PostUser from "../components/PostUser";
-import ProfileChildren from "../components/ProfileChildren"; 
-import "../components/ProfileChildren.css"
+import ProfileChildren from "../components/ProfileChildren";
+import "../components/ProfileChildren.css";
 import "../components/styleParentFeed.css";
 import "../components/Post.css";
 import "../components/PostForm.css";
-import "../components/PostUser.css"
+import "../components/PostUser.css";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
 
 const ProfileScreen = () => {
-  const [posts, setPosts] = useState([])
-  const [postText, setPostText] = useState("")
+  const [posts, setPosts] = useState([]);
+  const [postText, setPostText] = useState("");
 
   useEffect(() => {
-    const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
+    const postsUrl = "http://localhost:8080/api/posts"; //use path and set proxy
     //runs when page loads
-    axios.get(postsUrl)
-      .then((response) => {
-        setPosts(response.data.posts)
-      })
-  }, [])
+    axios.get(postsUrl).then((response) => {
+      setPosts(response.data.posts);
+    });
+  }, []);
 
   console.log("Post state: ", posts);
 
@@ -46,45 +45,33 @@ const ProfileScreen = () => {
   //   //   })
   // }, [posts])
 
-
   const editPost = (post, post_id) => {
-
-    axios.post(`http://localhost:8080/api/editpost/${post_id}`, post)
+    axios
+      .post(`http://localhost:8080/api/editpost/${post_id}`, post)
       .then((res) => {
         setPosts([...posts, res.data.posts[0]]);
-        setPostText("")
+        setPostText("");
       })
       .then((res) => {
-        const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
+        const postsUrl = "http://localhost:8080/api/posts"; //use path and set proxy
         //runs when page loads
-        axios.get(postsUrl)
-          .then((response) => {
-            setPosts(response.data.posts)
-          })
-      })
-  }
-
+        axios.get(postsUrl).then((response) => {
+          setPosts(response.data.posts);
+        });
+      });
+  };
 
   return (
-
-    <div className ="parent">
-      
-      <div className ="left-side">
-      <PostUser />
-      <ProfileChildren />
+    <div className="parent">
+      <div className="left-side">
+        <PostUser />
       </div>
-      
-      <div className = "right-side">
-    
-      <Post posts={posts}  />
+
+      <div className="right-side">
+        <Post posts={posts} />
       </div>
-    
-
-
     </div>
-
-
-  )
-}
+  );
+};
 
 export default ProfileScreen;

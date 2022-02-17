@@ -1,5 +1,5 @@
 import React from "react";
-import Join from "../components/Join"
+import Join from "../components/Join";
 import Room from "../components/Room";
 import {
   HMSRoomProvider,
@@ -7,19 +7,18 @@ import {
   selectIsConnectedToRoom,
 } from "@100mslive/hms-video-react";
 
-
 const ParentHouseScreen = () => {
   const SpacesApp = () => {
     const isConnected = useHMSStore(selectIsConnectedToRoom);
     return <>{isConnected ? <Room /> : <Join />}</>;
   };
 
-  return(
+  return (
     <HMSRoomProvider>
-  <div className="page">
-    <SpacesApp />
-  </div>
-</HMSRoomProvider>
-  )
-}
+      <div className="page">
+        <SpacesApp />
+      </div>
+    </HMSRoomProvider>
+  );
+};
 export default ParentHouseScreen;
