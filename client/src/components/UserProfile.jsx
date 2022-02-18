@@ -4,9 +4,10 @@ import Stack from "@mui/material/Stack";
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
-export default function PostUser(props) {
+export default function UserProfile(props) {
   const { user } = props;
   return (
+    <div>
     <Box
       sx={{
         display: 'flex',
@@ -29,5 +30,6 @@ export default function PostUser(props) {
 
     </Stack>
     </Box>
+    </div>
   );
 }

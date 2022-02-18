@@ -22,7 +22,7 @@ const ProfileScreen = () => {
   useEffect(() => {
     const postsUrl = "http://localhost:8080/api/posts" ; //use path and set proxy
     //runs when page loads
-    axios.get(postsUrl, config).then((response) => {
+    axios.get(postsUrl).then((response) => {
       setPosts(response.data.posts);
     });
   }, []);

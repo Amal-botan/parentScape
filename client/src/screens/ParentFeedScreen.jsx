@@ -38,12 +38,18 @@ const addComment = (comment, post_id) => {
       console.log("Add comment data: ", res.data.comment)
       //  setComments((prev) => ([...prev, res.data.comment]))
       getPosts();
+
     })
   }
 
 
   useEffect(() => {
-    getPosts();
+    const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
+  //runs when page loads
+  axios.get(postsUrl)
+    .then((response) => {
+      setPosts(response.data.posts)
+    })
     
   }, [])
 
