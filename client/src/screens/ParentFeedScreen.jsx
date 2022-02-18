@@ -1,13 +1,13 @@
 import React from "react";
 import Post from "../components/Post";
 import PostForm from "../components/PostForm";
-import PostUser from "../components/PostUser";
+import UserProfile from "../components/UserProfile";
 import PostCategory from "../components/PostCategory";
 import DailyQuote from "../components/DailyQuote";
 import "../components/styleParentFeed.css";
 import "../components/Post.css";
 import "../components/PostForm.css";
-import "../components/PostUser.css"
+import "../components/UserProfile.css"
 
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -43,8 +43,9 @@ const ParentFeedScreen = () => {
 
   useEffect(() => {
     const loggedinuser = JSON.parse(localStorage.getItem('user'))
-   {loggedinuser ? setUser(loggedinuser) : setUser(null)}
-    setToken(loggedinuser.token);
+   {loggedinuser ? setUser(loggedinuser)  : setUser(null)}
+   {loggedinuser ? setToken(loggedinuser.token)  : setToken(null)}
+   
   }, []);
 
    const config = { headers: { Authorization: `Bearer ${token}`, }, }      
@@ -104,7 +105,7 @@ const ParentFeedScreen = () => {
     <div className="parent">
 
       <div className="left-side">
-        <PostUser />
+       {token ? <UserProfile user={user}/> : "WELCOME VISITOR"}
 
         <PostCategory categoryPicked={categoryPicked} category={category} setCategory={setCategory} categories={categories} />
       </div>

@@ -1,13 +1,13 @@
 import React from "react";
 import Post from "../components/Post";
 import PostForm from "../components/PostForm";
-import PostUser from "../components/PostUser";
+import UserProfile from "../components/UserProfile";
 import ProfileChildren from "../components/ProfileChildren";
 import "../components/ProfileChildren.css";
 import "../components/styleParentFeed.css";
 import "../components/Post.css";
 import "../components/PostForm.css";
-import "../components/PostUser.css";
+import "../components/UserProfile.css";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -15,11 +15,13 @@ import { useState, useEffect } from "react";
 const ProfileScreen = () => {
   const [posts, setPosts] = useState([]);
   const [postText, setPostText] = useState("");
-  const [user, setUser] = useState({})
+  const [token, setToken] = useState("");
+  const [user, setUser] = useState({});
+
   useEffect(() => {
-    const postsUrl = "http://localhost:8080/api/posts"; //use path and set proxy
+    const postsUrl = "http://localhost:8080/api/user_posts" ; //use path and set proxy
     //runs when page loads
-    axios.get(postsUrl).then((response) => {
+    axios.get(postsUrl, config).then((response) => {
       setPosts(response.data.posts);
     });
   }, []);
@@ -29,8 +31,11 @@ const ProfileScreen = () => {
   useEffect(() => {
     const loggedinuser = JSON.parse(localStorage.getItem('user'))
    {loggedinuser ? setUser(loggedinuser) : setUser(null)}
+   {loggedinuser ? setToken(loggedinuser.token)  : setToken(null)}
 
   }, []);
+
+  const config = { headers: { Authorization: `Bearer ${token}`, }, }      
 
   // const addPost = (post) => {
 
@@ -71,11 +76,11 @@ const ProfileScreen = () => {
   return (
     <div className="parent">
       <div className="left-side">
-      {user ?  <PostUser /> : <p>U need to be logged in or signed up</p>}
+      {user ?  <UserProfile user={user} /> : <p>U need to be logged in or signed up</p>}
       </div>
 
       <div className="right-side">
-      {user ?  <Post posts={posts} /> : <div></div> }
+      {user ?  <Post posts={posts} user={user}/> : <div></div> }
       </div>
     </div>
   );
