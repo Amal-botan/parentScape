@@ -1,13 +1,13 @@
 import React from "react";
 import Post from "../components/Post";
 import PostForm from "../components/PostForm";
-import PostUser from "../components/PostUser";
+import UserProfile from "../components/UserProfile";
 import PostCategory from "../components/PostCategory";
 import DailyQuote from "../components/DailyQuote";
 import "../components/styleParentFeed.css";
 import "../components/Post.css";
 import "../components/PostForm.css";
-import "../components/PostUser.css"
+import "../components/UserProfile.css"
 
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -17,6 +17,9 @@ const ParentFeedScreen = () => {
   const [postText, setPostText] = useState("")
   const [categories, setCategories] = useState([])
   const [category, setCategory] = useState("")
+  const [token, setToken] = useState("");
+  const [user, setUser] = useState({});
+
 
   useEffect(() => {
     const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
@@ -37,9 +40,21 @@ const ParentFeedScreen = () => {
 
   console.log("Categories: ", categories);
 
+
+  useEffect(() => {
+    const loggedinuser = JSON.parse(localStorage.getItem('user'))
+   {loggedinuser ? setUser(loggedinuser)  : setUser(null)}
+   {loggedinuser ? setToken(loggedinuser.token)  : setToken(null)}
+   
+  }, []);
+
+   const config = { headers: { Authorization: `Bearer ${token}`, }, }      
+  // const res = await axios.post(`https://loobv.com/api/traveller/add/favorite/car`, { car_id: carId }, config)
+
+
   const addPost = (post) => {
 
-    axios.post("http://localhost:8080/api/newposts", post)
+    axios.post("http://localhost:8080/api/newposts", post, config)
       .then((res) => {
         console.log("Add post data: ", res.data)
         setPosts((prev) => ([res.data, ...prev]))
@@ -85,26 +100,26 @@ const ParentFeedScreen = () => {
   }
 
 
-return (
+  return (
 
-  <div className="parent">
+    <div className="parent">
 
-    <div className="left-side">
-      <PostUser />
+      <div className="left-side">
+       {token ? <UserProfile user={user}/> : "WELCOME VISITOR"}
 
-      <PostCategory categoryPicked={categoryPicked} category={category} setCategory={setCategory} categories={categories} />
+        <PostCategory categoryPicked={categoryPicked} category={category} setCategory={setCategory} categories={categories} />
+      </div>
+
+      <div className="right-side">
+        <PostForm addPost={addPost} />
+        <Post posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} />
+      </div>
+
+
     </div>
 
-    <div className="right-side">
-      <PostForm addPost={addPost} />
-      <Post posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} />
-    </div>
 
-
-  </div>
-
-
-)
+  )
 }
 
 export default ParentFeedScreen;

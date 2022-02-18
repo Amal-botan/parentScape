@@ -12,12 +12,14 @@ const verifyToken = require("./helpers");
 
 module.exports = (db) => {
   //add cookie session for the user_id to attach to logged in user
-  router.post("/", async (req, res) => { //put verfi back
+  router.post("/", verifyToken, async (req, res) => { //put verfi back
     const user = req.user
+    console.log(req.user);
 
+    console.log(user.id)
     const data = await db.query(`INSERT INTO posts (user_id, post_text, post_image)
     VALUES ($1, $2, $3)
-    RETURNING *;`, [1, req.body.post_text, req.body.post_image]) //put user back
+    RETURNING *;`, [user.id, req.body.post_text, req.body.post_image]) //put user back
     const id = data.rows[0].id;
     await db.query(`INSERT INTO categories (post_id,category)
         VALUES ($1, $2);`, [id, req.body.category])

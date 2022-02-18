@@ -7,16 +7,16 @@
 
 const express = require('express');
 const router  = express.Router();
-const verifyToken = require("../helpers");
+const verifyToken = require("./helpers");
 
 module.exports = (db) => {
   router.get("/", (req, res) => { //verifyToken
     // const user = req.user
     // console.log(user);
-    db.query(`SELECT * FROM locations;`)
+    db.query(`SELECT * FROM comments;`)
       .then(data => {
-        locations = data.rows;
-       res.json({ locations });
+        const comments = data.rows
+        res.json({ comments });
       })
       .catch(err => {
         res

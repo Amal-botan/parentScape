@@ -1,11 +1,19 @@
 import React from "react";
 // import {Container, Nav, Navbar} from "react-bootstrap"
 import { Transition } from "@headlessui/react";
-
+import { Link } from "react-router-dom"
 import { useState } from "react";
 
 const Navbars = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleLoggout = () => {
+    localStorage.removeItem("user")
+    window.location.href = "/login";
+  }
+
+
+
   return (
     <div>
       <nav className="bg-gray-800">
@@ -21,42 +29,22 @@ const Navbars = () => {
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
-                  <a
-                    href="/"
-                    className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Home
-                  </a>
+                <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/">Home</Link>
+                 
+              
+                    
+                  
+                <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/parentfeed"> Parent Feed</Link>
+                <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/parenthouse"> Parent House</Link>
+                <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/profile"> Profile</Link>
 
-                  <a
-                    href="/parentfeed"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Parent Feed
+                <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/babysitterfinder"> Babysitter Finder</Link>
 
-                  </a>
+                 
+                  <button className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    onClick={() => handleLoggout()} > Logout </button>
 
-                  <a
-                    href="/parenthouse"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Parent House
 
-                  </a>
-
-                  <a
-                    href="/profile"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Profile
-                  </a>
-
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Tracker
-                  </a>
                 </div>
               </div>
             </div>
@@ -120,7 +108,7 @@ const Navbars = () => {
             <div className="md:hidden" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a
-                  href="#"
+                  href="#" //use link to (component) pass the pass to the commponent 
                   className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Home
@@ -153,15 +141,23 @@ const Navbars = () => {
                 >
                   Tracker
                 </a>
+
+
+                
+                <a className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    onClick={() => handleLoggout} > Logout </a>
+            
+
+
               </div>
             </div>
           )}
         </Transition>
       </nav>
 
-     
-       
-      
+
+
+
     </div>
   );
 };
