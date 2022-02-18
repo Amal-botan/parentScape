@@ -11,6 +11,7 @@ import "../components/UserProfile.css";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
+import PostProfile from "../components/PostProfile";
 
 const ProfileScreen = () => {
   const [posts, setPosts] = useState([]);
@@ -80,7 +81,7 @@ const ProfileScreen = () => {
       </div>
 
       <div className="right-side">
-      {user ?  <Post posts={posts} user={user}/> : <div></div> }
+      {user ?  <PostProfile posts={posts} user={user}/> : <div></div> }
       </div>
     </div>
   );

@@ -53,7 +53,7 @@ export default function LoginScreen({Navigation}) {
     .then((res) => {
       console.log(res.data.user);
       localStorage.setItem("user", JSON.stringify(res.data.user))
-      Navigation.navigate("/"); 
+      // Navigation.navigate("/"); 
 
     })
 

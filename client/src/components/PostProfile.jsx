@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import SendIcon from "@mui/icons-material/Send";
 
 
-export default function Post(props) {
+export default function PostProfile(props) {
   const { posts, editPost, postText, setPostText } = props;
   const [editDisplay, setEditDisplay] = useState({});
   const [btnClass, setBtnClass] = useState(false);
