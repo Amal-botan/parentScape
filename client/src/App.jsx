@@ -17,6 +17,7 @@ import LoginScreen from "./screens/LoginScreen";
 import BabySitterSignUpScreen from "./screens/BabySitterSignUpScreen"; 
 import BabySitterFinderScreen from "./screens/BabySitterFinderScreen"; 
 import BabySitterFinderParent from "./screens/BabySitterFinderParent";
+import BabySitterLogin from "./screens/BabySitterLogin";
 // const SpacesApp = () => {
 //   const isConnected = useHMSStore(selectIsConnectedToRoom);
 //   return <>{isConnected ? <Room /> : <Join />}</>;
@@ -34,6 +35,7 @@ function App() {
         <Route path="/login" element={<LoginScreen />} />
         <Route path='/babysittersignup' element={<BabySitterSignUpScreen />} />
         <Route path='/babysitterfinder' element={<BabySitterFinderParent/>} />
+        <Route path='/babysitterfinder' element={<BabySitterLogin/>} />
       </Routes>
     </>
   );

@@ -67,6 +67,7 @@ const childrenRoutes = require("./routes/profile_page/children_list");
 const babySitterRoutes = require("./routes/baby_sitter/baby_sitter");
 const commentRoutes = require("./routes/comments");
 const locationRoutes = require("./routes/baby_sitter/filter_location");
+const babysitterloginRoutes = require("./routes/babysitterlogin");
 
 
 
@@ -91,6 +92,7 @@ app.use("/api/children", childrenRoutes(db));
 app.use("/api/babysitter", babySitterRoutes(db));
 app.use("/api/comments", commentRoutes(db));
 app.use("/api/location", locationRoutes(db));
+app.use("/api/babysitterlogin", babysitterloginRoutes(db));
 
 
 // Note: mount other resources here, using the same pattern above
