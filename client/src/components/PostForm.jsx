@@ -20,6 +20,7 @@ export default function PostForm(props) {
     const post = { post_text: postText, category: categoryText };
     console.log(post);
     props.addPost(post);
+    setPostText("")
   };
 
   const handleCategoryButton = () => {

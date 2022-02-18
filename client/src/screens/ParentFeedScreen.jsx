@@ -19,15 +19,32 @@ const ParentFeedScreen = () => {
   const [category, setCategory] = useState("")
   const [token, setToken] = useState("");
   const [user, setUser] = useState({});
+  const [comments, setComments] = useState([]);
+  const [comments_text, setCommentsText] = useState("");
+
+  const getPosts = () => {
+  const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
+  //runs when page loads
+  axios.get(postsUrl)
+    .then((response) => {
+      setPosts(response.data.posts)
+    })
+}
+
+const addComment = (comment, post_id) => {
+
+  axios.post(`http://localhost:8080/api/newcomment/${post_id}`, comment, config)
+    .then((res) => {
+      console.log("Add comment data: ", res.data.comment)
+      //  setComments((prev) => ([...prev, res.data.comment]))
+      getPosts();
+    })
+  }
 
 
   useEffect(() => {
-    const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
-    //runs when page loads
-    axios.get(postsUrl)
-      .then((response) => {
-        setPosts(response.data.posts)
-      })
+    getPosts();
+    
   }, [])
 
   useEffect(() => {
@@ -72,6 +89,7 @@ const ParentFeedScreen = () => {
   // }, [posts])
 
 
+
   const editPost = (post, post_id) => {
 
     axios.post(`http://localhost:8080/api/editpost/${post_id}`, post)
@@ -112,7 +130,7 @@ const ParentFeedScreen = () => {
 
       <div className="right-side">
         <PostForm addPost={addPost} />
-        <Post posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} user={user} category={category} />
+        <Post addComment={addComment} setComments={setComments} posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} user={user} category={category} comments_text={comments_text} setCommentsText={setCommentsText} comments={comments}/>
       </div>
 
 

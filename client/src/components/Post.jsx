@@ -8,13 +8,13 @@ import SendIcon from "@mui/icons-material/Send";
 
 
 export default function Post(props) {
-  const { posts, editPost, postText, setPostText, user, category } = props;
+  const { addComment, posts, editPost, postText, setPostText, user, category, setComments, setCommentsText, comments_text } = props;
   const [editDisplay, setEditDisplay] = useState({});
   const [btnClass, setBtnClass] = useState(false);
   const [btnColor, setBtnColor] = useState("red");
   // const [postText, setPostText] = useState("")
   const [commentsDisplay, setCommentsDisplay] = useState({});
-  const [comments, setComments] = useState([]);
+
 
 
 
@@ -69,9 +69,16 @@ export default function Post(props) {
     setEditDisplay(false);
   };
 
+  const handleSubmitComment = (post_id) => {
+    const newComment = { comment: comments_text };
+
+    addComment(newComment, post_id)
+   setCommentsText("")
+  };
+
   return posts.map((post) => (
     <div>
-      {console.log({ post })}
+    
       <link
         href="https://fonts.googleapis.com/css?family=Asap"
         rel="stylesheet"
@@ -246,7 +253,7 @@ export default function Post(props) {
 
         {commentsDisplay[post.post_id] ? (
           <div>
-
+           
             {post.comments?.filter((comm) => {
               if (post.post_id === comm.post_id) {
                 return comm
@@ -268,7 +275,6 @@ export default function Post(props) {
 
                       {/* <p>  {comm.user_image} </p>
                       <p>  {comm.username} </p>
-
                       <p>  {comm.comment_image} </p>
                       <p>  {comm.comment_created_at} </p>
               <p>  {comm.likes} </p>*/}
@@ -278,14 +284,46 @@ export default function Post(props) {
                   </div>
                 </div>
               )
-            })
-            }
+            })}
+
+            <div>
+            <textarea
+              className="form__textarea"
+              name="text"
+              placeholder="What would you like to comment?"
+              value={comments_text}
+              onChange={(event) =>  
+                setCommentsText(event.target.value)}
+              
+            ></textarea>
+            
+            {/* <input
+              type="submit"
+              value="Post"
+              className="form__input"
+              onClick={() => handleSubmit(post.post_id)}
+            /> */}
+
+            <Button
+              variant="contained"
+              size="small"
+              endIcon={<SendIcon />}
+              type="submit"
+              onClick={() => handleSubmitComment(post.post_id)}
+            >
+              Comment
+            </Button>
+
+          </div>
+
+            
           </div>
         ) : (
           <div className="post--text">
 
           </div>
         )}
+
 
       </div>
     </div>
