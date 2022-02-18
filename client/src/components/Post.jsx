@@ -8,12 +8,15 @@ import SendIcon from "@mui/icons-material/Send";
 
 
 export default function Post(props) {
-  const { posts, editPost, postText, setPostText } = props;
+  const { posts, editPost, postText, setPostText, user } = props;
   const [editDisplay, setEditDisplay] = useState({});
   const [btnClass, setBtnClass] = useState(false);
   const [btnColor, setBtnColor] = useState("red");
   // const [postText, setPostText] = useState("")
+  console.log("PostProfile User: ", user)
 
+  console.log("PostProfile Post: ", posts)
+  
   if (!posts) {
     return <p>Loading</p>;
   }
@@ -181,7 +184,7 @@ export default function Post(props) {
               <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
             </svg>
           </div>
-          {editDisplay[post.post_id] ? (
+        {user.id === post.users_id ?  editDisplay[post.post_id] ? (
             <button class="btn" onClick={() => displayPost(post.post_id)}>
               {" "}
               Cancel{" "}
@@ -194,7 +197,7 @@ export default function Post(props) {
               {" "}
               Edit{" "}
             </button>
-          )}
+          ) : null}
         </div>
       </div>
     </div>
