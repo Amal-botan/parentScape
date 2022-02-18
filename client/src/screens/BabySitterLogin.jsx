@@ -35,7 +35,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function BabySittersLoginScreen({Navigation}) {
+export default function BabySittersLogin({Navigation}) {
  
   const handleSubmit = (event) => {
     event.preventDefault();
