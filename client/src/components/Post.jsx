@@ -8,18 +8,41 @@ import SendIcon from "@mui/icons-material/Send";
 
 
 export default function Post(props) {
-  const { posts, editPost, postText, setPostText, user } = props;
+  const { posts, editPost, postText, setPostText, user, category } = props;
   const [editDisplay, setEditDisplay] = useState({});
   const [btnClass, setBtnClass] = useState(false);
   const [btnColor, setBtnColor] = useState("red");
   // const [postText, setPostText] = useState("")
-  console.log("PostProfile User: ", user)
+  const [commentsDisplay, setCommentsDisplay] = useState({});
+  const [comments, setComments] = useState([]);
 
-  console.log("PostProfile Post: ", posts)
-  
+
+
+  console.log("Post category: ", category)
+
+  console.log("Post Post: ", posts)
+
   if (!posts) {
     return <p>Loading</p>;
   }
+
+  const handleButtonComments = (post_id) => {
+    setCommentsDisplay(() => {
+      return {
+        ...commentsDisplay,
+        [post_id]: true,
+      };
+    });
+  };
+
+  const displayComments = (post_id) => {
+    setCommentsDisplay(() => {
+      return {
+        ...commentsDisplay,
+        [post_id]: false,
+      };
+    });
+  };
 
   const handleButton = (post_id) => {
     setEditDisplay(() => {
@@ -48,6 +71,7 @@ export default function Post(props) {
 
   return posts.map((post) => (
     <div>
+      {console.log({ post })}
       <link
         href="https://fonts.googleapis.com/css?family=Asap"
         rel="stylesheet"
@@ -121,6 +145,25 @@ export default function Post(props) {
             <div className="comment-count">33</div>
           </div>
 
+          {commentsDisplay[post.post_id] ? (
+            <button class="btn" onClick={() => displayComments(post.post_id)}>
+              {" "}
+              Cancel{" "}
+            </button>
+          ) : (
+            <button
+              color="secondary"
+              onClick={() => handleButtonComments(post.post_id)}
+            >
+              {" "}
+              Comments{" "}
+            </button>
+          )}
+
+
+
+
+
           <div className="retweets">
             <svg
               className="feather feather-repeat sc-dnqmqq jxshSx"
@@ -184,7 +227,7 @@ export default function Post(props) {
               <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
             </svg>
           </div>
-        {user.id === post.users_id ?  editDisplay[post.post_id] ? (
+          {user.id === post.users_id ? editDisplay[post.post_id] ? (
             <button class="btn" onClick={() => displayPost(post.post_id)}>
               {" "}
               Cancel{" "}
@@ -198,7 +241,52 @@ export default function Post(props) {
               Edit{" "}
             </button>
           ) : null}
+
         </div>
+
+        {commentsDisplay[post.post_id] ? (
+          <div>
+
+            {post.comments?.filter((comm) => {
+              if (post.post_id === comm.post_id) {
+                return comm
+              }
+            }
+            ).map((comm) => {
+
+              { console.log("Comments: ", comm.comment) }
+              return (
+                <div>
+                 <p>  </p>
+                 
+                  <div className="tweet-header">
+                    <img src={comm.user_image} alt="" className="avator" />
+                    <div className="tweet-header-info">
+                      {comm.username} <span>{comm.username}</span>
+                      <span>. {comm.comment_created_at}</span>
+
+
+                      {/* <p>  {comm.user_image} </p>
+                      <p>  {comm.username} </p>
+
+                      <p>  {comm.comment_image} </p>
+                      <p>  {comm.comment_created_at} </p>
+              <p>  {comm.likes} </p>*/}
+
+                      {<p>  {comm.comment} </p> }
+                    </div>
+                  </div>
+                </div>
+              )
+            })
+            }
+          </div>
+        ) : (
+          <div className="post--text">
+
+          </div>
+        )}
+
       </div>
     </div>
   ));
