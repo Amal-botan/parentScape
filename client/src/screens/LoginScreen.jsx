@@ -13,7 +13,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -35,8 +35,8 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function LoginScreen({Navigation}) {
-
+export default function LoginScreen() {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -51,14 +51,12 @@ export default function LoginScreen({Navigation}) {
       password: data.get("password"),
     })
     .then((res) => {
-      console.log(res.data.user);
+      console.log("data: ", res.data.user);
       localStorage.setItem("user", JSON.stringify(res.data.user))
-      // Navigation.navigate("/"); 
-      // <Link to="/Home" />
-      // setRedirct(true);
-      //make it redirect to the home page!
+      window.location.href= "/"; 
+    
     })
-    // return <Redirect to="/">
+
   };
 
   
