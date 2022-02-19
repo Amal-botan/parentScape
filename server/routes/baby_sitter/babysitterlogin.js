@@ -9,7 +9,7 @@ const express = require('express');
 const { restart } = require('nodemon');
 const router  = express.Router();
 const jwt = require('jsonwebtoken');
-const verifyToken = require("./helpers");
+const verifyToken = require("../helpers");
 
 
 module.exports = (db) => {
@@ -34,11 +34,11 @@ module.exports = (db) => {
               WHERE babysitters.email = $1;`, [email])
           .then(result => {
             console.log(result.rows[0])
-            const user = result.rows[0];
+            const babysitter = result.rows[0];
 
-            const token = jwt.sign(user, process.env.JWT_SECRET);
-            user.token = token
-            return res.status(201).send({ status: "okay", message: "User Logged in", user, "token": token});
+            const token = jwt.sign(babysitter, process.env.JWT_SECRET);
+            babysitter.token = token
+            return res.status(201).send({ status: "okay", message: "Babysitter Logged in", babysitter});
           })
           .catch(err => {
             res

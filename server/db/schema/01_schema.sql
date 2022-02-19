@@ -61,7 +61,7 @@ CREATE TABLE babysitters (
   age INTEGER NOT NULL,
   username VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
-  babysitter_image TEXT NOT NULL DEFAULT 'https://e7.pngegg.com/pngimages/926/34/png-clipart-computer-icons-user-profile-avatar-avatar-face-heroes.png',
+  babysitter_image TEXT DEFAULT 'https://e7.pngegg.com/pngimages/926/34/png-clipart-computer-icons-user-profile-avatar-avatar-face-heroes.png',
   password VARCHAR(255) NOT NULL,
   bio TEXT,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

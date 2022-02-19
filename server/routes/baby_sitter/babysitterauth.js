@@ -2,16 +2,16 @@ const express = require('express');
 const { restart } = require('nodemon');
 const router  = express.Router();
 const jwt = require('jsonwebtoken');
-const verifyToken = require("./helpers");
+const verifyToken = require("../helpers");
 
 
 module.exports = (db) => {
   //add cookie session for the user_id to attach to logged in user
   router.post("/register", (req, res) => {
     console.log(req.body)
-    const { first_name, last_name, email, username, password } = req.body;
-    if (!email || !first_name || !last_name || !username || !password) {
-      return res.status(400).send({ status: "error", message: "first name, last name, email, password are all required" });
+    const { first_name, last_name, age, username, email, babysitter_image, password, bio, city, province, postal_code, phone_number, years_of_experience } = req.body;
+    if (!email || !first_name || !last_name || !username || !password || !age) {
+      return res.status(400).send({ status: "error", message: "first name, last name, email, password, age are all required" });
      }
 
     //validate email format
@@ -35,9 +35,7 @@ module.exports = (db) => {
           return res.status(400).send({ status: "error", message: "Email already exists" });
         }
 //hash password
-        db.query(`IINSERT INTO babysitters (first_name,
-          last_name, age, username, email, babysitter_image, password, bio,
-          city, province, postal_code, phone_number, years_of_experience) ($1, $2, $3, $4, $5 $6 $7 $8 $9 $10 $11 $12 $13)
+        db.query(`INSERT INTO babysitters (first_name, last_name, age, username, email, babysitter_image, password, bio, city, province, postal_code, phone_number, years_of_experience) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
         RETURNING *;`, [first_name, last_name, age, username, email, babysitter_image, password, bio, city, province, postal_code, phone_number, years_of_experience])
           .then(result => {
             const babysitter = result.rows[0];
