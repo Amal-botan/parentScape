@@ -53,7 +53,7 @@ export default function BabySittersLogin({Navigation}) {
     .then((res) => {
       console.log(res.data.babysitter);
       localStorage.setItem("babysitter", JSON.stringify(res.data.babysitter))
-      // Navigation.navigate("/"); 
+      window.location.href= "/"; 
 
     })
 
