@@ -24,6 +24,7 @@ const Navbars = () => {
 
   useEffect(() => {
     const loggedinuser = JSON.parse(localStorage.getItem('user'))
+    console.log(loggedinuser)
     { loggedinuser ? setUser(loggedinuser) : setUser(null) }
     { loggedinuser ? setToken(loggedinuser.token) : setToken(null) }
 
