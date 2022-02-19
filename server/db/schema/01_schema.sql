@@ -7,6 +7,8 @@ DROP TABLE IF EXISTS comments CASCADE;
 DROP TABLE IF EXISTS children CASCADE;
 DROP TABLE IF EXISTS babysitters CASCADE;
 DROP TABLE IF EXISTS locations CASCADE;
+DROP TABLE IF EXISTS bookings CASCADE;
+
 
 
 CREATE TABLE users (
@@ -56,6 +58,7 @@ CREATE TABLE children (
 
 CREATE TABLE babysitters (
   id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   age INTEGER NOT NULL,
@@ -80,4 +83,15 @@ CREATE TABLE locations (
   babysitter_id INTEGER REFERENCES babysitters(id) ON DELETE CASCADE,
   lat FLOAT,
   lng FLOAT
+);
+
+CREATE TABLE bookings (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  babysitter_id INTEGER REFERENCES babysitters(id) ON DELETE CASCADE,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  booking_date DATE,
+  booking_time_start TIME,
+  booking_time_end TIME
+
 );
