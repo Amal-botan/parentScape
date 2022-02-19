@@ -35,7 +35,7 @@ function App() {
         <Route path="/login" element={<LoginScreen />} />
         <Route path='/babysittersignup' element={<BabySitterSignUpScreen />} />
         <Route path='/babysitterfinder' element={<BabySitterFinderParent/>} />
-        <Route path='/babysitterfinder' element={<BabySitterLogin/>} />
+        <Route path='/babysitterfinderlogin' element={<BabySitterLogin/>} />
       </Routes>
     </>
   );
