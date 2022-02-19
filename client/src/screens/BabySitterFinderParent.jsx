@@ -11,7 +11,7 @@ const [babySitters, setBabySitters] = useState([])
 const [locations, setLocations] = useState ([])
 const [token, setToken] = useState("");
 const [babysitter, setBabysitter] = useState({});
-const [babysitterAvailabilty, setBabysitterAvailability] = useState("");
+const [babysitterAvailabilty, setBabysitterAvailability] = useState("available");
 
 
 
@@ -46,8 +46,14 @@ useEffect(() => {
 
 }, []);
 
-const changeAvailability = () => {
 
+const changeAvailability = (available, babysitter_id) => {
+console.log("Testing: ", available, babysitter_id)
+
+axios.post(`http://localhost:8080/api/babysitteravail/${babysitter_id}`, {available})
+      .then((res) => {
+       console.log("From axios babysitter: ", res.data.babysitter)
+      })
 }
 
  
