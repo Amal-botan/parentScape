@@ -72,7 +72,8 @@ CREATE TABLE babysitters (
   years_of_experience INTEGER,
   upload_id_card TEXT,
   upload_police_record_check TEXT,
-  upload_first_aid_certificate TEXT
+  upload_first_aid_certificate TEXT,
+  available TEXT DEFAULT 'available'
 );
 
 CREATE TABLE locations (

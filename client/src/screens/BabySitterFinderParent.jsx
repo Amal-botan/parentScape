@@ -8,6 +8,9 @@ import Map from '../components/Map';
 const BabySitterFinderParent = () => {
 const [babySitters, setBabySitters] = useState([])
 const [locations, setLocations] = useState ([])
+const [token, setToken] = useState("");
+const [babysitter, setBabysitter] = useState({});
+
 
 console.log("TEST")
  useEffect(() => {
@@ -31,9 +34,21 @@ useEffect(() => {
  }, [])
  console.log("BabySitters locations here: ", locations)
 
+ useEffect(() => {
+  const loggedinBabysitter = JSON.parse(localStorage.getItem('babysitter'))
+ {loggedinBabysitter ? setBabysitter(loggedinBabysitter) : setBabysitter(null)}
+ {loggedinBabysitter ? setToken(loggedinBabysitter.token)  : setToken(null)}
+
+}, []);
+
+const changeAvailability = () => {
+
+}
+
  
  return (
 <div>
+    <Availability  />
     <BabySitterFinderScreen babySitters={babySitters} />
    <Map babySitters={babySitters} locations={locations}/>
     </div>
