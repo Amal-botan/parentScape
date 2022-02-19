@@ -121,8 +121,8 @@ const Map = (props) => {
               clickable={true}
               onCloseClick={() => setSelected({})}
             >
-              <div>
-                {selected.first_name} {selected.last_name}
+              <div iv style={{height: "15vh", width: "100%"}}>
+                {selected.first_name} {selected.last_name} {selected.bio} {selected.babysitter_image}
               
               </div>
               

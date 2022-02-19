@@ -15,10 +15,11 @@ INSERT INTO categories (post_id, category)
 VALUES (2, 'showering'), (3, 'feeding'), (4, 'temp');
 
 INSERT INTO comments (user_id, post_id, comment, likes)
-VALUES (1, 2, 'Hey!!', 2),
-(2, 3, 'Get a baby shower top, make sure the water is warm, get a washcloth and some soap and scrub away (gently of course)!!', 10),
-(3, 3, 'Shower before bed', 10),
-(2, 4, 'Its okay, babies get like that sometimes! Offer the breastmilk, and you can top up with formula if you would like! Also talk to your doctor to see if nothing else is wrong', 12);
+VALUES (1, 1, 'Hey!!', 2),
+(2, 2, 'Get a baby shower top, make sure the water is warm, get a washcloth and some soap and scrub away (gently of course)!!', 10),
+(3, 2, 'Shower before bed', 10),
+(3, 4, 'Make sure to wear a lot of layers', 10),
+(2, 5, 'Its okay, babies get like that sometimes! Offer the breastmilk, and you can top up with formula if you would like! Also talk to your doctor to see if nothing else is wrong', 12);
 
 INSERT INTO children (user_id, name, age)
 VALUES (1, 'Kate', '2 months'),
@@ -125,6 +126,76 @@ VALUES ('Natasha',
 'K1Z 6A4',
 6131112222,
 9
+),
+('Liane',
+'James',
+18,
+'JJ',
+'jj@gmail.com',
+'https://cdn.pixabay.com/photo/2021/02/12/07/03/red-icon-6007530_960_720.png',
+'password',
+'Highly dependable and adaptable Babysitter with an exemplary record of parent and child satisfaction. Able to respond quickly and creatively to unusual or difficult child care situations. Flexible scheduling availability to include all days, evenings, and some weekends.',
+'Ottawa',
+'Ontario',
+'K1Z 6A4',
+6131112222,
+9
+),
+('Jessica',
+'Jones',
+22,
+'j.j1',
+'jj1@gmail.com',
+'https://cdn.pixabay.com/photo/2021/02/12/07/03/red-icon-6007530_960_720.png',
+'password',
+'Highly dependable and adaptable Babysitter with an exemplary record of parent and child satisfaction. Able to respond quickly and creatively to unusual or difficult child care situations. Flexible scheduling availability to include all days, evenings, and some weekends.',
+'Ottawa',
+'Ontario',
+'K1Z 6A4',
+6131112222,
+9
+),
+('Michela',
+'Pratt',
+16,
+'MP',
+'mp@gmail.com',
+'https://cdn.pixabay.com/photo/2021/02/12/07/03/red-icon-6007530_960_720.png',
+'password',
+'Highly dependable and adaptable Babysitter with an exemplary record of parent and child satisfaction. Able to respond quickly and creatively to unusual or difficult child care situations. Flexible scheduling availability to include all days, evenings, and some weekends.',
+'Ottawa',
+'Ontario',
+'K1Z 6A4',
+6131112222,
+1
+),
+('Lydia',
+'Styles',
+46,
+'a.b',
+'ab@gmail.com',
+'https://cdn.pixabay.com/photo/2021/02/12/07/03/red-icon-6007530_960_720.png',
+'password',
+'Highly dependable and adaptable Babysitter with an exemplary record of parent and child satisfaction. Able to respond quickly and creatively to unusual or difficult child care situations. Flexible scheduling availability to include all days, evenings, and some weekends.',
+'Ottawa',
+'Ontario',
+'K1Z 6A4',
+6131112222,
+8
+),
+('Halima',
+'Aden',
+35,
+'HA',
+'ha@gmail.com',
+'https://cdn.pixabay.com/photo/2021/02/12/07/03/red-icon-6007530_960_720.png',
+'password',
+'Highly dependable and adaptable Babysitter with an exemplary record of parent and child satisfaction. Able to respond quickly and creatively to unusual or difficult child care situations. Flexible scheduling availability to include all days, evenings, and some weekends.',
+'Ottawa',
+'Ontario',
+'K1Z 6A4',
+6131112222,
+13
 );
 
 INSERT INTO locations (babysitter_id, lat, lng)
@@ -134,7 +205,11 @@ VALUES
 (3, 43.789135045529704, -79.41835079686906),
 (4, 43.77994017660731,-79.41578065362916),
 (5, 43.80397969069323, -79.44805299267806),
-(6, 3.79663069960128, -79.43006951844261);
+(6, 3.79663069960128, -79.43006951844261),
+(7, 45.379764762354185, -75.74994178971735),
+(8, 45.37289152875987, -75.76908203335539),
+(9, 45.36915310352292, -75.7031640643565),
+(10, 45.35383503989266, -75.73526474202748);
 
 
 INSERT INTO bookings (user_id, babysitter_id, booking_date, booking_time_start, booking_time_end)
@@ -142,3 +217,4 @@ VALUES
 (1, 1, '2022-02-25', '13:00:00', '19:00:00'),
 (2, 2, '2022-02-26', '14:00:00', '20:00:00'),
 (3, 3, '2022-02-26', '12:00:00', '16:00:00');
+

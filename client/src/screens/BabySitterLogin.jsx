@@ -35,7 +35,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function LoginScreen({Navigation}) {
+export default function BabySittersLogin({Navigation}) {
  
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -46,14 +46,14 @@ export default function LoginScreen({Navigation}) {
       password: data.get("password"),
     });
 
-    axios.post("http://localhost:8080/api/login", {
+    axios.post("http://localhost:8080/api/babysitterlogin", {
       email: data.get("email"),
       password: data.get("password"),
     })
     .then((res) => {
       console.log(res.data.user);
       localStorage.setItem("user", JSON.stringify(res.data.user))
-      // Navigation.navigate("/"); 
+      Navigation.navigate("/"); 
 
     })
 
@@ -71,7 +71,7 @@ export default function LoginScreen({Navigation}) {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: "url(https://source.unsplash.com/random)", // change this picture
+            backgroundImage: "url(https://unsplash.com/photos/Qngdf0kgGB4)", // change this picture
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
