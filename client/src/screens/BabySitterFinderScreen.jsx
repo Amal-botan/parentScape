@@ -57,7 +57,6 @@ export default function BabySitterFinderScreen(props) {
     setExpanded(newExpanded ? panel : false);
   };
 
-  
 
 //Stretch: instead of hard coding cities we can try and write them in.
   // const cities = babySitters.map((babySitter) => {
