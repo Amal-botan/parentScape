@@ -1,16 +1,48 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import Stack from "@mui/material/Stack";
+import SendIcon from "@mui/icons-material/Send";
+
 
 export default function Post(props) {
-  const { posts, editPost, postText, setPostText } = props;
+  const { addComment, posts, editPost, postText, setPostText, user, category, setComments, setCommentsText, comments_text } = props;
   const [editDisplay, setEditDisplay] = useState({});
   const [btnClass, setBtnClass] = useState(false);
   const [btnColor, setBtnColor] = useState("red");
   // const [postText, setPostText] = useState("")
+  const [commentsDisplay, setCommentsDisplay] = useState({});
+
+
+
+
+  console.log("Post category: ", category)
+
+  console.log("Post Post: ", posts)
 
   if (!posts) {
     return <p>Loading</p>;
   }
+
+  const handleButtonComments = (post_id) => {
+    setCommentsDisplay(() => {
+      return {
+        ...commentsDisplay,
+        [post_id]: true,
+      };
+    });
+  };
+
+  const displayComments = (post_id) => {
+    setCommentsDisplay(() => {
+      return {
+        ...commentsDisplay,
+        [post_id]: false,
+      };
+    });
+  };
 
   const handleButton = (post_id) => {
     setEditDisplay(() => {
@@ -37,8 +69,16 @@ export default function Post(props) {
     setEditDisplay(false);
   };
 
+  const handleSubmitComment = (post_id) => {
+    const newComment = { comment: comments_text };
+
+    addComment(newComment, post_id)
+   setCommentsText("")
+  };
+
   return posts.map((post) => (
     <div>
+    
       <link
         href="https://fonts.googleapis.com/css?family=Asap"
         rel="stylesheet"
@@ -63,12 +103,24 @@ export default function Post(props) {
                   value={postText}
                   onChange={(event) => setPostText(event.target.value)}
                 ></textarea>
-                <input
+                {/* <input
                   type="submit"
                   value="Post"
                   className="form__input"
                   onClick={() => handleSubmit(post.post_id)}
-                />
+                /> */}
+
+                <Button
+                  variant="contained"
+                  size="small"
+                  endIcon={<SendIcon />}
+                  type="submit"
+                  onClick={() => handleSubmit(post.post_id)}
+                >
+                  Post
+                </Button>
+
+
               </div>
             ) : (
               <div className="post--text">
@@ -99,6 +151,25 @@ export default function Post(props) {
             </svg>
             <div className="comment-count">33</div>
           </div>
+
+          {commentsDisplay[post.post_id] ? (
+            <button class="btn" onClick={() => displayComments(post.post_id)}>
+              {" "}
+              Cancel{" "}
+            </button>
+          ) : (
+            <button
+              color="secondary"
+              onClick={() => handleButtonComments(post.post_id)}
+            >
+              {" "}
+              Comments{" "}
+            </button>
+          )}
+
+
+
+
 
           <div className="retweets">
             <svg
@@ -163,7 +234,7 @@ export default function Post(props) {
               <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
             </svg>
           </div>
-          {editDisplay[post.post_id] ? (
+          {user.id === post.users_id ? editDisplay[post.post_id] ? (
             <button class="btn" onClick={() => displayPost(post.post_id)}>
               {" "}
               Cancel{" "}
@@ -176,8 +247,84 @@ export default function Post(props) {
               {" "}
               Edit{" "}
             </button>
-          )}
+          ) : null}
+
         </div>
+
+        {commentsDisplay[post.post_id] ? (
+          <div>
+           
+            {post.comments?.filter((comm) => {
+              if (post.post_id === comm.post_id) {
+                return comm
+              }
+            }
+            ).map((comm) => {
+
+              { console.log("Comments: ", comm.comment) }
+              return (
+                <div>
+                 <p>  </p>
+                 
+                  <div className="tweet-header">
+                    <img src={comm.user_image} alt="" className="avator" />
+                    <div className="tweet-header-info">
+                      {comm.username} <span>{comm.username}</span>
+                      <span>. {comm.comment_created_at}</span>
+
+
+                      {/* <p>  {comm.user_image} </p>
+                      <p>  {comm.username} </p>
+                      <p>  {comm.comment_image} </p>
+                      <p>  {comm.comment_created_at} </p>
+              <p>  {comm.likes} </p>*/}
+
+                      {<p>  {comm.comment} </p> }
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+
+            <div>
+            <textarea
+              className="form__textarea"
+              name="text"
+              placeholder="What would you like to comment?"
+              value={comments_text}
+              onChange={(event) =>  
+                setCommentsText(event.target.value)}
+              
+            ></textarea>
+            
+            {/* <input
+              type="submit"
+              value="Post"
+              className="form__input"
+              onClick={() => handleSubmit(post.post_id)}
+            /> */}
+
+            <Button
+              variant="contained"
+              size="small"
+              endIcon={<SendIcon />}
+              type="submit"
+              onClick={() => handleSubmitComment(post.post_id)}
+            >
+              Comment
+            </Button>
+
+          </div>
+
+            
+          </div>
+        ) : (
+          <div className="post--text">
+
+          </div>
+        )}
+
+
       </div>
     </div>
   ));

@@ -11,6 +11,7 @@ import "../components/UserProfile.css";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
+import PostProfile from "../components/PostProfile";
 
 const ProfileScreen = () => {
   const [posts, setPosts] = useState([]);
@@ -19,9 +20,9 @@ const ProfileScreen = () => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    const postsUrl = "http://localhost:8080/api/user_posts" ; //use path and set proxy
+    const postsUrl = "http://localhost:8080/api/posts" ; //use path and set proxy
     //runs when page loads
-    axios.get(postsUrl, config).then((response) => {
+    axios.get(postsUrl).then((response) => {
       setPosts(response.data.posts);
     });
   }, []);
@@ -37,15 +38,15 @@ const ProfileScreen = () => {
 
   const config = { headers: { Authorization: `Bearer ${token}`, }, }      
 
-  // const addPost = (post) => {
+  const addPost = (post) => {
 
-  //   axios.post("http://localhost:8080/api/newposts", post)
-  //     .then((res) => {
+    axios.post("http://localhost:8080/api/newposts", post, config)
+      .then((res) => {
 
-  //       setPosts((prev) => ([res.data, ...prev]))
+        setPosts((prev) => ([res.data, ...prev]))
 
-  //     })
-  // }
+      })
+  }
 
   // useEffect(() => {
   //   const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
@@ -80,7 +81,10 @@ const ProfileScreen = () => {
       </div>
 
       <div className="right-side">
-      {user ?  <Post posts={posts} user={user}/> : <div></div> }
+      {/* {user ?  <PostProfile posts={posts} user={user}/> : <div></div> } */}
+      <PostForm addPost={addPost} />
+      <PostProfile posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} user={user} />
+      
       </div>
     </div>
   );
