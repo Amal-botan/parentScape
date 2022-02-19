@@ -17,13 +17,16 @@ import { useState } from 'react';
 function Availability(props) {
   const { changeAvailability, babysitterAvailabilty, setBabysitterAvailability, babysitter } = props;
   const [availabilityButton, setAvailabilityButton] = useState(true)
-
+  const [availablity, setAvailablity ] = useState("aval")
   console.log({babysitter});
 
   const handleSubmit = () => {
     {availabilityButton ? 
-    setAvailabilityButton(false) : setAvailabilityButton(true)
+    setAvailabilityButton(false) 
+    // changeAvailability()
+    : setAvailabilityButton(true)
     }
+
   }
   return (
     <div>

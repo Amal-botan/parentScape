@@ -23,7 +23,7 @@ console.log("TEST")
 
     .then((response) => {
       console.log("WORKING")
-      setBabySitters(response.data.babysitters)
+      setBabySitters(response.data.babysitter)
     })
  }, [])
 
