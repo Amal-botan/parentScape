@@ -57,7 +57,6 @@ export default function BabySitterFinderScreen(props) {
     setExpanded(newExpanded ? panel : false);
   };
 
-  
 
 //Stretch: instead of hard coding cities we can try and write them in.
   // const cities = babySitters.map((babySitter) => {
@@ -84,6 +83,7 @@ export default function BabySitterFinderScreen(props) {
 />
 {
       babySitters.filter((babySitter) => {
+        if(babySitter.available === "available") {
         if(searchTerm == "") {
           return babySitter;
         } else if (babySitter.city.toLowerCase().includes(searchTerm.toLowerCase())) {
@@ -91,6 +91,7 @@ export default function BabySitterFinderScreen(props) {
         } else if (babySitter.postal_code.toLowerCase().includes(searchTerm.toLowerCase())) {
           return babySitter;
         }
+      }
       }).map((babySitter, index) => {
 
 return (
