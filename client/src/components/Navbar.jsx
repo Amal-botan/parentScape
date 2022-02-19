@@ -2,15 +2,30 @@ import React from "react";
 // import {Container, Nav, Navbar} from "react-bootstrap"
 import { Transition } from "@headlessui/react";
 import { Link } from "react-router-dom"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Navbars = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [token, setToken] = useState("");
+  const [user, setUser] = useState({});
+
 
   const handleLoggout = () => {
     localStorage.removeItem("user")
     window.location.href = "/login";
   }
+
+
+  useEffect(() => {
+    const loggedinuser = JSON.parse(localStorage.getItem('user'))
+    { loggedinuser ? setUser(loggedinuser) : setUser(null) }
+    { loggedinuser ? setToken(loggedinuser.token) : setToken(null) }
+
+  }, []);
+
+  const config = { headers: { Authorization: `Bearer ${token}`, }, }
+  // const res = await axios.post(`https://loobv.com/api/traveller/add/favorite/car`, { car_id: carId }, config)
+
 
 
 
@@ -29,22 +44,29 @@ const Navbars = () => {
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
-                <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/">Home</Link>
-                 
-              
-                    
+                  <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/">Home</Link>
+
+
+
+
+                  <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/parentfeed"> Parent Feed</Link>
+                  <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/parenthouse"> Parent House</Link>
+                  <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/profile"> Profile</Link>
+
+                  <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/babysitterfinder"> Babysitter Finder</Link>
+
+                  {token ?
                   
-                <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/parentfeed"> Parent Feed</Link>
-                <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/parenthouse"> Parent House</Link>
-                <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/profile"> Profile</Link>
-
-                <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/babysitterfinder"> Babysitter Finder</Link>
-
-                 
-                  <button className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                    onClick={() => handleLoggout()}
-                    > Logout
-                      </button> {/* Make it link to for the logout button*/}
+                    <button className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                      onClick={() => handleLoggout()}
+                    >   Signed In as: {user.username}     Logout 
+                    </button> 
+                    :
+                    // null
+                    <div>
+                      <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/login"> Login</Link>
+                    </div>
+                  }
 
 
                 </div>
@@ -145,10 +167,10 @@ const Navbars = () => {
                 </a>
 
 
-                
+
                 <a className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                    onClick={() => handleLoggout} > Logout </a>
-            
+                  onClick={() => handleLoggout} > Logout </a>
+
 
 
               </div>

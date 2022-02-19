@@ -36,7 +36,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function LoginScreen({Navigation}) {
- 
+//  const [redirect, setRedirct] = useState(false);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -54,14 +55,17 @@ export default function LoginScreen({Navigation}) {
       console.log(res.data.user);
       localStorage.setItem("user", JSON.stringify(res.data.user))
       // Navigation.navigate("/"); 
-
+      // <Link to="/Home" />
+      // setRedirct(true);
+      //make it redirect to the home page!
     })
-
+    // return <Redirect to="/">
   };
 
   
 
   return (
+    
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
