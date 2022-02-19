@@ -8,10 +8,16 @@ const Navbars = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [token, setToken] = useState("");
   const [user, setUser] = useState({});
-
+  const [babysitter, setBabysitter] = useState({})
 
   const handleLoggout = () => {
+    if(user){
     localStorage.removeItem("user")
+    }
+
+    if(babysitter){
+      localStorage.removeItem("babysitter")
+    }
     window.location.href = "/login";
   }
 
@@ -20,6 +26,10 @@ const Navbars = () => {
     const loggedinuser = JSON.parse(localStorage.getItem('user'))
     { loggedinuser ? setUser(loggedinuser) : setUser(null) }
     { loggedinuser ? setToken(loggedinuser.token) : setToken(null) }
+
+    const loggedinbabysitter = JSON.parse(localStorage.getItem('babysitter'))
+    { loggedinbabysitter ? setBabysitter(loggedinbabysitter) : setBabysitter(null) }
+    { loggedinbabysitter ? setToken(loggedinbabysitter.token) : setToken(null) }
 
   }, []);
 
@@ -46,27 +56,31 @@ const Navbars = () => {
                 <div className="ml-10 flex items-baseline space-x-4">
                   <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/">Home</Link>
 
-
-
-
-                  <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/parentfeed"> Parent Feed</Link>
+      {user ?  <div><Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/parentfeed"> Parent Feed</Link>
                   <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/parenthouse"> Parent House</Link>
                   <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/profile"> Profile</Link>
-
+                   </div> :
+                  <div>
+                    </div>}
                   <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/babysitterfinder"> Babysitter Finder</Link>
-
-                  {token ?
+{/* can see both user and babysitter login and log out if both are logged in need to fix it*/}
+                  {user || babysitter ?
                   
                     <button className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                       onClick={() => handleLoggout()}
-                    >   Signed In as: {user.username}     Logout 
+                    >   Signed In as: {user ? user.username : babysitter.first_name }  Logout 
                     </button> 
                     :
                     // null
                     <div>
-                      <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/login"> Login</Link>
+                      <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/login"> Login as Parent/Guardian</Link>
+                      <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/babysitterfinderlogin"> Login as Babysitter</Link>
+
                     </div>
                   }
+
+  
+
 
 
                 </div>

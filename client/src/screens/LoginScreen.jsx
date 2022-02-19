@@ -36,7 +36,6 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function LoginScreen({Navigation}) {
-//  const [redirect, setRedirct] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -100,6 +99,7 @@ export default function LoginScreen({Navigation}) {
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign in
+              As Parent
             </Typography>
             <Box
               component="form"

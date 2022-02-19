@@ -51,9 +51,9 @@ export default function BabySittersLogin({Navigation}) {
       password: data.get("password"),
     })
     .then((res) => {
-      console.log(res.data.user);
-      localStorage.setItem("user", JSON.stringify(res.data.user))
-      Navigation.navigate("/"); 
+      console.log(res.data.babysitter);
+      localStorage.setItem("babysitter", JSON.stringify(res.data.babysitter))
+      // Navigation.navigate("/"); 
 
     })
 
@@ -96,6 +96,7 @@ export default function BabySittersLogin({Navigation}) {
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign in
+              As Babysitter
             </Typography>
             <Box
               component="form"
