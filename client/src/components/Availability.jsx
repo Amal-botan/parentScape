@@ -17,7 +17,7 @@ import { useState } from 'react';
 function Availability(props) {
   const { changeAvailability, babysitterAvailabilty, setBabysitterAvailability, babysitter } = props;
   const [availabilityButton, setAvailabilityButton] = useState(true)
-  const [availablity, setAvailablity] = useState("aval")
+  // const [availablity, setAvailablity] = useState("aval")
   console.log({ babysitter });
 
   const handleSubmit = () => {

@@ -83,6 +83,7 @@ export default function BabySitterFinderScreen(props) {
 />
 {
       babySitters.filter((babySitter) => {
+        if(babySitter.available === "available") {
         if(searchTerm == "") {
           return babySitter;
         } else if (babySitter.city.toLowerCase().includes(searchTerm.toLowerCase())) {
@@ -90,6 +91,7 @@ export default function BabySitterFinderScreen(props) {
         } else if (babySitter.postal_code.toLowerCase().includes(searchTerm.toLowerCase())) {
           return babySitter;
         }
+      }
       }).map((babySitter, index) => {
 
 return (
