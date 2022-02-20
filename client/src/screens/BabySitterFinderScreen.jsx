@@ -9,6 +9,8 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import { useState } from 'react'; 
+import Grid from '@mui/material/Grid';
+
 
 const Accordion = styled((props) => (
  
@@ -48,16 +50,28 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function BabySitterFinderScreen(props) {
-  const { babySitters } = props;
+  const { babySitters, booking, user, addBooking } = props;
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [requestButton, setRequestButton] = useState(false);
+  const [bookingDate, setBookingDate] = useState("");
+  const [bookingTimeStart, setBookingTimeStart] = useState("");
+  const [bookingTimeEnd, setBookingTimeEnd] = useState("");
+console.log("======", user)
   const [expanded, setExpanded] = React.useState('panel1');
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
+  const handleSubmit = () => {
+console.log("----------", requestButton);
+  requestButton ? setRequestButton(false) : setRequestButton(true);  
+  }
 
+  const handleSubmitBooking = (userId, babysitterId) => {
+    const bookingSubmitted = { user_id: userId, babysitter_id: babysitterId, booking_date: bookingDate, booking_time_start: bookingTimeStart, booking_time_end: bookingTimeEnd }
+    addBooking(bookingSubmitted);
+  }
 //Stretch: instead of hard coding cities we can try and write them in.
   // const cities = babySitters.map((babySitter) => {
   //   const citiesBaby = [];
@@ -109,9 +123,68 @@ return (
             <p>Years of Experience: </p>
             {babySitter.years_of_experience}
           </Typography>
-          <Button variant="contained" size="large">
+          <Button variant="contained" size="large" onClick={()=> handleSubmit()}>
           Request
-        </Button>
+
+        </Button> 
+        {requestButton? <div>  
+          <Grid item xs={12}>
+          "booking_date":"2022-02-25"
+                      <TextField
+                  required
+                  fullWidth
+                  name="Bio"
+                  label="Short Description"
+                  type="Bio"
+                  id="Bio"
+                  autoComplete="Bio"
+                  value={bookingDate}
+                  onChange={(event) => setBookingDate(event.target.value)}
+
+                />
+              </Grid>
+              <Grid item xs={12}>
+              "booking_time_start":"13:00:00              
+                <TextField
+                  required
+                  fullWidth
+                  name="Bio"
+                  label="Short Description"
+                  type="Bio"
+                  id="Bio"
+                  autoComplete="Bio"
+                  value={bookingTimeStart}
+                  onChange={(event) => setBookingTimeStart(event.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+              "booking_time_end": "19:00:00"
+                              <TextField
+                  required
+                  fullWidth
+                  name="Bio"
+                  label="Short Description"
+                  type="Bio"
+                  id="Bio"
+                  autoComplete="Bio"
+                  value={bookingTimeEnd}
+                  onChange={(event) => setBookingTimeEnd(event.target.value)}
+
+
+                />
+              </Grid>
+              <Button
+                onClick={() => handleSubmitBooking(user.id, babySitter.id )}
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign In
+              </Button>
+        </div>  : <div></div> }
+
+        
         </AccordionDetails>
       </Accordion>
 
