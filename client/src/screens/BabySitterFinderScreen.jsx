@@ -8,12 +8,12 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
-import { useState } from 'react'; 
+import { useState } from 'react';
 import Grid from '@mui/material/Grid';
 
 
 const Accordion = styled((props) => (
- 
+
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
@@ -56,11 +56,15 @@ export default function BabySitterFinderScreen(props) {
   const [bookingDate, setBookingDate] = useState("");
   const [bookingTimeStart, setBookingTimeStart] = useState("");
   const [bookingTimeEnd, setBookingTimeEnd] = useState("");
- 
-  let babySitterId = 0;
+  const [bookingDisplay, setBookingDisplay] = useState({});
 
-console.log("======", user.id)
-const user_id = user.id
+  // let babySitterId = 0;
+  let user_id;
+
+  if (user) {
+    console.log("======", user.id)
+    user_id = user.id
+  }
   const [expanded, setExpanded] = React.useState('panel1');
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -68,15 +72,15 @@ const user_id = user.id
   };
 
   const handleSubmit = () => {
-console.log("----------", requestButton);
-  requestButton ? setRequestButton(false) : setRequestButton(true);  
+    console.log("----------", requestButton);
+    requestButton ? setRequestButton(false) : setRequestButton(true);
   }
 
   const handleSubmitBooking = (userId, babysitterId) => {
     const bookingSubmitted = { user_id: userId, babysitter_id: babysitterId, booking_date: bookingDate, booking_time_start: bookingTimeStart, booking_time_end: bookingTimeEnd }
     addBooking(bookingSubmitted);
   }
-//Stretch: instead of hard coding cities we can try and write them in.
+  //Stretch: instead of hard coding cities we can try and write them in.
   // const cities = babySitters.map((babySitter) => {
   //   const citiesBaby = [];
   //   if (!citiesBaby.includes(babySitter.city)) {
@@ -90,117 +94,118 @@ console.log("----------", requestButton);
 
   return (
     <div> Please choose a city:
-       <Autocomplete
-  disablePortal
-  id="combo-box-demo"
-  options={cities}
-  sx={{ width: 300 }}
-  renderInput={(params) => <TextField {...params} label="Cities" onChange={(event) => {
-    setSearchTerm(event.target.value)
-  }}/>}
-/>
-{
-      babySitters.filter((babySitter) => {
-        if(babySitter.available === "available") {
-        if(searchTerm == "") {
-          return babySitter;
-        } else if (babySitter.city.toLowerCase().includes(searchTerm.toLowerCase())) {
-          return babySitter;
-        } else if (babySitter.postal_code.toLowerCase().includes(searchTerm.toLowerCase())) {
-          return babySitter;
-        }
+      <Autocomplete
+        disablePortal
+        id="combo-box-demo"
+        options={cities}
+        sx={{ width: 300 }}
+        renderInput={(params) => <TextField {...params} label="Cities" onChange={(event) => {
+          setSearchTerm(event.target.value)
+        }} />}
+      />
+      {
+        babySitters.filter((babySitter) => {
+          if (babySitter.available === "available") {
+            if (searchTerm == "") {
+              return babySitter;
+            } else if (babySitter.city.toLowerCase().includes(searchTerm.toLowerCase())) {
+              return babySitter;
+            } else if (babySitter.postal_code.toLowerCase().includes(searchTerm.toLowerCase())) {
+              return babySitter;
+            }
+          }
+        }).map((babySitter, index) => {
+
+          return (
+
+            <Accordion expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
+              <AccordionSummary aria-controls={`panel${index}d-content`} id={`panel1d-header`}>
+                <Typography> {babySitter.first_name} {babySitter.last_name}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>
+
+                  <p>Description:</p>
+                  {babySitter.bio}
+
+                  <p>Image:</p>
+                  {babySitter.babysitter_image}
+                  <p>Years of Experience: </p>
+                  {babySitter.years_of_experience}
+                </Typography>
+                {user?
+                <Button variant="contained" size="large" onClick={() => handleSubmit()}>
+                  Request
+
+                </Button> : <div></div>}
+                {requestButton ? <div>
+                  <Grid item xs={12}>
+                    "booking_date":"2022-02-25"
+                    <TextField
+                      required
+                      fullWidth
+                      name="Bio"
+                      label="Short Description"
+                      type="Bio"
+                      id="Bio"
+                      autoComplete="Bio"
+                      value={bookingDate}
+                      onChange={(event) => setBookingDate(event.target.value)}
+
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    "booking_time_start":"13:00:00
+                    <TextField
+                      required
+                      fullWidth
+                      name="Bio"
+                      label="Short Description"
+                      type="Bio"
+                      id="Bio"
+                      autoComplete="Bio"
+                      value={bookingTimeStart}
+                      onChange={(event) => setBookingTimeStart(event.target.value)}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    "booking_time_end": "19:00:00"
+                    <TextField
+                      required
+                      fullWidth
+                      name="Bio"
+                      label="Short Description"
+                      type="Bio"
+                      id="Bio"
+                      autoComplete="Bio"
+                      value={bookingTimeEnd}
+                      onChange={(event) => setBookingTimeEnd(event.target.value)}
+
+
+                    />
+                  </Grid>
+
+                  {user ? <Button
+                    onClick={() => handleSubmitBooking(user_id, babySitter.id)}
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Sign In
+                  </Button> : <div></div>}
+                </div> : <div></div>}
+
+
+              </AccordionDetails>
+            </Accordion>
+
+
+
+          )
+        })
+
       }
-      }).map((babySitter, index) => {
-
-return (
-    
-      <Accordion expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
-        <AccordionSummary aria-controls= {`panel${index}d-content`} id={`panel1d-header`}>
-          <Typography> {babySitter.first_name} {babySitter.last_name}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-           
-           <p>Description:</p>
-            {babySitter.bio}
-           
-            <p>Image:</p>
-            {babySitter.babysitter_image} 
-            <p>Years of Experience: </p>
-            {babySitter.years_of_experience}
-          </Typography>
-          <Button variant="contained" size="large" onClick={()=> handleSubmit()}>
-          Request
-
-        </Button> 
-        {requestButton? <div>  
-          <Grid item xs={12}>
-          "booking_date":"2022-02-25"
-                      <TextField
-                  required
-                  fullWidth
-                  name="Bio"
-                  label="Short Description"
-                  type="Bio"
-                  id="Bio"
-                  autoComplete="Bio"
-                  value={bookingDate}
-                  onChange={(event) => setBookingDate(event.target.value)}
-
-                />
-              </Grid>
-              <Grid item xs={12}>
-              "booking_time_start":"13:00:00              
-                <TextField
-                  required
-                  fullWidth
-                  name="Bio"
-                  label="Short Description"
-                  type="Bio"
-                  id="Bio"
-                  autoComplete="Bio"
-                  value={bookingTimeStart}
-                  onChange={(event) => setBookingTimeStart(event.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-              "booking_time_end": "19:00:00"
-                              <TextField
-                  required
-                  fullWidth
-                  name="Bio"
-                  label="Short Description"
-                  type="Bio"
-                  id="Bio"
-                  autoComplete="Bio"
-                  value={bookingTimeEnd}
-                  onChange={(event) => setBookingTimeEnd(event.target.value)}
-
-
-                />
-              </Grid>
-              
-              <Button
-                onClick={() => handleSubmitBooking(user_id, babySitter.id )}
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Sign In 
-              </Button>
-        </div>  : <div></div> }
-
-        
-        </AccordionDetails>
-      </Accordion>
-
-
-
-)
-      })
-      
-  }
 
 
       {/* <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -231,15 +236,15 @@ return (
       </Accordion>
       */}
     </div>
-    
+
   );
 }
 
 const cities = [
-  { label: 'Ottawa'},
-  { label: 'Toronto'},
-  { label: 'Hamilton'},
-  { label: 'Kanata'},
-  { label: 'Orleans'},
-  { label: 'Etobicoke'},
+  { label: 'Ottawa' },
+  { label: 'Toronto' },
+  { label: 'Hamilton' },
+  { label: 'Kanata' },
+  { label: 'Orleans' },
+  { label: 'Etobicoke' },
 ];
