@@ -11,7 +11,10 @@ const [babySitters, setBabySitters] = useState([])
 const [locations, setLocations] = useState ([])
 const [token, setToken] = useState("");
 const [babysitter, setBabysitter] = useState({});
+const [user, setuser] = useState({});
+
 const [babysitterAvailabilty, setBabysitterAvailability] = useState(babysitter?.available);
+const [booking, setBooking] = useState({});
 
 const getBabySitters = () => {
   const babySitterUrl = "http://localhost:8080/api/babysitter" //use path and set proxy
@@ -46,6 +49,10 @@ useEffect(() => {
  {loggedinBabysitter ? setBabysitter(loggedinBabysitter) : setBabysitter(null)}
  {loggedinBabysitter ? setToken(loggedinBabysitter.token)  : setToken(null)}
 
+ const loggedInUser = JSON.parse(localStorage.getItem('user'))
+ {loggedInUser ? setuser(loggedInUser) : setuser(null)}
+ {loggedInUser ? setToken(loggedInUser.token)  : setToken(null)}
+
 }, []);
 
 
@@ -58,12 +65,21 @@ axios.post(`http://localhost:8080/api/babysitteravail/${babysitter_id}`, {availa
        getBabySitters();
       })
 }
-
+const addBooking = (booking) => {
+  console.log("Add booking function", booking);
+  axios.post(`http://localhost:8080/api/babysitter`, {booking})
+      .then((res) => {
+       console.log("From axios booking: ", res.data.booking)
+      //  getBabySitters();
+      })
+  
+}
  
  return (
+
 <div>
     <Availability changeAvailability={changeAvailability} babysitterAvailabilty={babysitterAvailabilty} setBabysitterAvailability={setBabysitterAvailability} babysitter={babysitter} />
-    <BabySitterFinderScreen babySitters={babySitters} />
+    <BabySitterFinderScreen babySitters={babySitters} booking={booking} user={user} addBooking={addBooking} />
    <Map babySitters={babySitters} locations={locations}/>
     </div>
    )
