@@ -27,11 +27,13 @@ module.exports = (db) => {
 
   router.post("/", verifyToken, (req, res) => { //verifyToken
     const user = req.user;
+    console.log(user)
     const { user_id, babysitter_id, booking_date, booking_time_start, booking_time_end } = req.body;
     db.query(`INSERT INTO bookings (user_id, babysitter_id, booking_date, booking_time_start, booking_time_end)
     VALUES ($1, $2, $3, $4, $5)
       RETURNING *;`, [user.id, babysitter_id, booking_date, booking_time_start, booking_time_end])
       .then(data => {
+        console.log(data)
         const booking = data.rows;
        res.json({ booking });
       })

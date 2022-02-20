@@ -56,7 +56,11 @@ export default function BabySitterFinderScreen(props) {
   const [bookingDate, setBookingDate] = useState("");
   const [bookingTimeStart, setBookingTimeStart] = useState("");
   const [bookingTimeEnd, setBookingTimeEnd] = useState("");
-console.log("======", user)
+ 
+  let babySitterId = 0;
+
+console.log("======", user.id)
+const user_id = user.id
   const [expanded, setExpanded] = React.useState('panel1');
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -116,8 +120,10 @@ return (
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
+           
            <p>Description:</p>
             {babySitter.bio}
+           
             <p>Image:</p>
             {babySitter.babysitter_image} 
             <p>Years of Experience: </p>
@@ -173,14 +179,15 @@ return (
 
                 />
               </Grid>
+              
               <Button
-                onClick={() => handleSubmitBooking(user.id, babySitter.id )}
+                onClick={() => handleSubmitBooking(user_id, babySitter.id )}
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Sign In 
               </Button>
         </div>  : <div></div> }
 

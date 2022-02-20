@@ -54,6 +54,7 @@ useEffect(() => {
  {loggedInUser ? setToken(loggedInUser.token)  : setToken(null)}
 
 }, []);
+const config = { headers: { Authorization: `Bearer ${token}`, }, }      
 
 
 const changeAvailability = (available, babysitter_id) => {
@@ -65,9 +66,10 @@ axios.post(`http://localhost:8080/api/babysitteravail/${babysitter_id}`, {availa
        getBabySitters();
       })
 }
+
 const addBooking = (booking) => {
   console.log("Add booking function", booking);
-  axios.post(`http://localhost:8080/api/babysitter`, {booking})
+  axios.post(`http://localhost:8080/api/babysitter`, booking, config)
       .then((res) => {
        console.log("From axios booking: ", res.data.booking)
       //  getBabySitters();
