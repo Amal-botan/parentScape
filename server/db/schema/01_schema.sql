@@ -94,6 +94,6 @@ CREATE TABLE bookings (
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   booking_date DATE,
   booking_time_start TIME,
-  booking_time_end TIME
-
+  booking_time_end TIME,
+  status TEXT DEFAULT 'pending'
 );
