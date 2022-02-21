@@ -21,7 +21,11 @@ const Map = (props) => {
   const { locations, babySitters } = props
 
 
-  const locationArr = babySitters.map((babySitter, index) => {
+  const locationArr = babySitters.filter((babySitter) => {
+    if(babySitter.status === "verified") {
+      return babySitter
+    }
+  }).map((babySitter, index) => {
 
     const locationBabysitter = locations.find((location) => {
 
