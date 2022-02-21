@@ -86,6 +86,12 @@ const BabySitterStatus = (props) => {
     changeStatus(status,id)
   }
 
+  const handlePending = (id) => {
+    console.log("Pending: ", id)
+    const status = {status: "pending"}
+    changeStatus(status,id)
+  }
+
   return (
     <div>
       {babySitters.map((babySitter, index) => {
@@ -105,6 +111,7 @@ const BabySitterStatus = (props) => {
                 >
                   <ToggleButton value="rejected" onClick={() => handleRejection(babySitter.id)}>Reject</ToggleButton>
                   <ToggleButton value="verified" onClick={() => handleVerify(babySitter.id)}>Verify</ToggleButton>
+                  <ToggleButton value="pending" onClick={() => handlePending(babySitter.id)}>Pending</ToggleButton>
                 </ToggleButtonGroup>
               
                 <p>Status</p>

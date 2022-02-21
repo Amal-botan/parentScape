@@ -105,7 +105,7 @@ export default function BabySitterFinderScreen(props) {
       />
       {
         babySitters.filter((babySitter) => {
-          if (babySitter.available === "available") {
+          if (babySitter.available === "available" && babySitter.status === "verified") {
             if (searchTerm == "") {
               return babySitter;
             } else if (babySitter.city.toLowerCase().includes(searchTerm.toLowerCase())) {
