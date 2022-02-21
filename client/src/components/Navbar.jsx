@@ -59,10 +59,12 @@ const Navbars = () => {
 
                   {user ? <div><Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/parentfeed"> Parent Feed</Link>
                     <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/parenthouse"> Parent House</Link>
-                    <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/profile"> Profile</Link>
                   </div> :
                     <div>
                     </div>}
+
+                    <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/profile"> Profile</Link>
+
                   <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/babysitterfinder"> Babysitter Finder</Link>
 
                  {user?.email === "admin@gmail.com" ? <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/admindashboard"> Admin Dashboard</Link> : null}

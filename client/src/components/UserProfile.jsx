@@ -8,7 +8,8 @@ import CardContent from '@mui/material/CardContent';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
 export default function UserProfile(props) {
-  const { user } = props;
+  const { user, babysitter } = props;
+
   return (
     <div>
 
@@ -18,15 +19,17 @@ export default function UserProfile(props) {
         component="img"
         sx={{ width: 300 }}
         alt="Remy Sharp"
-        image={user.user_image}
+        image={user ? user.user_image : babysitter.babysitter_image}
         
       />
       <CardContent>
           <Typography gutterBottom variant="h3" component="div">
-          {user.username}
+          {user?.username}
+          {babysitter?.username}
           </Typography>
           <Typography variant="body4" color="text.secondary">
-            {user.bio}
+          {user?.bio}
+          {babysitter?.bio}
           </Typography>
         </CardContent>
       </CardActionArea>

@@ -71,6 +71,7 @@ const babysitterloginRoutes = require("./routes/baby_sitter/babysitterlogin");
 const babysitterauthRoutes = require("./routes/baby_sitter/babysitterauth");
 const babysitteravailableRoutes = require("./routes/baby_sitter/baby_availablity");
 const babysitterStatusRoutes = require("./routes/baby_sitter/baby_sitter_status");
+const bookingStatusRoutes = require("./routes/baby_sitter/booking_status");
 
 
 
@@ -99,6 +100,7 @@ app.use("/api/babysitterlogin", babysitterloginRoutes(db));
 app.use("/api/babysitterauth", babysitterauthRoutes(db));
 app.use("/api/babysitteravail", babysitteravailableRoutes(db));
 app.use("/api/babysitterstatus", babysitterStatusRoutes(db));
+app.use("/api/bookingstatus", bookingStatusRoutes(db));
 
 
 // Note: mount other resources here, using the same pattern above

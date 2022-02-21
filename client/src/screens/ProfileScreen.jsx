@@ -18,6 +18,10 @@ const ProfileScreen = () => {
   const [postText, setPostText] = useState("");
   const [token, setToken] = useState("");
   const [user, setUser] = useState({});
+  const [babysitter, setBabysitter] = useState({});
+  const [babySitters, setBabySitters] = useState([])
+  const [booking, setBooking] = useState({});
+
 
   useEffect(() => {
     const postsUrl = "http://localhost:8080/api/posts" ; //use path and set proxy
@@ -34,6 +38,10 @@ const ProfileScreen = () => {
    {loggedinuser ? setUser(loggedinuser) : setUser(null)}
    {loggedinuser ? setToken(loggedinuser.token)  : setToken(null)}
 
+   const loggedinBabysitter = JSON.parse(localStorage.getItem('babysitter'))
+ {loggedinBabysitter ? setBabysitter(loggedinBabysitter) : setBabysitter(null)}
+ {loggedinBabysitter ? setToken(loggedinBabysitter.token)  : setToken(null)}
+
   }, []);
 
   const config = { headers: { Authorization: `Bearer ${token}`, }, }      
@@ -47,15 +55,6 @@ const ProfileScreen = () => {
 
       })
   }
-
-  // useEffect(() => {
-  //   const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
-  //   //runs when page loads
-  //   // axios.get(postsUrl)
-  //   //   .then((response) => {
-  //   //     setPosts(response.data.posts)
-  //   //   })
-  // }, [posts])
 
   const editPost = (post, post_id) => {
     axios
@@ -72,18 +71,32 @@ const ProfileScreen = () => {
         });
       });
   };
-  // for log out make a button to log out user localStorage.removeItem("user")
+ 
+  //Add 
 
+  // const editBooking = (booking) => {
+  //   console.log("Add booking function", booking);
+  //   axios.post(`http://localhost:8080/api/babysitter`, booking, config)
+  //       .then((res) => {
+  //        console.log("From axios booking: ", res.data.booking)
+  //       //  getBabySitters();
+  //       })
+    
+  // }
+
+   
   return (
     <div className="parent">
       <div className="left-side">
-      {user ?  <UserProfile user={user} /> : <p>U need to be logged in or signed up</p>}
+        <UserProfile user={user} babysitter={babysitter} /> 
       </div>
 
+    {/* <BabySitterBookings  /> */}
       <div className="right-side">
       {/* {user ?  <PostProfile posts={posts} user={user}/> : <div></div> } */}
-      <PostForm addPost={addPost} />
-      <PostProfile posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} user={user} />
+    { user? <PostForm addPost={addPost} /> : <div></div>}
+
+      {user ? <PostProfile posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} user={user} /> : <div></div>}
       
       </div>
     </div>
