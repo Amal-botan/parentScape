@@ -27,12 +27,10 @@ const getBabySitters = () => {
     })
 }
 
-console.log("TEST")
  useEffect(() => {
   getBabySitters();
  }, [])
 
-console.log("BabySitters here: ", babySitters)
 
 useEffect(() => {
   const locationUrl = "http://localhost:8080/api/location" //use path and set proxy
@@ -42,7 +40,6 @@ useEffect(() => {
       setLocations(response.data.locations)
     })
  }, [])
- console.log("BabySitters locations here: ", locations)
 
  useEffect(() => {
   const loggedinBabysitter = JSON.parse(localStorage.getItem('babysitter'))
@@ -58,7 +55,6 @@ const config = { headers: { Authorization: `Bearer ${token}`, }, }
 
 
 const changeAvailability = (available, babysitter_id) => {
-console.log("Testing: ", available, babysitter_id)
 
 axios.post(`http://localhost:8080/api/babysitteravail/${babysitter_id}`, {available})
       .then((res) => {

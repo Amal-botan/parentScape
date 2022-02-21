@@ -192,7 +192,7 @@ export default function BabySitterFinderScreen(props) {
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                   >
-                    Sign In
+                    Book
                   </Button> : <div></div>}
                 </div> : <div></div>}
 
