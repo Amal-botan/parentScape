@@ -30,8 +30,11 @@ function Availability(props) {
 return (
   <div>
 
-
-    {babysitter ?
+{
+  babysitter? <div> Your status is: {babysitter.status}</div>:
+  <div></div>
+}
+    {babysitter?.status === "verified" ?
       (<Button
         variant="contained"
         size="small"
@@ -44,7 +47,7 @@ return (
       <div></div>
     }
 
-    {babysitter ?
+    {babysitter?.status === "verified" ?
 
       (availabilityButton ?
         <div>

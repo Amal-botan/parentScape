@@ -80,17 +80,19 @@ export default function BabySitterFinderScreen(props) {
     const bookingSubmitted = { user_id: userId, babysitter_id: babysitterId, booking_date: bookingDate, booking_time_start: bookingTimeStart, booking_time_end: bookingTimeEnd }
     addBooking(bookingSubmitted);
   }
-  //Stretch: instead of hard coding cities we can try and write them in.
-  // const cities = babySitters.map((babySitter) => {
-  //   const citiesBaby = [];
-  //   if (!citiesBaby.includes(babySitter.city)) {
-  //     console.log(!citiesBaby.includes(babySitter.city))
-  //     citiesBaby.push(babySitter.city)
-  //   }
-  //   return citiesBaby;
-  // })
 
-  // console.log("Cities inloop: ", cities)
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
+
+  //   emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_USER_ID')
+  //     .then((result) => {
+  //         console.log(result.text);
+  //     }, (error) => {
+  //         console.log(error.text);
+  //     });
+  // };
+
+
 
   return (
     <div> Please choose a city:
@@ -105,7 +107,7 @@ export default function BabySitterFinderScreen(props) {
       />
       {
         babySitters.filter((babySitter) => {
-          if (babySitter.available === "available") {
+          if (babySitter.available === "available" && babySitter.status === "verified") {
             if (searchTerm == "") {
               return babySitter;
             } else if (babySitter.city.toLowerCase().includes(searchTerm.toLowerCase())) {
@@ -133,12 +135,13 @@ export default function BabySitterFinderScreen(props) {
                   <p>Years of Experience: </p>
                   {babySitter.years_of_experience}
                 </Typography>
-                {user?
-                <Button variant="contained" size="large" onClick={() => handleSubmit()}>
-                  Request
+                {user ?
+                  <Button variant="contained" size="large" onClick={() => handleSubmit()}>
+                    Request
 
-                </Button> : <div></div>}
+                  </Button> : <div></div>}
                 {requestButton ? <div>
+
                   <Grid item xs={12}>
                     "booking_date":"2022-02-25"
                     <TextField
@@ -185,14 +188,16 @@ export default function BabySitterFinderScreen(props) {
                     />
                   </Grid>
 
+
                   {user ? <Button
                     onClick={() => handleSubmitBooking(user_id, babySitter.id)}
                     type="submit"
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
+                    // onSumbit={sendEmail}
                   >
-                    Sign In
+                    Book
                   </Button> : <div></div>}
                 </div> : <div></div>}
 

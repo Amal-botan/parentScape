@@ -16,6 +16,8 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
+import axios from 'axios';
+
 
 function Copyright(props) {
   return (
@@ -43,6 +45,19 @@ export default function BabySitterSignUpScreen() {
       email: data.get('email'),
       password: data.get('password'),
     });
+
+    axios.post("http://localhost:8080/api/babysitterauth/register", {
+      email: data.get("email"),
+      password: data.get("password"),
+    })
+    .then((res) => {
+      console.log("data: ", res.data.user);
+      localStorage.setItem("user", JSON.stringify(res.data.user))
+      window.location.href= "/"; 
+    
+    })
+
+
   };
 
   return (
@@ -219,9 +234,10 @@ export default function BabySitterSignUpScreen() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
+              
+
+                <Link variant="body2" to="/babysitterfinderlogin"> Already have an account? Sign in</Link>
+
               </Grid>
             </Grid>
           </Box>

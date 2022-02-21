@@ -76,7 +76,8 @@ CREATE TABLE babysitters (
   upload_id_card TEXT,
   upload_police_record_check TEXT,
   upload_first_aid_certificate TEXT,
-  available TEXT DEFAULT 'available'
+  available TEXT DEFAULT 'available',
+  status TEXT DEFAULT 'pending'
 );
 
 CREATE TABLE locations (
