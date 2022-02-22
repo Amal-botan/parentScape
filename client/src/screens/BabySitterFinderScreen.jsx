@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
 import { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import '@fontsource/roboto/300.css';
@@ -134,15 +135,23 @@ export default function BabySitterFinderScreen(props) {
                 <Typography variant="h5" gutterBottom component="div"> {babySitter.first_name} {babySitter.last_name}</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography variant="h6" gutterBottom component="div">
+     <Typography variant="h5" gutterBottom component="div">
+     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                <Grid item xs={4}>
+                <Avatar
+                  alt="image"
+                  src={babySitter.babysitter_image}
+                  sx={{ width: 200, height: 200 }}
+                />
+                </Grid>
 
-                  <p>Description:</p>
+                <Grid item xs={4}>           
                   {babySitter.bio}
-
-                  <p>Image:</p>
-                  {babySitter.babysitter_image}
+                
                   <p>Years of Experience: </p>
                   {babySitter.years_of_experience}
+                  </Grid>
+                  </Grid>
                 </Typography>
                 {user ?
                   <Button variant="contained" size="large" onClick={() => handleSubmit()}>
