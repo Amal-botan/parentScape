@@ -14,6 +14,8 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import { Navigate, useNavigate } from 'react-router-dom';
+import family from "../icons/family.jpg"
+// const fam = require('../icons/family.png')
 
 function Copyright(props) {
   return (
@@ -57,7 +59,7 @@ export default function LoginScreen() {
     
     })
 
-  };
+  }; 
 
   
 
@@ -72,8 +74,12 @@ export default function LoginScreen() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: "url(https://source.unsplash.com/random)", // change this picture
+            backgroundImage: `URL(${family})`,
+            // backgroundImage: <img src={family} />,
+            // backgroundImage: "url(https://media.istockphoto.com/photos/joyful-afro-parents-and-their-little-daughter-having-fun-at-home-picture-id1191435091?k=20&m=1191435091&s=612x612&w=0&h=OzM30oVWumiFF0Yamc-Flwms1mRJCFsW8BUxOY_OzAA=)", // change this picture
+            // maxHeight:"auto",
             backgroundRepeat: "no-repeat",
+
             backgroundColor: (t) =>
               t.palette.mode === "light"
                 ? t.palette.grey[50]

@@ -13,7 +13,7 @@ img {
 }
 
 .tweet-wrap {
-  max-width: 490px;
+  max-width: 600px;
   background: #fff;
   margin: 0 auto;
   margin-top: 50px;
@@ -46,6 +46,7 @@ img {
 
 .tweet-info-counts {
   display: flex;
+	align-items: center;
   margin-left: 60px;
   margin-top: 10px;
 }
