@@ -63,11 +63,11 @@ const Navbars = () => {
                     <div>
                     </div>}
 
-                    <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/profile"> Profile</Link>
+                  <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/profile"> Profile</Link>
 
                   <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/babysitterfinder"> Babysitter Finder</Link>
 
-                 {user?.email === "admin@gmail.com" ? <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/admindashboard"> Admin Dashboard</Link> : null}
+                  {user?.email === "admin@gmail.com" ? <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/admindashboard"> Admin Dashboard</Link> : null}
 
                   {/* can see both user and babysitter login and log out if both are logged in need to fix it*/}
                   {user || babysitter ?
@@ -83,7 +83,7 @@ const Navbars = () => {
                       <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/babysitterfinderlogin"> Login as Babysitter</Link>
                       <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/babysittersignup">Sign up as a Babysitter</Link>
 
-                     
+
                     </div>
                   }
 

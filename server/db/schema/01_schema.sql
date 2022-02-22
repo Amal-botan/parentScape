@@ -95,5 +95,5 @@ CREATE TABLE bookings (
   booking_date DATE,
   booking_time_start TIME,
   booking_time_end TIME,
-  status TEXT DEFAULT 'pending'
+  booking_status TEXT DEFAULT 'pending'
 );

@@ -3,6 +3,8 @@ import Post from "../components/Post";
 import PostForm from "../components/PostForm";
 import UserProfile from "../components/UserProfile";
 import ProfileChildren from "../components/ProfileChildren";
+import BabySitterBookings from "../components/BabySitterBookings"
+
 import "../components/ProfileChildren.css";
 import "../components/styleParentFeed.css";
 import "../components/Post.css";
@@ -20,7 +22,7 @@ const ProfileScreen = () => {
   const [user, setUser] = useState({});
   const [babysitter, setBabysitter] = useState({});
   const [babySitters, setBabySitters] = useState([])
-  const [booking, setBooking] = useState({});
+  const [bookings, setBookings] = useState([]);
 
 
   useEffect(() => {
@@ -71,27 +73,40 @@ const ProfileScreen = () => {
         });
       });
   };
+
+  const getBookings = () => {
+    const bookingURL = "http://localhost:8080/api/babysitter/booking" ; //use path and set proxy
+    //runs when page loads
+    axios.get(bookingURL).then((response) => {
+      setBookings(response.data.bookings);
+    });
+  }
+
  
-  //Add 
+  useEffect(() => {
+    getBookings();
+  }, []);
 
-  // const editBooking = (booking) => {
-  //   console.log("Add booking function", booking);
-  //   axios.post(`http://localhost:8080/api/babysitter`, booking, config)
-  //       .then((res) => {
-  //        console.log("From axios booking: ", res.data.booking)
-  //       //  getBabySitters();
-  //       })
-    
-  // }
-
+  console.log("Bookings: ", {bookings})
    
+const changeBooking = (booking_status, id) => {
+  const setBookingURL = `http://localhost:8080/api/bookingstatus/${id}` ; //use path and set proxy
+  //runs when page loads
+  axios.post(setBookingURL, booking_status).then((response) => {
+    console.log(response.data.bookings)
+    getBookings();
+  });
+}
+
   return (
     <div className="parent">
       <div className="left-side">
         <UserProfile user={user} babysitter={babysitter} /> 
+        <BabySitterBookings changeBooking={changeBooking} bookings={bookings} babysitter={babysitter} user={user} />
+
       </div>
 
-    {/* <BabySitterBookings  /> */}
+
       <div className="right-side">
       {/* {user ?  <PostProfile posts={posts} user={user}/> : <div></div> } */}
     { user? <PostForm addPost={addPost} /> : <div></div>}
