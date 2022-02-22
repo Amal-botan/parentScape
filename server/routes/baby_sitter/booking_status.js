@@ -26,9 +26,9 @@ module.exports = (db) => {
         //   return res.status(400).send({ status: "error", message: "You can only edit your own post" });
         //  }
 
-        db.query(`UPDATE bookings SET status = $1
+        db.query(`UPDATE bookings SET booking_status = $1
         WHERE babysitter_id = $2
-        RETURNING *;`, [req.body.status, babysitter_id])
+        RETURNING *;`, [req.body.booking_status, babysitter_id])
           .then(data => {
             const bookings = data.rows[0]
             res.status(200).json({

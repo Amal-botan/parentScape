@@ -13,7 +13,8 @@ module.exports = (db) => {
   router.get("/", (req, res) => { //verifyToken
     // const user = req.user
     // console.log(user);
-    db.query(`SELECT * FROM babysitters;`)
+    db.query(`SELECT * FROM babysitters
+    ORDER BY first_name;`)
       .then(data => {
         const babysitter = data.rows;
        res.json({ babysitter });
@@ -47,7 +48,7 @@ module.exports = (db) => {
   router.get("/booking", (req, res) => { //verifyToken
     // const user = req.user
     // console.log(user);
-    db.query(`SELECT users.id as user_id, users.first_name as user_first_name, users.last_name as user_last_name, users.username as user_username,
+    db.query(`SELECT users.id as user_id, users.first_name as user_first_name, users.last_name as user_last_name, users.username as user_username, users.bio as user_bio,
     babysitters.id as babysitter_id,  babysitters.first_name as babysitter_first_name,  babysitters.last_name as  babysitter_last_name,  babysitters.city as babysitter_city,
     babysitters.phone_number as  babysitter_phone_number, * FROM bookings
     LEFT JOIN users ON bookings.user_id = users.id
