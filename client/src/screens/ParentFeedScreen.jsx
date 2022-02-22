@@ -2,8 +2,8 @@ import React from "react";
 import Post from "../components/Post";
 import PostForm from "../components/PostForm";
 import UserProfile from "../components/UserProfile";
-import PostCategory from "../components/PostCategory";
-import DailyQuote from "../components/DailyQuote";
+// import PostCategory from "../components/PostCategory";
+// import DailyQuote from "../components/DailyQuote";
 import "../components/styleParentFeed.css";
 import "../components/Post.css";
 import "../components/PostForm.css";
@@ -131,7 +131,7 @@ const addComment = (comment, post_id) => {
       <div className="left-side">
        {token ? <UserProfile user={user}/> : "WELCOME VISITOR"}
 
-        <PostCategory categoryPicked={categoryPicked} category={category} setCategory={setCategory} categories={categories} />
+        {/* <PostCategory categoryPicked={categoryPicked} category={category} setCategory={setCategory} categories={categories} /> */}
       </div>
 
       <div className="right-side">

@@ -1,43 +1,43 @@
-import "./PostCategory.css"
+// import "./PostCategory.css"
 
-import { useState } from "react";
+// import { useState } from "react";
 
-function PostCategory(props) {
-  const { categories, setCategory, categoryPicked  } = props;
-  console.log("Categories Props: ", categories)
-  // const [buttonClick, setButtonClick] = useState(false)
-  const [pickedCategory, setPickedCategory] = useState({})
+// function PostCategory(props) {
+//   const { categories, setCategory, categoryPicked  } = props;
+//   console.log("Categories Props: ", categories)
+//   // const [buttonClick, setButtonClick] = useState(false)
+//   const [pickedCategory, setPickedCategory] = useState({})
   
-  const handleClick = (picked) => {
-    setPickedCategory(picked)
-    console.log("pickedCategory: ", picked)
-    setCategory(picked)
-    // setPickedCategory(pickedCategory)
-    // categoryPosts()
-  }
+//   const handleClick = (picked) => {
+//     setPickedCategory(picked)
+//     console.log("pickedCategory: ", picked)
+//     setCategory(picked)
+//     // setPickedCategory(pickedCategory)
+//     // categoryPosts()
+//   }
 
 
-  return (
+//   return (
 
-    <div>
+//     <div>
 
-      <label for="category">Choose a category:</label>
-      <select name="category" id="category" value={pickedCategory} onChange={(event) => handleClick(event.target.value)}>
-        {
-          categories.map((category) => {
-            {console.log({category})}
-            return (
+//       <label for="category">Choose a category:</label>
+//       <select name="category" id="category" value={pickedCategory} onChange={(event) => handleClick(event.target.value)}>
+//         {
+//           categories.map((category) => {
+//             {console.log({category})}
+//             return (
               
-          <option value={category}>{category.category}</option>
+//           <option value={category}>{category.category}</option>
 
-            )
-          })
-        }
-      </select>
+//             )
+//           })
+//         }
+//       </select>
 
-    </div>
+//     </div>
 
 
-  )
-}
-export default PostCategory;
+//   )
+// }
+// export default PostCategory;
