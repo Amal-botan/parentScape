@@ -1,10 +1,13 @@
 import React from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import { useState } from "react";
+import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import Grid from '@mui/material/Grid';
 
 const mapStyles = {
   height: "50vh",
-  width: "50%"
+  width: "100%"
 };
 
 const defaultCenter = {
@@ -88,7 +91,7 @@ const Map = (props) => {
 
   return (
 
-
+<Grid padding={14}>
     <LoadScript
       googleMapsApiKey='AIzaSyDutQF2kdYj4SC4efZscY_CamfDi24axB8'>
       <GoogleMap
@@ -125,16 +128,25 @@ const Map = (props) => {
               clickable={true}
               onCloseClick={() => setSelected({})}
             >
+              <Typography variant="h6">
               <div iv style={{height: "15vh", width: "100%"}}>
-                {selected.first_name} {selected.last_name} {selected.bio} {selected.babysitter_image}
+              <Avatar
+        alt="Remy Sharp"
+        src={selected.babysitter_image}
+        sx={{ width: 130, height: 130 }}
+      />
+                {selected.first_name}
+                
               
               </div>
-              
+             </Typography>
             </InfoWindow>
+            
           )
         }
       </GoogleMap>
     </LoadScript>
+    </Grid>
   )
 }
 export default Map;

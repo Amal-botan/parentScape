@@ -1,15 +1,10 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
-import MuiAccordion from '@mui/material/Accordion';
-import MuiAccordionSummary from '@mui/material/AccordionSummary';
-import MuiAccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+
 import Button from '@mui/material/Button';
 import SendIcon from "@mui/icons-material/Send";
-
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import { useState } from 'react';
 
 
@@ -29,12 +24,21 @@ function Availability(props) {
   }
 return (
   <div>
-
+  <Grid container direction="column" alignItems="center" justifyContent="center"
+  padding={10}>
+  <Box
+        margin
+        width={310} height={110} 
+        bgcolor="white"
+        alignItems="center" justifyContent="center"
+        >
+      
+<Typography variant="h5">
 {
-  babysitter? <div> Your status is: {babysitter.status}</div>:
-  <div></div>
+  babysitter && <div> Your status is: {babysitter.status}</div>
+  
 }
-    {babysitter?.status === "verified" ?
+    {babysitter?.status === "verified" &&
       (<Button
         variant="contained"
         size="small"
@@ -43,8 +47,7 @@ return (
         onClick={() => handleSubmit()}
       >
         Availability
-      </Button>) :
-      <div></div>
+      </Button>) 
     }
 
     {babysitter?.status === "verified" ?
@@ -59,10 +62,10 @@ return (
       <div></div>
     }
 
-
-
+</Typography>
+</Box>
+</Grid>
   </div >
-
 );
 }
 export default Availability;
