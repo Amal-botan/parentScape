@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Grid from '@mui/material/Grid';
+
 import BabySitterFinderScreen from "./BabySitterFinderScreen"
 import Availability from "../components/Availability"
 
@@ -77,8 +79,21 @@ const addBooking = (booking) => {
 
 <div>
     <Availability changeAvailability={changeAvailability} babysitterAvailabilty={babysitterAvailabilty} setBabysitterAvailability={setBabysitterAvailability} babysitter={babysitter} />
+    <Grid
+  container
+  spacing={5}
+  direction="row"
+  justifyContent="space-evenly"
+  padding={2}
+  //alignItems="center"
+>
+  <Grid item xs={6}>
     <BabySitterFinderScreen babySitters={babySitters} booking={booking} user={user} addBooking={addBooking} />
+    </Grid>
+    <Grid item xs={6}>
    <Map babySitters={babySitters} locations={locations}/>
+   </Grid>
+   </Grid>
     </div>
    )
   }

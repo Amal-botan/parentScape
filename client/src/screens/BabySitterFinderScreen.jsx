@@ -10,7 +10,10 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import Grid from '@mui/material/Grid';
-
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 const Accordion = styled((props) => (
 
@@ -27,7 +30,7 @@ const Accordion = styled((props) => (
 
 const AccordionSummary = styled((props) => (
   <MuiAccordionSummary
-    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '1 rem' }} />}
     {...props}
   />
 ))(({ theme }) => ({
@@ -45,8 +48,9 @@ const AccordionSummary = styled((props) => (
 }));
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-  padding: theme.spacing(2),
+  padding: theme.spacing(10),
   borderTop: '1px solid rgba(0, 0, 0, .125)',
+  marginCenter: theme.spacing(1),
 }));
 
 export default function BabySitterFinderScreen(props) {
@@ -95,16 +99,21 @@ export default function BabySitterFinderScreen(props) {
 
 
   return (
-    <div> Please choose a city:
+    <div> 
+      <Grid container direction="column" alignItems="center" justifyContent="center"
+  padding={1}>
+      <Typography variant="h5" gutterBottom component="div">Please choose a city:
       <Autocomplete
         disablePortal
         id="combo-box-demo"
         options={cities}
-        sx={{ width: 300 }}
+        sx={{ width: 200 }}
         renderInput={(params) => <TextField {...params} label="Cities" onChange={(event) => {
           setSearchTerm(event.target.value)
         }} />}
       />
+      </Typography>
+      </Grid>
       {
         babySitters.filter((babySitter) => {
           if (babySitter.available === "available" && babySitter.status === "verified") {
@@ -117,15 +126,15 @@ export default function BabySitterFinderScreen(props) {
             }
           }
         }).map((babySitter, index) => {
-
+          
           return (
 
             <Accordion expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
               <AccordionSummary aria-controls={`panel${index}d-content`} id={`panel1d-header`}>
-                <Typography> {babySitter.first_name} {babySitter.last_name}</Typography>
+                <Typography variant="h5" gutterBottom component="div"> {babySitter.first_name} {babySitter.last_name}</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography>
+                <Typography variant="h6" gutterBottom component="div">
 
                   <p>Description:</p>
                   {babySitter.bio}

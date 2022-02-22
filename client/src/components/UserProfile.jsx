@@ -4,6 +4,8 @@ import * as React from "react";
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
 import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
+import Avatar from '@mui/material/Avatar';
 import CardContent from '@mui/material/CardContent';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
@@ -13,13 +15,19 @@ export default function UserProfile(props) {
   return (
     <div>
 
-    <Card sx={{ margin: 15, display: 'flex' }}>
+    <Box sx={{ margin: 15, display: 'flex' }} bgcolor="white"
+        alignItems="center" justifyContent="center">
     <CardActionArea>
-    <CardMedia
-        component="img"
-        sx={{ width: 300 }}
-        alt="Remy Sharp"
-        image={user ? user.user_image : babysitter.babysitter_image}
+    <Avatar
+        alt="image"
+        src={user ? user.user_image : babysitter.babysitter_image}
+        sx={{ width: 400, height: 400 }}
+      
+    //<CardMedia
+        //component="img"
+        //sx={{ width: 300 }}
+        ///alt="Remy Sharp"
+        //image={user ? user.user_image : babysitter.babysitter_image}
         
       />
       <CardContent>
@@ -34,7 +42,7 @@ export default function UserProfile(props) {
         </CardContent>
       </CardActionArea>
       
-    </Card>
+    </Box>
    
     </div>
   );
