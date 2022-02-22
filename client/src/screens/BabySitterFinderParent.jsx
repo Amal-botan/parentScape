@@ -78,7 +78,7 @@ const addBooking = (booking) => {
  return (
 
 <div>
-    <Availability changeAvailability={changeAvailability} babysitterAvailabilty={babysitterAvailabilty} setBabysitterAvailability={setBabysitterAvailability} babysitter={babysitter} />
+    {babysitter ? <Availability changeAvailability={changeAvailability} babysitterAvailabilty={babysitterAvailabilty} setBabysitterAvailability={setBabysitterAvailability} babysitter={babysitter} /> : <div></div>}
     <Grid
   container
   spacing={5}
