@@ -13,6 +13,9 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import Avatar from '@mui/material/Avatar';
+import Fragment from 'react';
+import "../screens/admindashboard.css";
 
 const Accordion = styled((props) => (
 
@@ -76,20 +79,20 @@ const BabySitterStatus = (props) => {
 
   const handleRejection = (id) => {
     console.log("Rejected: ", id)
-    const status = {status: "rejected"}
-    changeStatus(status,id)
+    const status = { status: "rejected" }
+    changeStatus(status, id)
   }
 
   const handleVerify = (id) => {
     console.log("Accepted: ", id)
-    const status = {status: "verified"}
-    changeStatus(status,id)
+    const status = { status: "verified" }
+    changeStatus(status, id)
   }
 
   const handlePending = (id) => {
     console.log("Pending: ", id)
-    const status = {status: "pending"}
-    changeStatus(status,id)
+    const status = { status: "pending" }
+    changeStatus(status, id)
   }
 
   return (
@@ -98,7 +101,7 @@ const BabySitterStatus = (props) => {
         return (
           <Accordion expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
             <AccordionSummary aria-controls={`panel${index}d-content`} id={`panel1d-header`}>
-              <Typography> {babySitter.first_name} {babySitter.last_name}</Typography>
+              <Typography> {babySitter.first_name} {babySitter.last_name}: {babySitter.status}</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -109,19 +112,24 @@ const BabySitterStatus = (props) => {
                   exclusive
                   onChange={handleChangeToggle}
                 >
-                  <ToggleButton value="rejected" onClick={() => handleRejection(babySitter.id)}>Reject</ToggleButton>
+                  <ToggleButton color="secondary" value="rejected" onClick={() => handleRejection(babySitter.id)}>Reject</ToggleButton>
                   <ToggleButton value="verified" onClick={() => handleVerify(babySitter.id)}>Verify</ToggleButton>
                   <ToggleButton value="pending" onClick={() => handlePending(babySitter.id)}>Pending</ToggleButton>
                 </ToggleButtonGroup>
-              
-                <p>Status</p>
-                {babySitter.status}
-                <p>Description:</p>
-                {babySitter.bio}
+                <div className="avatarstatus">
+                      <Avatar
+                      alt="image"
+                      src={babySitter.babysitter_image}
+                      sx={{ width: 200, height: 200 }}       ></Avatar>
 
-                <p>Image:</p>
-                {babySitter.babysitter_image}
-                <p>Years of Experience: </p>
+                      <h3>Status: {babySitter.status}</h3>
+                      
+       
+                </div>
+                <h3>Description:</h3>
+                <p className="paragraphs">{babySitter.bio}</p>
+
+                <h3 className="paragraphs">Years of Experience: </h3>
                 {babySitter.years_of_experience}
               </Typography>
 
