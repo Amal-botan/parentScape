@@ -14,6 +14,8 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import { Navigate } from 'react-router-dom';
+import loginScreen from "../icons/loginScreen.jpeg"
+
 
 function Copyright(props) {
   return (
@@ -71,7 +73,7 @@ export default function BabySittersLogin({Navigation}) {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: "url(https://unsplash.com/photos/Qngdf0kgGB4)", // change this picture
+            backgroundImage: `url(${loginScreen})`, // change this picture
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -91,10 +93,8 @@ export default function BabySittersLogin({Navigation}) {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
+            
+            <Typography component="h1" variant="h5" style={{"color":"black"}}>
               Sign in
               As Babysitter
             </Typography>

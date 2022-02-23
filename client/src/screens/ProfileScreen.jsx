@@ -102,9 +102,9 @@ const ProfileScreen = () => {
     <div className="parentcontainer">
 
       <UserProfile user={user} babysitter={babysitter} />
-      <BabySitterBookings changeBooking={changeBooking} bookings={bookings} babysitter={babysitter} user={user} />
 
         {/* {user ?  <PostProfile posts={posts} user={user}/> : <div></div> } */}
+      <BabySitterBookings changeBooking={changeBooking} bookings={bookings} babysitter={babysitter} user={user} />
         <div>
           {user ? <PostForm addPost={addPost} /> : <div></div>}
 

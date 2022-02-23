@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import { Navigate, useNavigate } from 'react-router-dom';
-import family from "../icons/family.jpg"
+import loginScreen from "../icons/loginScreen.jpeg"
 // const fam = require('../icons/family.png')
 
 function Copyright(props) {
@@ -74,10 +74,8 @@ export default function LoginScreen() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: `URL(${family})`,
-            // backgroundImage: <img src={family} />,
-            // backgroundImage: "url(https://media.istockphoto.com/photos/joyful-afro-parents-and-their-little-daughter-having-fun-at-home-picture-id1191435091?k=20&m=1191435091&s=612x612&w=0&h=OzM30oVWumiFF0Yamc-Flwms1mRJCFsW8BUxOY_OzAA=)", // change this picture
-            // maxHeight:"auto",
+            backgroundImage: `URL(${loginScreen})`,
+
             backgroundRepeat: "no-repeat",
 
             backgroundColor: (t) =>
@@ -98,10 +96,8 @@ export default function LoginScreen() {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
+            
+            <Typography component="h1" variant="h5" style={{"color":"black"}}>
               Sign in
               As Parent
             </Typography>

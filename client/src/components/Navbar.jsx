@@ -73,8 +73,8 @@ const Navbars = () => {
         {/* can see both user and babysitter login and log out if both are logged in need to fix it*/}
         <div className="logginginfo">
           {user || babysitter ?
-          <div >
-            <Fragment className="btn" >
+          <div className="logout">
+            <Fragment  >
                 Signed In As: {user ? user.username : babysitter.first_name} 
               </Fragment>
                     <button className="btn"

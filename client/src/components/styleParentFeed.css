@@ -11,11 +11,11 @@
 }
 
 .parentcontainer{
-  display: flex;
-  flex-direction: row;
+   display: flex; 
+   flex-direction: row; 
   margin: auto;
-  padding-top: 50px;
- 
-  justify-content:  flex-start;
-  gap: 100px;
-}
+  padding-top: 50px; 
+  
+ justify-content:  flex-start; 
+   gap: 100px;
+} 
