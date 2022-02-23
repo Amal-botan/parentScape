@@ -11,10 +11,15 @@
 }
 
 .parentcontainer{
-  display: flex;
-  flex-direction: row;
+   display: flex; 
+   flex-direction: row; 
   margin: auto;
-  padding-top: 50px;
+  padding-top: 50px; 
+  
+ justify-content:  flex-start; 
+   gap: 100px;
+} 
+/*   padding-top: 50px;
   padding:100px;
   justify-content:  flex-start;
   gap: 100px;
@@ -26,3 +31,4 @@
   padding: 10px;
   align-items: center;
 }
+ */

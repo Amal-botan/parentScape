@@ -1,7 +1,7 @@
 .maincontainer{
   display: flex;
   flex-direction: row;
-  background-color: white;
+  background-color: #959E00;
   justify-content: space-around;
   width: 100%;
   /* position: fixed; */
@@ -22,7 +22,7 @@
 }
 .btn:hover{
 color:  white;
-background-color: rgb(226,113,85);
+/* background-color: rgb(226,113,85); */
 border-radius: 20px;
 }
 
@@ -33,4 +33,9 @@ border-radius: 20px;
 .containersign {
   display: flex;
   gap: 20px;
+}
+
+.logout{
+  display:flex;
+  align-items: center;
 }

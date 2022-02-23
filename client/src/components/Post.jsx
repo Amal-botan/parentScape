@@ -1,9 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import Stack from "@mui/material/Stack";
 import SendIcon from "@mui/icons-material/Send";
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import Typography from '@mui/material/Typography';
@@ -93,8 +90,8 @@ export default function Post(props) {
         <div className="tweet-header">
           <img src={post.user_image} alt="" className="avator" />
           <div className="tweet-header-info">
-            {post.username} <span>{post.username}</span>
-            <span>. {post.post_created_at}</span>
+            {post.username} 
+            {/* <span>. {post.post_created_at}</span> */}
             {editDisplay[post.post_id] ? (
               <div>
                 <textarea

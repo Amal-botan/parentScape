@@ -1,5 +1,5 @@
 body {
-  background: rgb(205,240,243);
+  /* background: rgb(255, 255, 255); */
   font-family: "Asap", sans-serif;
   font-family: "Roboto", sans-serif;
 }
@@ -15,7 +15,7 @@ img {
 .tweet-wrap {
      /* max-width: 600px; */
      width: 700px;
-     background: #fff;
+     background: rgb(75, 75, 75);
      margin: 0 auto;
      margin-top: 15px;
      border-radius: 3px;
@@ -24,13 +24,14 @@ img {
      border-top: 1px solid #e6ecf0;
      padding-left: 100px;
      border-radius: 20px; 
+     opacity: 85%;
     
 }
-.tweet-wrap:hover {
+/* .tweet-wrap:hover {
   -webkit-box-shadow: 8px 8px 0px 0px rgb(226,113,85);
   -moz-box-shadow: 8px 8px 0px 0px rgb(226,113,85);
   box-shadow: 8px 8px 0px 0px rgb(226,113,85);
-}
+} */
 
 .tweet-header {
   display: flex;
@@ -64,7 +65,7 @@ img {
   margin-right: 20px;
 }
 .tweet-info-counts div svg {
-  color: #657786;
+  color: white;
   margin-right: 10px;
 }
 @media screen and (max-width: 430px) {
@@ -92,10 +93,10 @@ img {
     margin-right: 10px;
   }
 }
-.btnClass {
+/* .btnClass {
   background-color: #ffffff;
 }
-
+*/
 .btnClass.clicked {
   background-color: red;
-}
+} 
