@@ -27,7 +27,9 @@ import AdminDashboard from "./screens/AdminDashboard";
 
 function App() {
   return (
-    <>
+
+    <div className="pagebackground">
+
       <Navbars />
       <Routes>
         <Route path="/" element={<HomeScreen styles={{ color: "red" }} />} />
@@ -37,10 +39,12 @@ function App() {
         <Route path="/login" element={<LoginScreen />} />
         <Route path='/babysittersignup' element={<BabySitterSignUpScreen />} />
         <Route path='/babysitterfinder' element={<BabySitterFinderParent/>} />
-        <Route path='/babysitterfinderlogin' element={<BabySitterLogin/>} />
         <Route path='/admindashboard' element={<AdminDashboard/>} />
+        <Route path='/babysitterfinderlogin' element={<BabySitterLogin/>} />
       </Routes>
-    </>
+
+    </div >
+  
   );
 }
 

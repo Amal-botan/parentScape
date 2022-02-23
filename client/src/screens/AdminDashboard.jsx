@@ -45,7 +45,7 @@ const AdminDashboard = () => {
 
   return (
 
-    <div>
+    <div className="babyAdmin">
       <BabySitterStatus babySitters={babySitters} changeStatus={changeStatus} />
     </div>
   )

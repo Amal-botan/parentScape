@@ -1,8 +1,9 @@
-import React from "react";
+import { React, Fragment } from "react";
 // import {Container, Nav, Navbar} from "react-bootstrap"
 import { Transition } from "@headlessui/react";
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react";
+import "./Navbar.css"
 
 const Navbars = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,59 +43,60 @@ const Navbars = () => {
 
   return (
     <div>
-      <nav className="bg-pink-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="maincontainer" >
+        {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <img
-                  className="h-8 w-8"
+            <div className="flex items-center">*/}
+        {/* <div className="flex-shrink-0">  */}
+        {/* <img className="image"
                   src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
                   alt="Workflow"
-                />
-              </div>
-              <div className="hidden md:block">
-                <div className="ml-10 flex items-baseline space-x-4">
-                  <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/">Home</Link>
+                /> */}
+        {/* </div> */}
+        {/* <div className="hidden md:block">
+                <div className="ml-10 flex items-baseline space-x-4"> */}
+       <div>
+        <Link className="btn" to="/">Home</Link>
 
-                  {user ? <div><Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/parentfeed"> Parent Feed</Link>
-                    <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/parenthouse"> Parent House</Link>
-                  </div> :
-                    <div>
-                    </div>}
+        {user ? <Fragment ><Link className="btn" to="/parentfeed"> Parent Feed</Link>
+          <Link className="btn" to="/parenthouse"> Parent House</Link>
+        </Fragment> :
+          <Fragment>
+          </Fragment>}
 
-                  <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/profile"> Profile</Link>
+        <Link className="btn" to="/profile"> Profile</Link>
 
-                  <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/babysitterfinder"> Babysitter Finder</Link>
+        <Link className="btn" to="/babysitterfinder"> Babysitter Finder</Link>
 
-                  {user?.email === "admin@gmail.com" ? <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/admindashboard"> Admin Dashboard</Link> : null}
-
-                  {/* can see both user and babysitter login and log out if both are logged in need to fix it*/}
-                  {user || babysitter ?
-
-                    <button className="text-pink-300 hover:bg-pink-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+        {user?.email === "admin@gmail.com" ? <Link className="btn" to="/admindashboard"> Admin Dashboard</Link> : <Fragment></Fragment>}
+        </div>
+        {/* can see both user and babysitter login and log out if both are logged in need to fix it*/}
+        <div className="logginginfo">
+          {user || babysitter ?
+          <div >
+            <Fragment className="btn" >
+                Signed In As: {user ? user.username : babysitter.first_name} 
+              </Fragment>
+                    <button className="btn"
                       onClick={() => handleLoggout()}
-                    >   Signed In as: {user ? user.username : babysitter.first_name}  Logout
+                    >   Logout
                     </button>
-                    :
-                    // null
-                    <div>
-                      <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/login"> Login as Parent/Guardian</Link>
-                      <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/babysitterfinderlogin"> Login as Babysitter</Link>
-                      <Link className=" hover:bg-pink-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/babysittersignup">Sign up as a Babysitter</Link>
-
-
-                    </div>
-                  }
-
-
-
-
-
-
-                </div>
               </div>
-            </div>
+            :
+            // null
+            <Fragment>
+              <Link className="btn" to="/login"> Login as Parent/Guardian</Link>
+              <Link className="btn" to="/babysitterfinderlogin"> Login as Babysitter</Link>
+              <Link className="btn" to="/babysittersignup">Sign up as a Babysitter</Link>
+
+
+            </Fragment>
+          }
+        </div>
+
+        {/* </div>
+              </div> */}
+        {/* </div>
             <div className="-mr-2 flex md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -138,10 +140,10 @@ const Navbars = () => {
                   </svg>
                 )}
               </button>
-            </div>
-          </div>
-        </div>
-
+                </div>*/}
+        {/* </div>  */}
+        {/* </div> */}
+        {/* 
         <Transition
           show={isOpen}
           enter="transition ease-out duration-100 transform"
@@ -199,7 +201,7 @@ const Navbars = () => {
               </div>
             </div>
           )}
-        </Transition>
+        </Transition> */}
       </nav>
 
 
