@@ -24,7 +24,7 @@ export default function UserProfile(props) {
           {user?.username}
           {babysitter?.username}
           </Typography>
-          <Typography className="text-align: center" variant="body4" color="text.secondary">
+          <Typography  variant="body4" color="text.secondary">
           {user?.bio}
           {babysitter?.bio}
           </Typography>

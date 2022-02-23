@@ -1,3 +1,30 @@
 .babyAdmin{
+  margin-top: 10px;
+}
+.avatarstatus{
+  display: flex;
+  justify-content: row;
+  justify-content: space-between;
+}
+
+.paragraphs {
+  font-size: 20px;
+}
+
+.boardertitle{
+  background-color: rgb(226,113,85);
+  padding: 10px;
+}
+
+.boximage{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px
+}
+
+.boxbooking{
+  padding:10px;
   margin-top: 100px;
+  column-gap: 20px;
 }

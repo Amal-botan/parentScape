@@ -13,6 +13,9 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import Avatar from '@mui/material/Avatar';
+import "../screens/admindashboard.css";
+
 
 const Accordion = styled((props) => (
 
@@ -54,6 +57,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 const BabySitterBookings = (props) => {
   const { bookings, babysitter, user, changeBooking } = props;
+  const [bookingStatus, setBookingStatus] = useState("");
 
   const [expanded, setExpanded] = React.useState('panel1');
   const [searchTerm, setSearchTerm] = useState("");
@@ -77,18 +81,21 @@ const BabySitterBookings = (props) => {
   const handleRejection = (id) => {
     console.log("Decline: ", id)
     const booking_status = {booking_status: "declined"}
+    setBookingStatus("declined")
     changeBooking(booking_status,id)
   }
 
   const handleVerify = (id) => {
     console.log("Accepted: ", id)
     const booking_status = {booking_status: "accepted"}
+    setBookingStatus("accepted")
     changeBooking(booking_status,id)
   }
 
   const handlePending = (id) => {
     console.log("Pending: ", id)
     const booking_status = {booking_status: "pending"}
+    setBookingStatus("pending")
     changeBooking(booking_status,id)
   }
 
@@ -118,19 +125,27 @@ const BabySitterBookings = (props) => {
                   <ToggleButton value="accept" onClick={() => handleVerify(booking.id)}>Accept</ToggleButton>
                   <ToggleButton value="pending" onClick={() => handlePending(booking.id)}>Pending</ToggleButton> </div> : <div></div>}
                 </ToggleButtonGroup>
+                <div className="avatarstatus">
+                  <Avatar
+                      alt="image"
+                      src= {user? booking.babysitter_image : booking.user_image}
+                      sx={{ width: 200, height: 200 }}       ></Avatar>
 
-                <p>Status</p>
-                {booking.booking_status}
-                <p>Description:</p>
-                {user? <div> {booking.bio} </div> : <div> {booking.user_bio} </div>}
-                <p>Image:</p>
-               {user? <div>{booking.user_bio}</div>: <div> {booking.user_image} </div> }
-               <p>Booking info</p>
+                <h3>Booking Status: {booking.booking_status}</h3>
+                </div>
+
+                <h3>Description:</h3>
+                {user? <div className="paragraphs"> {booking.bio} </div> : <div className="paragraphs"> {booking.user_bio} </div>}
+               
+               <h3>Booking info</h3>
+
                <div> 
-                 <p>{booking.booking_date}</p>
-                 <p>{booking.booking_time_start}</p>
-                 <p>{booking.booking_time_end}</p>
+                 <p className="paragraphs">Date: {booking.booking_date}</p>
+                 <p className="paragraphs">Start Time: {booking.booking_time_start}</p>
+                 <p className="paragraphs">End Time: {booking.booking_time_end}</p>
                </div>
+
+                {bookingStatus === "accepted" ? <p> Babysitter Phone Number: {booking.phone_number}</p> : <div></div>}
 
               </Typography>
 
