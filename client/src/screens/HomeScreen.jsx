@@ -1,9 +1,20 @@
-import React from "react";
-import companyMotto from "../home.png"
-export default function HomeScreen() {
+import { init } from "../utils/initToyLayer.js"
+import { useEffect } from "react"
+
+function HomeScreen() {
+  useEffect(() => {
+    init()
+  }, [])
+
   return (
-    <div>
-      <img src={companyMotto} alt="motto pic"/>
-    </div>
+    <div className="home">
+      
+ <div className="toys">
+        <h1 className="title">Welcome to</h1>
+        <p className="text">Parentscape</p>
+
+        </div>
+        </div>
   );
 }
+export default HomeScreen;
