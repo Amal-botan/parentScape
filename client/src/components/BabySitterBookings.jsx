@@ -108,7 +108,7 @@ const BabySitterBookings = (props) => {
       }
       ).map((booking, index) => {
         return (
-          <Accordion expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
+          <Accordion style={{"margin-right": "20px"}} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
             <AccordionSummary aria-controls={`panel${index}d-content`} id={`panel1d-header`}>
               <Typography> {user? <div> {booking.babysitter_first_name} {booking.babysitter_last_name} </div> :  <div> {booking.user_first_name} {booking.user_last_name} </div>}</Typography>
             </AccordionSummary>

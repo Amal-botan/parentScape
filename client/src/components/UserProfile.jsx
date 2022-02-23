@@ -27,41 +27,12 @@ export default function UserProfile(props) {
 
           <Typography className="text-align: center" variant="body4" >
 
-//           <Typography  variant="body4" color="text.secondary">
+           {/* <Typography  variant="body4" color="text.secondary"> */}
 
           {user?.bio}
           {babysitter?.bio}
           </Typography>
 
-    {/* <Box sx={{ margin: 15, display: 'flex' }} bgcolor="white"
-        alignItems="center" justifyContent="center">
-    <CardActionArea>
-    <Avatar
-        alt="image"
-        src={user ? user.user_image : babysitter.babysitter_image}
-        sx={{ width: 400, height: 400 }}
-      
-    //<CardMedia
-        //component="img"
-        //sx={{ width: 300 }}
-        ///alt="Remy Sharp"
-        //image={user ? user.user_image : babysitter.babysitter_image}
-        
-      />
-      <CardContent>
-          <Typography gutterBottom variant="h3" component="div">
-          {user?.username}
-          {babysitter?.username}
-          </Typography>
-          <Typography variant="body4" color="text.secondary">
-          {user?.bio}
-          {babysitter?.bio}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      
-    </Box> */}
-   
     </div>
   );
 }

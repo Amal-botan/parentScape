@@ -12,8 +12,10 @@
 }
 
 .boardertitle{
-  background-color: rgb(226,113,85);
+  background-color: white;
   padding: 10px;
+  color: black;
+
 }
 
 .boximage{

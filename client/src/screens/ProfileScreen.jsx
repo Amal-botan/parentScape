@@ -101,21 +101,19 @@ const ProfileScreen = () => {
   return (
     <div className="parentcontainer">
       <div className="boximage">
-      <UserProfile user={user} babysitter={babysitter} />
-
-//       <div>
-//       <BabySitterBookings changeBooking={changeBooking} bookings={bookings} babysitter={babysitter} user={user} />
-//       </div>
-//       </div>
-
-        {/* {user ?  <PostProfile posts={posts} user={user}/> : <div></div> } */}
-      <BabySitterBookings changeBooking={changeBooking} bookings={bookings} babysitter={babysitter} user={user} />
-        <div>
-          {user ? <PostForm addPost={addPost} /> : <div></div>}
-          {user ? <PostProfile posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} user={user} /> : <div></div>}
+        <UserProfile user={user} babysitter={babysitter} />
+        <div style={{"margin-right": "20px"}} className="boxbooking">
+          <BabySitterBookings changeBooking={changeBooking} bookings={bookings} babysitter={babysitter} user={user} />
         </div>
       </div>
-      );
+
+      {/* {user ?  <PostProfile posts={posts} user={user}/> : <div></div> } */}
+      <div >
+        {user ? <PostForm addPost={addPost} /> : <div></div>}
+        {user ? <PostProfile posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} user={user} /> : <div></div>}
+      </div>
+    </div>
+  );
 };
 
-      export default ProfileScreen;
+export default ProfileScreen;
