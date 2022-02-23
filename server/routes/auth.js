@@ -16,7 +16,7 @@ module.exports = (db) => {
   //add cookie session for the user_id to attach to logged in user
   router.post("/register", (req, res) => {
     console.log(req.body)
-    const { first_name, last_name, email, username, password } = req.body;
+    const { first_name, last_name, email, username, password, bio, user_image } = req.body;
     if (!email || !first_name || !last_name || !username || !password) {
       return res.status(400).send({ status: "error", message: "first name, last name, email, password are all required" });
      }
@@ -42,9 +42,9 @@ module.exports = (db) => {
           return res.status(400).send({ status: "error", message: "Email already exists" });
         }
 //hash password
-        db.query(`INSERT INTO users (first_name, last_name, email, username, password)
-        VALUES ($1, $2, $3, $4, $5)
-        RETURNING *;`, [first_name, last_name, email, username, password])
+        db.query(`INSERT INTO users (first_name, last_name, email, username, password, bio, user_image)
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
+        RETURNING *;`, [first_name, last_name, email, username, password, bio, user_image])
           .then(result => {
             const user = result.rows[0];
             delete user.password

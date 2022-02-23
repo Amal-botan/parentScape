@@ -26,7 +26,7 @@ const ProfileScreen = () => {
 
 
   useEffect(() => {
-    const postsUrl = "http://localhost:8080/api/posts" ; //use path and set proxy
+    const postsUrl = "http://localhost:8080/api/posts"; //use path and set proxy
     //runs when page loads
     axios.get(postsUrl).then((response) => {
       setPosts(response.data.posts);
@@ -37,16 +37,16 @@ const ProfileScreen = () => {
 
   useEffect(() => {
     const loggedinuser = JSON.parse(localStorage.getItem('user'))
-   {loggedinuser ? setUser(loggedinuser) : setUser(null)}
-   {loggedinuser ? setToken(loggedinuser.token)  : setToken(null)}
+    { loggedinuser ? setUser(loggedinuser) : setUser(null) }
+    { loggedinuser ? setToken(loggedinuser.token) : setToken(null) }
 
-   const loggedinBabysitter = JSON.parse(localStorage.getItem('babysitter'))
- {loggedinBabysitter ? setBabysitter(loggedinBabysitter) : setBabysitter(null)}
- {loggedinBabysitter ? setToken(loggedinBabysitter.token)  : setToken(null)}
+    const loggedinBabysitter = JSON.parse(localStorage.getItem('babysitter'))
+    { loggedinBabysitter ? setBabysitter(loggedinBabysitter) : setBabysitter(null) }
+    { loggedinBabysitter ? setToken(loggedinBabysitter.token) : setToken(null) }
 
   }, []);
 
-  const config = { headers: { Authorization: `Bearer ${token}`, }, }      
+  const config = { headers: { Authorization: `Bearer ${token}`, }, }
 
   const addPost = (post) => {
 
@@ -75,47 +75,44 @@ const ProfileScreen = () => {
   };
 
   const getBookings = () => {
-    const bookingURL = "http://localhost:8080/api/babysitter/booking" ; //use path and set proxy
+    const bookingURL = "http://localhost:8080/api/babysitter/booking"; //use path and set proxy
     //runs when page loads
     axios.get(bookingURL).then((response) => {
       setBookings(response.data.bookings);
     });
   }
 
- 
+
   useEffect(() => {
     getBookings();
   }, []);
 
-  console.log("Bookings: ", {bookings})
-   
-const changeBooking = (booking_status, id) => {
-  const setBookingURL = `http://localhost:8080/api/bookingstatus/${id}` ; //use path and set proxy
-  //runs when page loads
-  axios.post(setBookingURL, booking_status).then((response) => {
-    console.log(response.data.bookings)
-    getBookings();
-  });
-}
+  console.log("Bookings: ", { bookings })
+
+  const changeBooking = (booking_status, id) => {
+    const setBookingURL = `http://localhost:8080/api/bookingstatus/${id}`; //use path and set proxy
+    //runs when page loads
+    axios.post(setBookingURL, booking_status).then((response) => {
+      console.log(response.data.bookings)
+      getBookings();
+    });
+  }
 
   return (
-    <div className="parent">
-      <div className="left-side">
-        <UserProfile user={user} babysitter={babysitter} /> 
-        <BabySitterBookings changeBooking={changeBooking} bookings={bookings} babysitter={babysitter} user={user} />
+    <div className="parentcontainer">
+
+      <UserProfile user={user} babysitter={babysitter} />
+      <BabySitterBookings changeBooking={changeBooking} bookings={bookings} babysitter={babysitter} user={user} />
+
+        {/* {user ?  <PostProfile posts={posts} user={user}/> : <div></div> } */}
+        <div>
+          {user ? <PostForm addPost={addPost} /> : <div></div>}
+
+          {user ? <PostProfile posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} user={user} /> : <div></div>}
+        </div>
 
       </div>
-
-
-      <div className="right-side">
-      {/* {user ?  <PostProfile posts={posts} user={user}/> : <div></div> } */}
-    { user? <PostForm addPost={addPost} /> : <div></div>}
-
-      {user ? <PostProfile posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} user={user} /> : <div></div>}
-      
-      </div>
-    </div>
-  );
+      );
 };
 
-export default ProfileScreen;
+      export default ProfileScreen;

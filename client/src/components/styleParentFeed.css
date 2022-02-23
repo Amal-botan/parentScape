@@ -9,3 +9,13 @@
   top: 50px;
   margin-top: 70px;
 }
+
+.parentcontainer{
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  padding-top: 50px;
+ 
+  justify-content:  flex-start;
+  gap: 100px;
+}

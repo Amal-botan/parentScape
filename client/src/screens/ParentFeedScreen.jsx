@@ -23,34 +23,34 @@ const ParentFeedScreen = () => {
   const [comments_text, setCommentsText] = useState("");
 
   const getPosts = () => {
-  const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
-  //runs when page loads
-  axios.get(postsUrl)
-    .then((response) => {
-      setPosts(response.data.posts)
-    })
-}
+    const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
+    //runs when page loads
+    axios.get(postsUrl)
+      .then((response) => {
+        setPosts(response.data.posts)
+      })
+  }
 
-const addComment = (comment, post_id) => {
+  const addComment = (comment, post_id) => {
 
-  axios.post(`http://localhost:8080/api/newcomment/${post_id}`, comment, config)
-    .then((res) => {
-      console.log("Add comment data: ", res.data.comment)
-      //  setComments((prev) => ([...prev, res.data.comment]))
-      getPosts();
+    axios.post(`http://localhost:8080/api/newcomment/${post_id}`, comment, config)
+      .then((res) => {
+        console.log("Add comment data: ", res.data.comment)
+        //  setComments((prev) => ([...prev, res.data.comment]))
+        getPosts();
 
-    })
+      })
   }
 
 
   useEffect(() => {
     const postsUrl = "http://localhost:8080/api/posts" //use path and set proxy
-  //runs when page loads
-  axios.get(postsUrl)
-    .then((response) => {
-      setPosts(response.data.posts)
-    })
-    
+    //runs when page loads
+    axios.get(postsUrl)
+      .then((response) => {
+        setPosts(response.data.posts)
+      })
+
   }, [])
 
   useEffect(() => {
@@ -66,12 +66,12 @@ const addComment = (comment, post_id) => {
 
   useEffect(() => {
     const loggedinuser = JSON.parse(localStorage.getItem('user'))
-   {loggedinuser ? setUser(loggedinuser)  : setUser(null)}
-   {loggedinuser ? setToken(loggedinuser.token)  : setToken(null)}
-   
+    { loggedinuser ? setUser(loggedinuser) : setUser(null) }
+    { loggedinuser ? setToken(loggedinuser.token) : setToken(null) }
+
   }, []);
 
-   const config = { headers: { Authorization: `Bearer ${token}`, }, }      
+  const config = { headers: { Authorization: `Bearer ${token}`, }, }
   // const res = await axios.post(`https://loobv.com/api/traveller/add/favorite/car`, { car_id: carId }, config)
 
 
@@ -126,18 +126,21 @@ const addComment = (comment, post_id) => {
 
   return (
 
-    <div className="parent">
-
-      <div className="left-side">
-       {token ? <UserProfile user={user}/> : "WELCOME VISITOR"}
-
-        {/* <PostCategory categoryPicked={categoryPicked} category={category} setCategory={setCategory} categories={categories} /> */}
+    <div className="parentcontainer">
+      {/* className="parent" */}
+      {/* <div className="left-side"> */}
+      <div>
+        {token ? <UserProfile user={user} /> : "WELCOME VISITOR"}
       </div>
+      {/* <PostCategory categoryPicked={categoryPicked} category={category} setCategory={setCategory} categories={categories} /> */}
+      {/* </div> */}
 
-      <div className="right-side">
+      {/* <div className="right-side"> */}
+      <div >
         <PostForm addPost={addPost} />
-        <Post addComment={addComment} setComments={setComments} posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} user={user} category={category} comments_text={comments_text} setCommentsText={setCommentsText} comments={comments}/>
+        <Post addComment={addComment} setComments={setComments} posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} user={user} category={category} comments_text={comments_text} setCommentsText={setCommentsText} comments={comments} />
       </div>
+      {/* </div> */}
 
 
     </div>

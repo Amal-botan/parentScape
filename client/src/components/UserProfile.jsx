@@ -13,9 +13,23 @@ export default function UserProfile(props) {
   const { user, babysitter } = props;
 
   return (
-    <div>
+    <div className="usercontainer">
 
-    <Box sx={{ margin: 15, display: 'flex' }} bgcolor="white"
+      <Avatar
+        alt="image"
+        src={user ? user.user_image : babysitter.babysitter_image}
+        sx={{ width: 200, height: 200 }}       ></Avatar>
+       
+       <Typography  gutterBottom variant="h6" component="div">
+          {user?.username}
+          {babysitter?.username}
+          </Typography>
+          <Typography className="text-align: center" variant="body4" color="text.secondary">
+          {user?.bio}
+          {babysitter?.bio}
+          </Typography>
+
+    {/* <Box sx={{ margin: 15, display: 'flex' }} bgcolor="white"
         alignItems="center" justifyContent="center">
     <CardActionArea>
     <Avatar
@@ -42,7 +56,7 @@ export default function UserProfile(props) {
         </CardContent>
       </CardActionArea>
       
-    </Box>
+    </Box> */}
    
     </div>
   );

@@ -13,20 +13,29 @@ img {
 }
 
 .tweet-wrap {
-  max-width: 600px;
-  background: #fff;
-  margin: 0 auto;
-  margin-top: 50px;
-  border-radius: 3px;
-  padding: 30px;
-  border-bottom: 1px solid #e6ecf0;
-  border-top: 1px solid #e6ecf0;
+     /* max-width: 600px; */
+     width: 700px;
+     background: #fff;
+     margin: 0 auto;
+     margin-top: 15px;
+     border-radius: 3px;
+     padding: 30px;
+     border-bottom: 1px solid #e6ecf0;
+     border-top: 1px solid #e6ecf0;
+     padding-left: 100px;
+     border-radius: 20px; 
+    
+}
+.tweet-wrap:hover {
+  -webkit-box-shadow: 8px 8px 0px 0px rgb(226,113,85);
+  -moz-box-shadow: 8px 8px 0px 0px rgb(226,113,85);
+  box-shadow: 8px 8px 0px 0px rgb(226,113,85);
 }
 
 .tweet-header {
   display: flex;
   align-items: flex-start;
-  font-size: 14px;
+  font-size: 20px;
 }
 .tweet-header-info {
   font-weight: bold;
