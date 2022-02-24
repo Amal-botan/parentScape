@@ -35,7 +35,7 @@ return (
       
 <Typography variant="h4">
 {
-  babysitter && <div> Your status is: {babysitter.status}</div>
+  babysitter && <div style={{"color": "black"}}> Your status is: {babysitter.status}</div>
   
 }
     {babysitter?.status === "verified" &&
@@ -53,9 +53,9 @@ return (
     {babysitter?.status === "verified" ?
 
       (availabilityButton ?
-        <div>
+        <div style={{"color": "black"}}>
           You're available {babysitter?.first_name}
-        </div> : <div>
+        </div> : <div style={{"color": "black"}}>
           You're unavailable {babysitter?.first_name}
         </div>)
       :
