@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import { useState } from 'react';
 import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -20,7 +21,7 @@ const Accordion = styled((props) => (
 
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
-  border: `1px solid ${theme.palette.divider}`,
+  border: `5px solid ${theme.palette.divider}`,
   '&:not(:last-child)': {
     borderBottom: 0,
   },
@@ -101,9 +102,8 @@ export default function BabySitterFinderScreen(props) {
 
   return (
     <div> 
-      <Grid container direction="column" alignItems="center" justifyContent="center"
-  padding={1}>
-      <Typography variant="h5" gutterBottom component="div">Please choose a city:
+      <Grid container direction="column" alignItems="center" justifyContent="center">
+      <Typography variant="h4" gutterBottom component="div">Please choose a city:
       <Autocomplete
         disablePortal
         id="combo-box-demo"
@@ -136,8 +136,8 @@ export default function BabySitterFinderScreen(props) {
               </AccordionSummary>
               <AccordionDetails>
      <Typography variant="h5" gutterBottom component="div">
-     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                <Grid item xs={4}>
+     <Grid container rowSpacing={1} columnSpacing={{ xs: 1}}>
+                <Grid item xs={6}>
                 <Avatar
                   alt="image"
                   src={babySitter.babysitter_image}
@@ -145,11 +145,11 @@ export default function BabySitterFinderScreen(props) {
                 />
                 </Grid>
 
-                <Grid item xs={4}>           
+                <Grid item xs={6}>           
                   {babySitter.bio}
                 
-                  <p>Years of Experience: </p>
-                  {babySitter.years_of_experience}
+                  <p>With {babySitter.years_of_experience} years of experience</p>
+                  
                   </Grid>
                   </Grid>
                 </Typography>
@@ -160,13 +160,13 @@ export default function BabySitterFinderScreen(props) {
                   </Button> : <div></div>}
                 {requestButton ? <div>
 
-                  <Grid item xs={12}>
-                    "booking_date":"2022-02-25"
+                  <Grid item xs={12} padding={2}>
+                    Booking Date
                     <TextField
                       required
                       fullWidth
                       name="Bio"
-                      label="Short Description"
+                      label="Format ie. 2022-02-25"
                       type="Bio"
                       id="Bio"
                       autoComplete="Bio"
@@ -175,13 +175,13 @@ export default function BabySitterFinderScreen(props) {
 
                     />
                   </Grid>
-                  <Grid item xs={12}>
-                    "booking_time_start":"13:00:00
+                  <Grid item xs={12} padding={2}>
+                    Booking Time Start
                     <TextField
                       required
                       fullWidth
                       name="Bio"
-                      label="Short Description"
+                      label="Format ie.13:00:00"
                       type="Bio"
                       id="Bio"
                       autoComplete="Bio"
@@ -189,13 +189,13 @@ export default function BabySitterFinderScreen(props) {
                       onChange={(event) => setBookingTimeStart(event.target.value)}
                     />
                   </Grid>
-                  <Grid item xs={12}>
-                    "booking_time_end": "19:00:00"
+                  <Grid item xs={12} padding={2}>
+                    Booking Time End
                     <TextField
                       required
                       fullWidth
                       name="Bio"
-                      label="Short Description"
+                      label="Format ie. 19:00:00"
                       type="Bio"
                       id="Bio"
                       autoComplete="Bio"

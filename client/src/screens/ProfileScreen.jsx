@@ -4,6 +4,7 @@ import PostForm from "../components/PostForm";
 import UserProfile from "../components/UserProfile";
 import ProfileChildren from "../components/ProfileChildren";
 import BabySitterBookings from "../components/BabySitterBookings"
+import Grid from '@mui/material/Grid';
 
 import "../components/ProfileChildren.css";
 import "../components/styleParentFeed.css";
@@ -103,13 +104,15 @@ const ProfileScreen = () => {
       <div className="boximage">
       <UserProfile user={user} babysitter={babysitter} />
 
-//       <div>
-//       <BabySitterBookings changeBooking={changeBooking} bookings={bookings} babysitter={babysitter} user={user} />
-//       </div>
-//       </div>
+<div>
+<Grid container direction="column" alignItems="center" justifyContent="center" padding={10}>
+<BabySitterBookings changeBooking={changeBooking} bookings={bookings} babysitter={babysitter} user={user} />
+</Grid>
+</div>
+</div>
 
         {/* {user ?  <PostProfile posts={posts} user={user}/> : <div></div> } */}
-      <BabySitterBookings changeBooking={changeBooking} bookings={bookings} babysitter={babysitter} user={user} />
+     
         <div>
           {user ? <PostForm addPost={addPost} /> : <div></div>}
           {user ? <PostProfile posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} user={user} /> : <div></div>}

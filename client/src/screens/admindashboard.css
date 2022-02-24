@@ -1,6 +1,7 @@
 .babyAdmin{
   margin-top: 10px;
 }
+
 .avatarstatus{
   display: flex;
   justify-content: row;
@@ -12,7 +13,7 @@
 }
 
 .boardertitle{
-  background-color: rgb(226,113,85);
+  background-color: rgb(75,75,75);
   padding: 10px;
 }
 

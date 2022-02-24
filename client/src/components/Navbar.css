@@ -17,7 +17,7 @@
   justify-content: space-between;
 }
 .btn {
-  color: grey;
+  color: white;
   font-size: 20px;
 }
 .btn:hover{
@@ -38,4 +38,5 @@ border-radius: 20px;
 .logout{
   display:flex;
   align-items: center;
+  font-size: x-large
 }

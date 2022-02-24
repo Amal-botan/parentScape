@@ -79,19 +79,19 @@ const BabySitterStatus = (props) => {
 
   const handleRejection = (id) => {
     console.log("Rejected: ", id)
-    const status = { status: "rejected" }
+    const status = { status: "Rejected" }
     changeStatus(status, id)
   }
 
   const handleVerify = (id) => {
     console.log("Accepted: ", id)
-    const status = { status: "verified" }
+    const status = { status: "Verified" }
     changeStatus(status, id)
   }
 
   const handlePending = (id) => {
     console.log("Pending: ", id)
-    const status = { status: "pending" }
+    const status = { status: "Pending" }
     changeStatus(status, id)
   }
 
