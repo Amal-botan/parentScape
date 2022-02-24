@@ -128,7 +128,7 @@ const Map = (props) => {
               clickable={true}
               onCloseClick={() => setSelected({})}
             >
-              <Typography variant="h6">
+              <Typography variant="h6" style={{"color": "black"}}>
               <div iv style={{height: "15vh", width: "100%"}}>
               <Avatar
         alt="Remy Sharp"

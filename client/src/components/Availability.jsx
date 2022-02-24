@@ -29,11 +29,11 @@ return (
   <Box
         margin
         width={310} height={110} 
-        bgcolor="white"
-        alignItems="center" justifyContent="center"
+        bgcolor="transparent"
+        alignItems="center" justifyContent="center" textAlign="center"
         >
       
-<Typography variant="h5">
+<Typography variant="h4">
 {
   babysitter && <div style={{"color": "black"}}> Your status is: {babysitter.status}</div>
   

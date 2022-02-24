@@ -21,7 +21,7 @@ const Accordion = styled((props) => (
 
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
-  border: `1px solid ${theme.palette.divider}`,
+  border: `5px solid ${theme.palette.divider}`,
   '&:not(:last-child)': {
     borderBottom: 0,
   },
@@ -80,21 +80,21 @@ const BabySitterBookings = (props) => {
 
   const handleRejection = (id) => {
     console.log("Decline: ", id)
-    const booking_status = {booking_status: "declined"}
+    const booking_status = {booking_status: "Declined"}
     setBookingStatus("declined")
     changeBooking(booking_status,id)
   }
 
   const handleVerify = (id) => {
     console.log("Accepted: ", id)
-    const booking_status = {booking_status: "accepted"}
+    const booking_status = {booking_status: "Accepted"}
     setBookingStatus("accepted")
     changeBooking(booking_status,id)
   }
 
   const handlePending = (id) => {
     console.log("Pending: ", id)
-    const booking_status = {booking_status: "pending"}
+    const booking_status = {booking_status: "Pending"}
     setBookingStatus("pending")
     changeBooking(booking_status,id)
   }
@@ -110,9 +110,14 @@ const BabySitterBookings = (props) => {
         return (
           <Accordion style={{"margin-right": "20px"}} expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
             <AccordionSummary aria-controls={`panel${index}d-content`} id={`panel1d-header`}>
-              <Typography> {user? <div> {booking.babysitter_first_name} {booking.babysitter_last_name} </div> :  <div> {booking.user_first_name} {booking.user_last_name} </div>}</Typography>
+            <Typography variant="h5" gutterBottom component="div"> {user? <div> {booking.babysitter_first_name} {booking.babysitter_last_name} </div> :  <div> {booking.user_first_name} {booking.user_last_name} </div>}</Typography>
             </AccordionSummary>
             <AccordionDetails>
+              <Grid container
+                direction="column"
+        width={310} height={700} 
+        bgcolor="transparent"
+        alignItems="center" justifyContent="space-evenly" textAlign="center">
               <Typography>
 
                 <ToggleButtonGroup
@@ -121,23 +126,26 @@ const BabySitterBookings = (props) => {
                   exclusive
                   onChange={handleChangeToggle}
                 >
-                 {babysitter? <div> <ToggleButton value="decline" onClick={() => handleRejection(booking.id)}>Decline</ToggleButton>
+                 {babysitter? <div> <ToggleButton 
+                 value="decline" onClick={() => handleRejection(booking.id)}>Decline</ToggleButton>
                   <ToggleButton value="accept" onClick={() => handleVerify(booking.id)}>Accept</ToggleButton>
                   <ToggleButton value="pending" onClick={() => handlePending(booking.id)}>Pending</ToggleButton> </div> : <div></div>}
                 </ToggleButtonGroup>
-                <div className="avatarstatus">
+             
+                <h4>Booking Status:  {booking.booking_status}</h4>
                   <Avatar
                       alt="image"
                       src= {user? booking.babysitter_image : booking.user_image}
                       sx={{ width: 200, height: 200 }}       ></Avatar>
 
-                <h3>Booking Status: {booking.booking_status}</h3>
-                </div>
-
-                <h3>Description:</h3>
+                
+                
+                
+                
+                <h3>Parent Bio:</h3>
                 {user? <div className="paragraphs"> {booking.bio} </div> : <div className="paragraphs"> {booking.user_bio} </div>}
                
-               <h3>Booking info</h3>
+               <h3>Booking Details:</h3>
 
                <div> 
                  <p className="paragraphs">Date: {booking.booking_date}</p>
@@ -148,7 +156,7 @@ const BabySitterBookings = (props) => {
                 {bookingStatus === "accepted" ? <p> Babysitter Phone Number: {booking.phone_number}</p> : <div></div>}
 
               </Typography>
-
+              </Grid>
             </AccordionDetails>
 
 

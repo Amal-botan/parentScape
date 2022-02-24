@@ -84,7 +84,7 @@ const addBooking = (booking) => {
   spacing={5}
   direction="row"
   justifyContent="space-evenly"
-  padding={2}
+  padding={15}
   //alignItems="center"
 >
   <Grid item xs={6}>

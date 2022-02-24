@@ -4,6 +4,7 @@ import PostForm from "../components/PostForm";
 import UserProfile from "../components/UserProfile";
 import ProfileChildren from "../components/ProfileChildren";
 import BabySitterBookings from "../components/BabySitterBookings"
+import Grid from '@mui/material/Grid';
 
 import "../components/ProfileChildren.css";
 import "../components/styleParentFeed.css";
@@ -101,19 +102,23 @@ const ProfileScreen = () => {
   return (
     <div className="parentcontainer">
       <div className="boximage">
-        <UserProfile user={user} babysitter={babysitter} />
-        <div style={{"margin-right": "20px"}} className="boxbooking">
-          <BabySitterBookings changeBooking={changeBooking} bookings={bookings} babysitter={babysitter} user={user} />
+      <UserProfile user={user} babysitter={babysitter} />
+
+<div>
+<Grid container direction="column" alignItems="center" justifyContent="center" padding={10}>
+<BabySitterBookings changeBooking={changeBooking} bookings={bookings} babysitter={babysitter} user={user} />
+</Grid>
+</div>
+</div>
+
+        {/* {user ?  <PostProfile posts={posts} user={user}/> : <div></div> } */}
+     
+        <div>
+          {user ? <PostForm addPost={addPost} /> : <div></div>}
+          {user ? <PostProfile posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} user={user} /> : <div></div>}
         </div>
       </div>
-
-      {/* {user ?  <PostProfile posts={posts} user={user}/> : <div></div> } */}
-      <div >
-        {user ? <PostForm addPost={addPost} /> : <div></div>}
-        {user ? <PostProfile posts={posts} editPost={editPost} postText={postText} setPostText={setPostText} user={user} /> : <div></div>}
-      </div>
-    </div>
-  );
+      );
 };
 
-export default ProfileScreen;
+      export default ProfileScreen;
