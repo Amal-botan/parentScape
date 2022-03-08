@@ -35,10 +35,10 @@ return (
       
 <Typography variant="h4">
 {
-  babysitter && <div style={{"color": "black"}}> Your status is: {babysitter.status}</div>
+  babysitter && <div style={{"color": "white"}}> Your status is: {babysitter.status}</div>
   
 }
-    {babysitter?.status === "verified" &&
+    {babysitter?.status === "Verified" &&
       (<Button
         variant="contained"
         size="small"
@@ -50,12 +50,12 @@ return (
       </Button>) 
     }
 
-    {babysitter?.status === "verified" ?
+    {babysitter?.status === "Verified" ?
 
       (availabilityButton ?
-        <div style={{"color": "black"}}>
+        <div style={{"color": "white"}}>
           You're available {babysitter?.first_name}
-        </div> : <div style={{"color": "black"}}>
+        </div> : <div style={{"color": "white"}}>
           You're unavailable {babysitter?.first_name}
         </div>)
       :

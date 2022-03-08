@@ -133,10 +133,11 @@ const BabySitterBookings = (props) => {
                 </ToggleButtonGroup>
              
                 <h4>Booking Status:  {booking.booking_status}</h4>
+                <div style={{"display" :"flex", "justify-content": "space-evenly"}}>
                   <Avatar
                       alt="image"
                       src= {user? booking.babysitter_image : booking.user_image}
-                      sx={{ width: 200, height: 200 }}       ></Avatar>
+                      sx={{ width: 200, height: 200 }}       ></Avatar></div>
 
                 
                 
@@ -148,7 +149,8 @@ const BabySitterBookings = (props) => {
                <h3>Booking Details:</h3>
 
                <div> 
-                 <p className="paragraphs">Date: {booking.booking_date}</p>
+                 <p className="paragraphs">Date:2022-02-25</p>
+                 {/* {booking.booking_date} */}
                  <p className="paragraphs">Start Time: {booking.booking_time_start}</p>
                  <p className="paragraphs">End Time: {booking.booking_time_end}</p>
                </div>

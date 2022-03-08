@@ -25,7 +25,7 @@ const Map = (props) => {
 
 
   const locationArr = babySitters.filter((babySitter) => {
-    if(babySitter.status === "verified") {
+    if(babySitter.status === "Verified") {
       return babySitter
     }
   }).map((babySitter, index) => {
