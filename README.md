@@ -6,7 +6,9 @@ Users can post questions, advice, tips etc. on our ParentFeed or hop in a room i
 
 ## Final Product
 
-![""]()
+!["Admin Dashboard"](https://github.com/Amal-botan/parentScape/blob/master/client/docs/1.gif?raw=true)
+!["Babysitter"](https://github.com/Amal-botan/parentScape/blob/master/client/docs/2.gif?raw=true)
+!["ParentFeed"](https://github.com/Amal-botan/parentScape/blob/master/client/docs/3.gif?raw=true)
 
 ## Tech Stack
 
