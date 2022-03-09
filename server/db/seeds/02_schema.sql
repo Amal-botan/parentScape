@@ -1,5 +1,5 @@
 INSERT INTO users (first_name, last_name, username, email, user_image, password, bio)
-VALUES ('Hamdi', 'Ali', 'h.ali', 'ha@gmail.com', 'https://media.istockphoto.com/vectors/silhouette-of-a-muslim-woman-with-black-headdress-abstract-confident-vector-id1294614135?k=20&m=1294614135&s=612x612&w=0&h=fJJMZJr23j3guuTJm7AO00A7r6-FdSuQOtfV4YZuijk=', 'password', '28 years old, sahm of 4 young children, living in Canada. Looking to connect with other fellow parents. Interested in all things babies'), ('Steph', 'Bob', 'steph.bob', 'stephb@gmail.com', 'https://cdn-icons-png.flaticon.com/512/265/265674.png', 'password', 'bio description'),
+VALUES ('Hamdi', 'Ali', 'h.ali', 'ha@gmail.com', 'https://cdn-icons-png.flaticon.com/512/6895/6895744.png', 'password', '28 years old, sahm of 4 young children, living in Canada. Looking to connect with other fellow parents. Interested in all things babies'), ('Steph', 'Bob', 'steph.bob', 'stephb@gmail.com', 'https://cdn-icons-png.flaticon.com/512/265/265674.png', 'password', 'bio description'),
 ('Steve', 'Sam', 'steve.sam', 'steves@gmail.com', 'https://cdn-icons-png.flaticon.com/512/265/265674.png', 'password', 'bio description'),
 ('Emily', 'Jack', 'emily.jack', 'emilyj@gmail.com', 'https://cdn-icons-png.flaticon.com/512/2922/2922561.png', 'password', 'bio description');
 
