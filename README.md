@@ -15,7 +15,7 @@ Users can post questions, advice, tips etc. on our ParentFeed or hop in a room i
 - PostgresSQL
 - Express
 - React
-- Node
+- Node.js
 
 ## Project Setup
 
