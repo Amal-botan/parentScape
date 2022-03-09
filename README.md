@@ -1,9 +1,10 @@
 # ParentScape
 
-Team Members:
+Created by:
 [Nadia Fatah](https://github.com/nadiaa-f),
 [Amal Botan](https://github.com/Amal-botan/),
 [Hashim Said-Ahmed](https://github.com/hsaidahmed)
+
 
 ParentScape is a web application designed help parents and parents to be! 
 
