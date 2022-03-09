@@ -1,5 +1,10 @@
 # ParentScape
 
+Team Members:
+[Nadia Fatah](https://github.com/nadiaa-f),
+[Amal Botan](https://github.com/Amal-botan/),
+[Hashim Said-Ahmed](https://github.com/hsaidahmed)
+
 ParentScape is a web application designed help parents and parents to be! 
 
 Users can post questions, advice, tips etc. on our ParentFeed or hop in a room in ParentHouse to voice chat with other parents. Another cool feature exclusive for parents is our Babysitter finder where we share verified and vetted babysitters in your area!
